@@ -1,5 +1,5 @@
-.paraone {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 2rem;
+@import url("/static/css/style.css");
+
+body {
   background-color: aqua;
 }
