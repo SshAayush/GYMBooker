@@ -1,5 +1,7 @@
 @import url("style.css");
-
+.main {
+  height: 100vh;
+}
 .logo {
   margin-right: 15rem;
   font-size: 24px;
@@ -7,10 +9,10 @@
 }
 
 .navbar {
-  margin: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  background-color: black;
 }
 
 .nav-links {
@@ -29,11 +31,45 @@
 }
 .nav-links ul li a {
   text-decoration: none;
+  color: #fff;
 }
 .nav-right {
   display: flex;
   padding-right: 2rem;
 }
 .join {
-  margin-left: 1rem;
+  margin-left: 2rem;
+  width: 13rem;
+  border: 1px solid #fff;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #fff;
+  background-color: black;
+}
+.btn {
+  border-style: none;
+  background-color: black;
+  color: #fff;
+  font-size: 14px;
+
+  margin-right: 0.5rem;
+}
+.fa-plus {
+  border: 1px solid red;
+  border-radius: 15px;
+  height: 2.7rem;
+  width: 44px;
+  font-size: 25px;
+  text-align: center;
+  padding: 0.5rem;
+  transition: ease 1s;
+}
+.fa-plus:hover {
+  transform: rotateZ(360deg);
+}
+.fa-user {
+  color: #fff;
+  margin-top: 1.5rem;
 }

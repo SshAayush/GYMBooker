@@ -27,8 +27,16 @@
   </head>
   <body>
     <section class="main">
+      <img
+        class="hero-img"
+        src="{% static'/static/admin/img/gym.jpg'%}"
+        alt="img-1"
+      />
       <div class="navbar">
-        <div class="logo">Gym<span style="color: red">Booker</span></div>
+        <div class="logo">
+          <span style="color: #fff">Gym</span
+          ><span style="color: red">Booker</span>
+        </div>
         <div class="nav-links">
           <ul>
             <li><a href="#">Home</a></li>
@@ -39,9 +47,9 @@
           </ul>
           <div class="nav-right">
             <i class="fa-solid fa-user fa-beat"></i>
-            <div class="join btn">
+            <div class="join">
               <i class="fa-solid fa-plus"></i>
-              <button>JOIN CLASS NOW</button>
+              <button class="btn">JOIN CLASS NOW</button>
             </div>
           </div>
         </div>
