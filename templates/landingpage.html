@@ -27,10 +27,12 @@
   </head>
   <body>
     <section class="main">
-      {% comment %}
-      <img class="hero-img" src="{% static '/image/gym.jpg' %}" alt="img-1" />
-      {% endcomment %}
-      <img class="hero-img" src="{% static '/image/gym.jpg' %}" alt="img-1" />
+      <!-- <div class="image-conatiner">
+        {% comment %}
+        <img class="hero-img" src="{% static '/image/gym.jpg' %}" alt="img-1" />
+        {% endcomment %}
+         <img class="hero-img" src="{% static '/image/gym.jpg' %}" alt="img-1" /> 
+      </div>  -->
       <div class="navbar">
         <div class="logo">
           <span style="color: #fff">Gym</span
@@ -45,19 +47,19 @@
             <li><a href="#">Contact</a></li>
           </ul>
           <div class="nav-right">
-            <i class="fa-solid fa-user fa-beat"></i>
+            <i class="fa-solid fa-user"></i>
             <div class="join">
               <i class="fa-solid fa-plus"></i>
-              <button class="btn">JOIN CLASS NOW</button>
+              <button class="btn"><a href="">JOIN CLASS NOW</a></button>
             </div>
           </div>
         </div>
       </div>
 
       <div class="hero">
-        <div class="hero-text">MAKE YOUR BODY FIT & PERFECT</div>
+        <div class="hero-text"><b>MAKE YOUR BODY</b> FIT & PERFECT</div>
         <div class="hero-btn">
-          <button class="btn">Join our class</button>
+          <button class="btn-hero">Join our class</button>
         </div>
       </div>
     </section>

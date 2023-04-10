@@ -1,7 +1,5 @@
 @import url("style.css");
-.main {
-  height: 100vh;
-}
+
 .logo {
   margin-right: 15rem;
   font-size: 24px;
@@ -13,6 +11,8 @@
   align-items: center;
   justify-content: space-around;
   background-color: black;
+  padding-top: 1rem;
+  /* position: fixed; */
 }
 
 .nav-links {
@@ -32,6 +32,11 @@
 .nav-links ul li a {
   text-decoration: none;
   color: #fff;
+  font-weight: 500;
+  transition: ease-in-out 0.3s;
+}
+.nav-links ul li a:hover {
+  color: red;
 }
 .nav-right {
   display: flex;
@@ -53,12 +58,15 @@
   background-color: black;
   color: #fff;
   font-size: 14px;
-
   margin-right: 0.5rem;
+}
+.btn a {
+  color: #fff;
+  text-decoration: none;
 }
 .fa-plus {
   border: 1px solid red;
-  border-radius: 15px;
+  border-radius: 10px;
   height: 2.7rem;
   width: 44px;
   font-size: 25px;
@@ -71,14 +79,42 @@
 }
 .fa-user {
   color: #fff;
-  margin-top: 1.5rem;
+  margin-top: 1.2rem;
+  font-size: 24px;
+  transition: ease-in-out 0.3s;
+}
+.fa-user:hover {
+  color: red;
 }
 .hero {
   height: 100vh;
-  width: 100vw;
+  background-color: black;
+  overflow-x: hidden;
 }
-.hero-txt {
+
+.hero-text {
+  color: #fff;
+  width: 25rem;
   position: relative;
-  top: 25rem;
-  left: 25rem;
+  font-size: 40px;
+  top: 15rem;
+  left: 45rem;
+}
+.hero-btn {
+  width: 8rem;
+  height: 3rem;
+  position: relative;
+  left: 45rem;
+  top: 18rem;
+}
+.btn-hero {
+  padding: 0.5rem;
+  font-size: 16px;
+  border: 1px solid red;
+  color: #fff;
+  background-color: black;
+}
+.btn-hero:hover {
+  color: #fff;
+  border: 1px solid #fff;
 }
