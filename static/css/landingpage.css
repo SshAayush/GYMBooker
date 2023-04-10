@@ -1,7 +1,7 @@
 @import url("style.css");
 
 .logo {
-  width: 6rem;
+  width: 8rem;
 }
 .hero-img {
   width: 100%;
@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-
+  max-height: 5rem;
   padding-top: 1rem;
 }
 
