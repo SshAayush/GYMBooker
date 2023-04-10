@@ -113,6 +113,7 @@
   border: 1px solid red;
   color: #fff;
   background-color: black;
+  transition: ease-in-out 0.3s;
 }
 .btn-hero:hover {
   color: #fff;
