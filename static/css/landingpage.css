@@ -1,18 +1,23 @@
 @import url("style.css");
 
 .logo {
-  margin-right: 15rem;
-  font-size: 24px;
-  font-weight: 500;
+  width: 6rem;
+}
+.hero-img {
+  width: 100%;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
 }
 
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: black;
+
   padding-top: 1rem;
-  /* position: fixed; */
 }
 
 .nav-links {
@@ -46,12 +51,13 @@
   margin-left: 2rem;
   width: 13rem;
   border: 1px solid #fff;
+  border-radius: 10px;
   height: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
   color: #fff;
-  background-color: black;
+  /* background-color: black; */
 }
 .btn {
   border-style: none;
@@ -72,7 +78,8 @@
   font-size: 25px;
   text-align: center;
   padding: 0.5rem;
-  transition: ease 1s;
+  transition: ease 1.5s;
+  background-color: red;
 }
 .fa-plus:hover {
   transform: rotateZ(360deg);
@@ -88,8 +95,12 @@
 }
 .hero {
   height: 100vh;
-  background-color: black;
+  /* background-color: black; */
+
   overflow-x: hidden;
+}
+.main {
+  background-image: url("/static/image/gym.jpg");
 }
 
 .hero-text {
@@ -114,6 +125,7 @@
   color: #fff;
   background-color: black;
   transition: ease-in-out 0.3s;
+  border-radius: 10px;
 }
 .btn-hero:hover {
   color: #fff;
