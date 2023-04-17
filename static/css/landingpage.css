@@ -3,9 +3,6 @@
 .logo {
   width: 8rem;
 }
-.hero-img {
-  width: 100%;
-}
 
 .hero-img {
   width: 100%;
@@ -18,18 +15,19 @@
   justify-content: space-around;
   max-height: 5rem;
   padding-top: 1rem;
+  width: 100%;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  justify-content: space-around;
 }
 
 .nav-links ul {
   display: flex;
   margin-right: 17rem;
 }
+
 .nav-links ul li {
   padding: 1rem;
   list-style: none;
@@ -57,7 +55,7 @@
   align-items: center;
   justify-content: space-around;
   color: #fff;
-  /* background-color: black; */
+  background-color: black;
 }
 .btn {
   border-style: none;
@@ -82,7 +80,7 @@
   background-color: red;
 }
 .fa-plus:hover {
-  transform: rotateZ(360deg);
+  transform: rotateZ(360deg) scale(-1);
 }
 .fa-user {
   color: #fff;
@@ -95,8 +93,7 @@
 }
 .hero {
   height: 100vh;
-  /* background-color: black; */
-
+  width: 100%;
   overflow-x: hidden;
 }
 .main {
@@ -131,3 +128,34 @@
   color: #fff;
   border: 1px solid #fff;
 }
+/* .cards {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 5rem;
+}
+.card {
+  width: 20rem;
+  height: 20rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  transition: ease-in-out 0.3s;
+}
+.car-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+.card-text {
+  padding: 1rem;
+  text-align: center;
+}
+card-text h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+.card-text p {
+  font-size: 14px;
+  font-weight: 300;
+} */
