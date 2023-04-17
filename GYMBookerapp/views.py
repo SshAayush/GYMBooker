@@ -1,4 +1,3 @@
-# from datetime import datetime  #used to access datetime 
 from django.utils import timezone  #used tp access timezone and store time wile timezone is active in django
 from django.shortcuts import render
 from .models import Customer
@@ -36,11 +35,9 @@ def signin(request):
 
         s_details = Customer.objects.all()
         for s in s_details:
-            # print(f'------{s.customer_username}-------')
             if(s.customer_username == u_username and s.customer_password == u_password):
                 time = Customer.objects.get(id=s.id)
                 time.customer_login_history = timezone.now()
-                # user = Customer(customer_login_history = datetime.now())
                 time.save()
                 return render(request,"home.html")
 
