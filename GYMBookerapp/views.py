@@ -8,7 +8,7 @@ from django.contrib import sessions
 def landingpage(request):
     return render(request, "landingpage.html")
 
-def signup(request):
+def signup(request): #Password need to be hashed
     if request.method == "POST":
         username = request.POST["username"]
         fname = request.POST["fname"]
@@ -20,7 +20,7 @@ def signup(request):
         if password == c_password:
             if Customer.objects.filter(customer_email = email).exists(): #checks weather email is used or not
                 print("Email is already in use.")
-            if Customer.objects.filter(customer_username = username).exists(): #checks weather username is used or not
+            elif Customer.objects.filter(customer_username = username).exists(): #checks weather username is used or not
                 print("Username is already taken.")
             else:
                 user = Customer(customer_fname = fname, customer_lname = lname, customer_username = username, customer_email = email, customer_password = password, customer_login_history = timezone.now())

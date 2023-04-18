@@ -19,18 +19,13 @@
         />
       </div>
       <p class="text">Already have an account?</p>
-      <button class="btn login"><a href="#">Login</a></button>
+      <button class="btn login"><a href="{% url 'signin' %}">Login</a></button>
     </div>
     <div class="container">
       <div class="form-box">
         <h2 class="heading">Create an account</h2>
-        <form
-          action="{% url 'signup' %}
-        "
-          method="post"
-        >
+        <form action="{% url 'signup' %}" method="post">
           {% csrf_token %}
-
           <div class="name-input">
             <input
               type="text"
