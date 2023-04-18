@@ -76,3 +76,4 @@ def reset_password(request):
             print("Invalid Code provided")
     return render(request,"code_reset.html")
 
+
