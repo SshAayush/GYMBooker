@@ -7,50 +7,74 @@
     <title>Sign up</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="{% static 'css/landingpage.css' %}" />
-    <!--Temporary CSS-->
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
   </head>
   <body>
-    <form action="{% url 'signup' %}" method="POST">
-      {% csrf_token %}
-      <input
-        type="text"
-        name="fname"
-        id="fname"
-        placeholder="Enter First Name"
-      /><br />
-      <input
-        type="text"
-        name="lname"
-        id="lname"
-        placeholder="Enter Last Name"
-      /><br />
-      <input
-        type="text"
-        name="username"
-        id="username"
-        placeholder="Enter Username"
-      /><br />
-      <input
-        type="email"
-        name="email"
-        id="email"
-        placeholder="Enter email"
-      /><br />
-      <input
-        type="password"
-        name="password"
-        id="password"
-        placeholder="Enter Password"
-      /><br />
-      <input
-        type="password"
-        name="c_password"
-        id="c_password"
-        placeholder="Re-enter Password"
-      /><br />
-      <input type="submit" />
-    </form>
+    <div class="nav">
+      <div class="logo">
+        <img
+          class="hero-img"
+          src="{% static '/image/logo.png' %}"
+          alt="img-1"
+        />
+      </div>
+      <p class="text">Already have an account?</p>
+      <button class="btn login"><a href="#">Login</a></button>
+    </div>
+    <div class="container">
+      <div class="form-box">
+        <h2 class="heading">Create an account</h2>
+        <form action="#" method="post">
+          <div class="name-input">
+            <input
+              type="text"
+              name="fname"
+              placeholder="First Name"
+              id="fname"
+            />
+            <input
+              type="text"
+              name="lname"
+              placeholder="Last Name"
+              id="lname"
+            />
+          </div>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Username"
+          />
+          <br />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="E-mail"
+          /><br />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+          />
+          <br />
+          <input
+            type="password"
+            id="c_password"
+            name="c_password"
+            placeholder="Confirm Password"
+          /><br />
+          <input
+            class="btn submit"
+            type="submit"
+            name="submit"
+            value="Submit"
+          />
+        </form>
+      </div>
+    </div>
+
     <script src="" async defer></script>
   </body>
 </html>

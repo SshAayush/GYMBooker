@@ -1,0 +1,85 @@
+@import url("style.css");
+body {
+  background-color: #333;
+}
+.nav {
+  background-color: black;
+  width: 100%;
+  max-height: 10rem;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+}
+.text {
+  font-size: 22px;
+  color: #fff;
+  margin: 1rem;
+  padding-top: 10px;
+}
+
+.btn {
+  width: 7rem;
+  background-color: black;
+  height: 3rem;
+  margin: 1rem;
+  border: 1px solid white;
+  border-radius: 10px;
+  transition: ease-in-out 0.5s;
+}
+.btn:hover {
+  border: 1px solid red;
+}
+.btn a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+.logo {
+  width: 7rem;
+  position: absolute;
+  top: -1rem;
+  left: 3rem;
+}
+.logo img {
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  margin-top: 2rem;
+}
+.heading {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.form-box {
+  margin-top: 2rem;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 2rem;
+  width: 30rem;
+}
+.name-input input {
+  width: 49.5%;
+}
+input {
+  padding: 1.5rem;
+  border: 1px solid red;
+  border-radius: 10px;
+  width: 100%;
+  background-color: black;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+input::placeholder {
+  color: #fff;
+}
+.submit {
+  color: #fff;
+  padding: 1rem;
+  margin-left: 9rem;
+}
