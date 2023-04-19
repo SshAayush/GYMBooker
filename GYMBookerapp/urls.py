@@ -10,4 +10,5 @@ urlpatterns = [
     # path("home/",views.home,name="home"),
     path('reset_password/',views.reset_password, name='reset_password'),
     path('reset_code/',views.reset_code, name='reset_code'),
+    path('reset_passwordDone/',views.reset_passwordDone, name='reset_passwordDone'),
 ]
