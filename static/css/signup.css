@@ -33,6 +33,11 @@ body {
   text-decoration: none;
   color: white;
   font-size: 20px;
+  display: block;
+  width: 7rem;
+  height: 3rem;
+  /* padding-top: 0.6rem; */
+  text-align: center;
 }
 .logo {
   width: 7rem;
@@ -82,4 +87,15 @@ input::placeholder {
   color: #fff;
   padding: 1rem;
   margin-left: 9rem;
+}
+.f-pass {
+  text-align: center;
+}
+.f-pass a {
+  text-decoration: none;
+  transition: ease-in-out 0.5s;
+  color: #fff;
+}
+.f-pass a:hover {
+  color: red;
 }

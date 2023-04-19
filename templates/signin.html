@@ -9,25 +9,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
     <!--Temporary CSS-->
+    <style>
+      @import url("/static/css/signup.css");
+    </style>
   </head>
   <body>
-    <form action="{% url 'signin' %}" method="POST">
-      {% csrf_token %}
-      <input
-        type="text"
-        name="username"
-        id="username"
-        placeholder="Enter Username"
-      /><br />
-      <input
-        type="password"
-        name="password"
-        id="password"
-        placeholder="Enter Password"
-      /><br />
-      <input type="submit" value="Login" />
-    </form>
-    <button><a href="{% url 'forget_pass' %}">Forgot Password?</a></button>
+    <div class="nav">
+      <div class="logo">
+        <img
+          class="hero-img"
+          src="{% static '/image/logo.png' %}"
+          alt="img-1"
+        />
+      </div>
+      <p class="text">Don't have an account? Create Now</p>
+      <button class="btn login"><a href="#">SignUp</a></button>
+    </div>
+    <div class="container">
+      <div class="form-box">
+        <h2 class="heading">Create an account</h2>
+        <form action="" method="post">
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Username"
+          />
+          <br />
+
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+          />
+          <br />
+
+          <input
+            class="btn submit"
+            type="submit"
+            name="submit"
+            value="Submit"
+          />
+        </form>
+        <p class="f-pass">
+          <a href="{% url 'forget_pass' %}">Forget password?</a>
+        </p>
+      </div>
+    </div>
     <script src="" async defer></script>
   </body>
 </html>
