@@ -3,6 +3,9 @@ from django.shortcuts import render
 from .models import Customer
 import random
 from django.contrib import sessions
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 # Create your views here.
 def landingpage(request):
@@ -96,3 +99,24 @@ def reset_passwordDone(request):
         else:
             print("Confirm password didn't match")
     return render(request,"reset_password.html")
+
+def send_offerEmail(request):
+    email = 'ashishsatyal4@gmail.com'
+    user = Customer.objects.get(customer_email = email)
+    subject = "Haven't Seen You Lately!"
+    html_content = render_to_string('offer_mail.html',{'fname':user.customer_fname,'lname':user.customer_lname, 'email':user.customer_email})
+    from_email = 'team.bookex@gmail.com'
+    print(user.customer_fname)
+    # to = Customer.customer_email
+    to = 'ashishsatyal4@gmail.com'
+    print(to)
+    text_content = strip_tags(html_content)
+    email = EmailMultiAlternatives(
+        subject,
+        text_content,
+        from_email,
+        [to],  
+    )
+    email.attach_alternative(html_content,"text/html")
+    email.send(fail_silently=False)
+    return render(request,"signin.html")
