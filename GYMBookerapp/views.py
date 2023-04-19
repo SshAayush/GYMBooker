@@ -58,9 +58,11 @@ def reset_code(request):
         print(email) #in future we will send the code to the provided if it exist
         #generate code and send via email
         if Customer.objects.filter(customer_email = email).exists():
-            random_float = random.randint(000000,999999)
+            random_float = random.randint(100000,999999)
             print(random_float)
+            c_email = Customer.objects.get(customer_email = email)
             request.session['random_float'] = random_float #creating the session to access this value from anywere
+            request.session['customer_email'] = c_email.customer_email #creating the session to send email of user to change password in reset_passwordDone method
             return render(request,"code_reset.html")
         else:
             print("This email doesn't exist.")
@@ -76,4 +78,21 @@ def reset_password(request):
             print("Invalid Code provided")
     return render(request,"code_reset.html")
 
-
+def reset_passwordDone(request):
+    if request.method == "POST":
+        password = request.POST['password']
+        c_password = request.POST['c_password']
+        email = request.session.get('customer_email')
+        customer_detail = Customer.objects.get(customer_email = email) #now we can access every data of that user via email
+       
+        if password == c_password:
+            if password != customer_detail.customer_password:
+                customer_detail.customer_password = password
+                customer_detail.save()
+                print("Password Updated")
+                return render(request,"signin.html")
+            else:
+                print("Password can't be same with old one")
+        else:
+            print("Confirm password didn't match")
+    return render(request,"reset_password.html")
