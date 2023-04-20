@@ -29,6 +29,7 @@
       <div class="form-box">
         <h2 class="heading">Create an account</h2>
         <form action="" method="post">
+          {% csrf_token %}
           <input
             type="text"
             name="username"
