@@ -144,3 +144,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # connection code for SMTP server
 # add code here <DC>-> <#commant-to-install> <pinned msg>
+

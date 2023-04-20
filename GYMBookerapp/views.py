@@ -79,9 +79,31 @@ def reset_code(request):
             c_email = Customer.objects.get(customer_email=email)
             # creating the session to access this value from anywere
             request.session['random_float'] = random_float
+
             # creating the session to send email of user to change password in reset_passwordDone method
             request.session['customer_email'] = c_email.customer_email
-            return render(request, "code_reset.html")
+
+            #sending forget password code to user mail
+
+            user = Customer.objects.get(customer_email = email)
+
+            subject = "Reset Password"
+            html_content = render_to_string('forgetpass_email.html',{
+                                            'fname': user.customer_fname, 'lname': user.customer_lname, 'email': user.customer_email,'code':random_float})
+            from_email = 'team.bookex@gmail.com'
+            to = [c_email.customer_email]
+
+            text_content = strip_tags(html_content)
+            email = EmailMultiAlternatives(
+                subject,
+                text_content,
+                from_email,
+                to,
+            )
+            email.attach_alternative(html_content, "text/html")
+            email.send(fail_silently=False)
+
+            return render(request, "code_reset.html", {'fname': c_email.customer_fname,'code':random_float})
         else:
             print("This email doesn't exist.")
     return render(request, "forget_pass.html")
@@ -89,6 +111,9 @@ def reset_code(request):
 
 def reset_password(request):
     random_float = request.session.get('random_float')  # accessing the session
+    
+
+
     if request.method == "POST":
         code = request.POST['code']
         if (int(random_float) == int(code)):  # validate the generated code and user type code
@@ -132,7 +157,7 @@ def send_offerEmail(request):
         emails.append(user.customer_email)
 
         subject = "Haven't Seen You Lately!"
-        html_content = render_to_string('offer_mail.html', {
+        html_content = render_to_string('offer_mail.html',{
                                         'fname': user.customer_fname, 'lname': user.customer_lname, 'email': user.customer_email})
         from_email = 'team.bookex@gmail.com'
         print(user.customer_fname)
