@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'GYMBookerapp', #for using models
+    'GYMBookerapp',  # for using models
 
 ]
 
@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'GYMBooker.wsgi.application'
 #     }
 # }
 
-#code to connect mySql
+# code to connect mySql
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -142,6 +142,5 @@ STATICFILES_DIRS = [STATIC_DIR]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#connection code for SMTP server
-#add code here <DC>-> <#commant-to-install> <pinned msg>
-
+# connection code for SMTP server
+# add code here <DC>-> <#commant-to-install> <pinned msg>

@@ -1,17 +1,25 @@
-from django.utils import timezone  #used tp access timezone and store time wile timezone is active in django
 from django.shortcuts import render
 from .models import Customer
 import random
-from django.contrib import sessions
+# used to send mail
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
+
+
+# used tp access timezone and store time wile timezone is active in django
+from django.utils import timezone
+from datetime import timedelta, datetime
+
 # Create your views here.
+
+
 def landingpage(request):
     return render(request, "landingpage.html")
 
-def signup(request): #Password need to be hashed
+
+def signup(request):  # Password need to be hashed
     if request.method == "POST":
         username = request.POST["username"]
         fname = request.POST["fname"]
@@ -21,17 +29,21 @@ def signup(request): #Password need to be hashed
         email = request.POST["email"]
 
         if password == c_password:
-            if Customer.objects.filter(customer_email = email).exists(): #checks weather email is used or not
+            # checks weather email is used or not
+            if Customer.objects.filter(customer_email=email).exists():
                 print("Email is already in use.")
-            elif Customer.objects.filter(customer_username = username).exists(): #checks weather username is used or not
+            # checks weather username is used or not
+            elif Customer.objects.filter(customer_username=username).exists():
                 print("Username is already taken.")
             else:
-                user = Customer(customer_fname = fname, customer_lname = lname, customer_username = username, customer_email = email, customer_password = password, customer_login_history = timezone.now())
+                user = Customer(customer_fname=fname, customer_lname=lname, customer_username=username,
+                                customer_email=email, customer_password=password, customer_login_history=timezone.now())
                 user.save()
                 print("User Account created successfully")
         else:
             print("Confirmation password mismatched")
     return render(request, "signup.html")
+
 
 def signin(request):
     if request.method == "POST":
@@ -40,83 +52,99 @@ def signin(request):
 
         s_details = Customer.objects.all()
         for s in s_details:
-            if(s.customer_username == u_username and s.customer_password == u_password):
+            if (s.customer_username == u_username and s.customer_password == u_password):
                 time = Customer.objects.get(id=s.id)
                 time.customer_login_history = timezone.now()
                 time.save()
-                return render(request,"home.html")
+                return render(request, "home.html")
 
         else:
             print("Invalid credentials")
 
-    return render(request,"signin.html")
+    return render(request, "signin.html")
+
 
 def forget_pass(request):
-    return render(request,"forget_pass.html")
+    return render(request, "forget_pass.html")
 
 
 def reset_code(request):
     if request.method == "POST":
         email = request.POST['email']
-        print(email) #in future we will send the code to the provided if it exist
-        #generate code and send via email
-        if Customer.objects.filter(customer_email = email).exists():
-            random_float = random.randint(100000,999999)
+        print(email)  # in future we will send the code to the provided if it exist
+        # generate code and send via email
+        if Customer.objects.filter(customer_email=email).exists():
+            random_float = random.randint(100000, 999999)
             print(random_float)
-            c_email = Customer.objects.get(customer_email = email)
-            request.session['random_float'] = random_float #creating the session to access this value from anywere
-            request.session['customer_email'] = c_email.customer_email #creating the session to send email of user to change password in reset_passwordDone method
-            return render(request,"code_reset.html")
+            c_email = Customer.objects.get(customer_email=email)
+            # creating the session to access this value from anywere
+            request.session['random_float'] = random_float
+            # creating the session to send email of user to change password in reset_passwordDone method
+            request.session['customer_email'] = c_email.customer_email
+            return render(request, "code_reset.html")
         else:
             print("This email doesn't exist.")
-    return render(request,"forget_pass.html")
+    return render(request, "forget_pass.html")
+
 
 def reset_password(request):
-    random_float = request.session.get('random_float') #accessing the session
+    random_float = request.session.get('random_float')  # accessing the session
     if request.method == "POST":
         code = request.POST['code']
-        if(int(random_float) == int(code)): #validate the generated code and user type code 
-            return render(request,"reset_password.html")
+        if (int(random_float) == int(code)):  # validate the generated code and user type code
+            return render(request, "reset_password.html")
         else:
             print("Invalid Code provided")
-    return render(request,"code_reset.html")
+    return render(request, "code_reset.html")
+
 
 def reset_passwordDone(request):
     if request.method == "POST":
         password = request.POST['password']
         c_password = request.POST['c_password']
         email = request.session.get('customer_email')
-        customer_detail = Customer.objects.get(customer_email = email) #now we can access every data of that user via email
-       
+        # now we can access every data of that user via email
+        customer_detail = Customer.objects.get(customer_email=email)
+
         if password == c_password:
             if password != customer_detail.customer_password:
                 customer_detail.customer_password = password
                 customer_detail.save()
                 print("Password Updated")
-                return render(request,"signin.html")
+                return render(request, "signin.html")
             else:
                 print("Password can't be same with old one")
         else:
             print("Confirm password didn't match")
-    return render(request,"reset_password.html")
+    return render(request, "reset_password.html")
+
 
 def send_offerEmail(request):
-    email = 'ashishsatyal4@gmail.com'
-    user = Customer.objects.get(customer_email = email)
-    subject = "Haven't Seen You Lately!"
-    html_content = render_to_string('offer_mail.html',{'fname':user.customer_fname,'lname':user.customer_lname, 'email':user.customer_email})
-    from_email = 'team.bookex@gmail.com'
-    print(user.customer_fname)
-    # to = Customer.customer_email
-    to = 'ashishsatyal4@gmail.com'
-    print(to)
-    text_content = strip_tags(html_content)
-    email = EmailMultiAlternatives(
-        subject,
-        text_content,
-        from_email,
-        [to],  
-    )
-    email.attach_alternative(html_content,"text/html")
-    email.send(fail_silently=False)
-    return render(request,"signin.html")
+    # threshold_time = timezone.now() - timedelta(hours=1)
+    # inactive_users = Customer.objects.filter(
+    #     customer_login_history__lt=threshold_time)
+    threshold_date = timezone.now() - timedelta(hours=2)
+    print(threshold_date)
+    inactive_users = Customer.objects.filter(customer_login_history__lt=threshold_date)
+    print(inactive_users)
+    emails = []
+    for user in inactive_users:
+        emails.append(user.customer_email)
+
+        subject = "Haven't Seen You Lately!"
+        html_content = render_to_string('offer_mail.html', {
+                                        'fname': user.customer_fname, 'lname': user.customer_lname, 'email': user.customer_email})
+        from_email = 'team.bookex@gmail.com'
+        print(user.customer_fname)
+        to = [user.customer_email]
+
+        text_content = strip_tags(html_content)
+        email = EmailMultiAlternatives(
+            subject,
+            text_content,
+            from_email,
+            to,
+        )
+        email.attach_alternative(html_content, "text/html")
+        email.send(fail_silently=False)
+    return render(request, "signin.html")
