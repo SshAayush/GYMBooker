@@ -175,10 +175,11 @@
 .box:hover {
   background-image: url("/static/image/bg-text.png");
   color: black;
+  /* background-color: black; */
 }
 .about {
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   /* background-color: #333; */
   background-image: url("/static/image/background.jpg");
   display: flex;
@@ -220,7 +221,7 @@
   position: relative;
   top: 5rem;
   left: -20rem;
-  color: rgba(207, 207, 207, 0.2);
+  color: rgba(207, 207, 207, 0.4);
 }
 
 .a-icons {
@@ -267,4 +268,36 @@
 }
 .a-btn:hover {
   background-color: red;
+}
+.provide {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: red;
+  height: 22vh;
+}
+.provide-content {
+  width: 40%;
+}
+.provide-text {
+  font-size: 35px;
+  font-weight: 500;
+}
+.provide-btn {
+  width: 8rem;
+  height: 3rem;
+  border: 1px solid white;
+  background-color: red;
+  border-radius: 10px;
+  transition: ease-in-out 0.5s;
+}
+.provide-btn a {
+  width: 8rem;
+  color: black;
+  height: 3rem;
+}
+
+.provide-btn:hover {
+  background-color: white;
 }
