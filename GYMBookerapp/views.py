@@ -84,7 +84,6 @@ def reset_code(request):
             request.session['customer_email'] = c_email.customer_email
 
             #sending forget password code to user mail
-
             user = Customer.objects.get(customer_email = email)
 
             subject = "Reset Password"
@@ -148,7 +147,7 @@ def send_offerEmail(request):
     # threshold_time = timezone.now() - timedelta(hours=1)
     # inactive_users = Customer.objects.filter(
     #     customer_login_history__lt=threshold_time)
-    threshold_date = timezone.now() - timedelta(hours=2)
+    threshold_date = timezone.now() - timedelta(hours=1)
     print(threshold_date)
     inactive_users = Customer.objects.filter(customer_login_history__lt=threshold_date)
     print(inactive_users)
