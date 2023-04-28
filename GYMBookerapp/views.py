@@ -19,50 +19,50 @@ def landingpage(request):
     return render(request, "landingpage.html")
 
 
-# def signup(request):  # Password need to be hashed
-#     if request.method == "POST":
-#         username = request.POST["username"]
-#         fname = request.POST["fname"]
-#         lname = request.POST["lname"]
-#         password = request.POST["password"]
-#         c_password = request.POST["c_password"]
-#         email = request.POST["email"]
-
-#         if password == c_password:
-#             # checks weather email is used or not
-#             if Customer.objects.filter(customer_email=email).exists():
-#                 print("Email is already in use.")
-#             # checks weather username is used or not
-#             elif Customer.objects.filter(customer_username=username).exists():
-#                 print("Username is already taken.")
-#             else:
-#                 user = Customer(customer_fname=fname, customer_lname=lname, customer_username=username,
-#                                 customer_email=email, customer_password=password, customer_login_history=timezone.now())
-#                 user.save()
-#                 print("User Account created successfully")
-#         else:
-#             print("Confirmation password mismatched")
-#     return render(request, "signup.html")
-
-
-def signin(request):
+def signup(request):  # Password need to be hashed
     if request.method == "POST":
-        u_username = request.POST['username']
-        u_password = request.POST['password']
+        username = request.POST["username"]
+        fname = request.POST["fname"]
+        lname = request.POST["lname"]
+        password = request.POST["password"]
+        c_password = request.POST["c_password"]
+        email = request.POST["email"]
 
-        s_details = Customer.objects.all()
-        for s in s_details:
-            if (s.customer_username == u_username and s.customer_password == u_password):
-                time = Customer.objects.get(id=s.id)
-                time.customer_login_history = timezone.now()
-                time.save()
-                request.session['username'] = u_username #set the session of their username after loggin in
-                return render(request, "home.html")
-
+        if password == c_password:
+            # checks weather email is used or not
+            if Customer.objects.filter(customer_email=email).exists():
+                print("Email is already in use.")
+            # checks weather username is used or not
+            elif Customer.objects.filter(customer_username=username).exists():
+                print("Username is already taken.")
+            else:
+                user = Customer(customer_fname=fname, customer_lname=lname, customer_username=username,
+                                customer_email=email, customer_password=password, customer_login_history=timezone.now())
+                user.save()
+                print("User Account created successfully")
         else:
-            print("Invalid credentials")
+            print("Confirmation password mismatched")
+    return render(request, "signup.html")
 
-    return render(request, "signin.html")
+
+# def signin(request):
+#     if request.method == "POST":
+#         u_username = request.POST['username']
+#         u_password = request.POST['password']
+
+#         s_details = Customer.objects.all()
+#         for s in s_details:
+#             if (s.customer_username == u_username and s.customer_password == u_password):
+#                 time = Customer.objects.get(id=s.id)
+#                 time.customer_login_history = timezone.now()
+#                 time.save()
+#                 request.session['username'] = u_username #set the session of their username after loggin in
+#                 return render(request, "home.html")
+
+#         else:
+#             print("Invalid credentials")
+
+#     return render(request, "signin.html")
 
 
 def forget_pass(request):
