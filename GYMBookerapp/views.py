@@ -88,23 +88,23 @@ def reset_code(request):
 
             #sending forget password code to user mail
 
-            # user = Customer.objects.get(customer_email = email)
+            user = Customer.objects.get(customer_email = email)
 
-            # subject = "Reset Password"
-            # html_content = render_to_string('forgetpass_email.html',{
-            #                                 'fname': user.customer_fname, 'lname': user.customer_lname, 'email': user.customer_email,'code':random_float})
-            # from_email = 'team.bookex@gmail.com'
-            # to = [c_details.customer_email]
+            subject = "Reset Password"
+            html_content = render_to_string('forgetpass_email.html',{
+                                            'fname': user.customer_fname, 'lname': user.customer_lname, 'email': user.customer_email,'code':random_float})
+            from_email = 'team.bookex@gmail.com'
+            to = [c_details.customer_email]
 
-            # text_content = strip_tags(html_content)
-            # email = EmailMultiAlternatives(
-            #     subject,
-            #     text_content,
-            #     from_email,
-            #     to,
-            # )
-            # email.attach_alternative(html_content, "text/html")
-            # email.send(fail_silently=False)
+            text_content = strip_tags(html_content)
+            email = EmailMultiAlternatives(
+                subject,
+                text_content,
+                from_email,
+                to,
+            )
+            email.attach_alternative(html_content, "text/html")
+            email.send(fail_silently=False)
 
             return render(request, "code_reset.html", {'fname': c_details.customer_fname,'code':c_details.customer_resetcode})
         else:
