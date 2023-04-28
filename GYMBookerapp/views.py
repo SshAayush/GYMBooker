@@ -45,24 +45,24 @@ def signup(request):  # Password need to be hashed
     return render(request, "signup.html")
 
 
-# def signin(request):
-#     if request.method == "POST":
-#         u_username = request.POST['username']
-#         u_password = request.POST['password']
+def signin(request):
+    if request.method == "POST":
+        u_username = request.POST['username']
+        u_password = request.POST['password']
 
-#         s_details = Customer.objects.all()
-#         for s in s_details:
-#             if (s.customer_username == u_username and s.customer_password == u_password):
-#                 time = Customer.objects.get(id=s.id)
-#                 time.customer_login_history = timezone.now()
-#                 time.save()
-#                 request.session['username'] = u_username #set the session of their username after loggin in
-#                 return render(request, "home.html")
+        s_details = Customer.objects.all()
+        for s in s_details:
+            if (s.customer_username == u_username and s.customer_password == u_password):
+                time = Customer.objects.get(id=s.id)
+                time.customer_login_history = timezone.now()
+                time.save()
+                request.session['username'] = u_username #set the session of their username after loggin in
+                return render(request, "home.html")
 
-#         else:
-#             print("Invalid credentials")
+        else:
+            print("Invalid credentials")
 
-#     return render(request, "signin.html")
+    return render(request, "signin.html")
 
 
 def forget_pass(request):
