@@ -19,30 +19,30 @@ def landingpage(request):
     return render(request, "landingpage.html")
 
 
-def signup(request):  # Password need to be hashed
-    if request.method == "POST":
-        username = request.POST["username"]
-        fname = request.POST["fname"]
-        lname = request.POST["lname"]
-        password = request.POST["password"]
-        c_password = request.POST["c_password"]
-        email = request.POST["email"]
+# def signup(request):  # Password need to be hashed
+#     if request.method == "POST":
+#         username = request.POST["username"]
+#         fname = request.POST["fname"]
+#         lname = request.POST["lname"]
+#         password = request.POST["password"]
+#         c_password = request.POST["c_password"]
+#         email = request.POST["email"]
 
-        if password == c_password:
-            # checks weather email is used or not
-            if Customer.objects.filter(customer_email=email).exists():
-                print("Email is already in use.")
-            # checks weather username is used or not
-            elif Customer.objects.filter(customer_username=username).exists():
-                print("Username is already taken.")
-            else:
-                user = Customer(customer_fname=fname, customer_lname=lname, customer_username=username,
-                                customer_email=email, customer_password=password, customer_login_history=timezone.now())
-                user.save()
-                print("User Account created successfully")
-        else:
-            print("Confirmation password mismatched")
-    return render(request, "signup.html")
+#         if password == c_password:
+#             # checks weather email is used or not
+#             if Customer.objects.filter(customer_email=email).exists():
+#                 print("Email is already in use.")
+#             # checks weather username is used or not
+#             elif Customer.objects.filter(customer_username=username).exists():
+#                 print("Username is already taken.")
+#             else:
+#                 user = Customer(customer_fname=fname, customer_lname=lname, customer_username=username,
+#                                 customer_email=email, customer_password=password, customer_login_history=timezone.now())
+#                 user.save()
+#                 print("User Account created successfully")
+#         else:
+#             print("Confirmation password mismatched")
+#     return render(request, "signup.html")
 
 
 def signin(request):
