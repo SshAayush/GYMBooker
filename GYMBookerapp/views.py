@@ -72,7 +72,7 @@ def forget_pass(request):
 def reset_code(request):
     if request.method == "POST":
         email = request.POST['email']
-        print(email)  # in future we will send the code to the provided if it exist
+        # print(email)  # in future we will send the code to the provided if it exist
         # generate code and send via email
         if Customer.objects.filter(customer_email=email).exists():
             random_float = random.randint(100000, 999999)
