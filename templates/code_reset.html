@@ -12,6 +12,12 @@
   <body>
     <form action="{% url 'reset_password' %}" method="POST">
       {% csrf_token %}
+      <input
+        type="text"
+        name="username"
+        id="username"
+        placeholder="Enter Username"
+      />
       <input type="text" name="code" id="code" placeholder="code" />
       <input type="submit" value="Change Password" />
     </form>

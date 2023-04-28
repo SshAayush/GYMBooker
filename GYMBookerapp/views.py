@@ -56,6 +56,7 @@ def signin(request):
                 time = Customer.objects.get(id=s.id)
                 time.customer_login_history = timezone.now()
                 time.save()
+                request.session['username'] = u_username #set the session of their username after loggin in
                 return render(request, "home.html")
 
         else:
@@ -76,46 +77,51 @@ def reset_code(request):
         if Customer.objects.filter(customer_email=email).exists():
             random_float = random.randint(100000, 999999)
             print(random_float)
-            c_email = Customer.objects.get(customer_email=email)
-            # creating the session to access this value from anywere
-            request.session['random_float'] = random_float
+            c_details = Customer.objects.get(customer_email=email)
+
+            # saving the generated password reset code to database
+            c_details.customer_resetcode = random_float
+            c_details.save()
 
             # creating the session to send email of user to change password in reset_passwordDone method
-            request.session['customer_email'] = c_email.customer_email
+            request.session['customer_email'] = c_details.customer_email
 
             #sending forget password code to user mail
-            user = Customer.objects.get(customer_email = email)
 
-            subject = "Reset Password"
-            html_content = render_to_string('forgetpass_email.html',{
-                                            'fname': user.customer_fname, 'lname': user.customer_lname, 'email': user.customer_email,'code':random_float})
-            from_email = 'team.bookex@gmail.com'
-            to = [c_email.customer_email]
+            # user = Customer.objects.get(customer_email = email)
 
-            text_content = strip_tags(html_content)
-            email = EmailMultiAlternatives(
-                subject,
-                text_content,
-                from_email,
-                to,
-            )
-            email.attach_alternative(html_content, "text/html")
-            email.send(fail_silently=False)
+            # subject = "Reset Password"
+            # html_content = render_to_string('forgetpass_email.html',{
+            #                                 'fname': user.customer_fname, 'lname': user.customer_lname, 'email': user.customer_email,'code':random_float})
+            # from_email = 'team.bookex@gmail.com'
+            # to = [c_details.customer_email]
 
-            return render(request, "code_reset.html", {'fname': c_email.customer_fname,'code':random_float})
+            # text_content = strip_tags(html_content)
+            # email = EmailMultiAlternatives(
+            #     subject,
+            #     text_content,
+            #     from_email,
+            #     to,
+            # )
+            # email.attach_alternative(html_content, "text/html")
+            # email.send(fail_silently=False)
+
+            return render(request, "code_reset.html", {'fname': c_details.customer_fname,'code':c_details.customer_resetcode})
         else:
             print("This email doesn't exist.")
     return render(request, "forget_pass.html")
 
 
 def reset_password(request):
-    random_float = request.session.get('random_float')  # accessing the session
-    
 
+    email = request.session.get('customer_email') # accessing the session
+    customer_detail = Customer.objects.get(customer_email=email)
 
     if request.method == "POST":
+        username = request.POST['username']
         code = request.POST['code']
-        if (int(random_float) == int(code)):  # validate the generated code and user type code
+        print(customer_detail.customer_username)
+        if (int(customer_detail.customer_resetcode) == int(code) and customer_detail.customer_username == username):  # validate the generated code and user type code
             return render(request, "reset_password.html")
         else:
             print("Invalid Code provided")
