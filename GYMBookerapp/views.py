@@ -112,69 +112,69 @@ def reset_code(request):
     return render(request, "forget_pass.html")
 
 
-def reset_password(request):
+# def reset_password(request):
 
-    email = request.session.get('customer_email') # accessing the session
-    customer_detail = Customer.objects.get(customer_email=email)
+#     email = request.session.get('customer_email') # accessing the session
+#     customer_detail = Customer.objects.get(customer_email=email)
 
-    if request.method == "POST":
-        username = request.POST['username']
-        code = request.POST['code']
-        print(customer_detail.customer_username)
-        if (int(customer_detail.customer_resetcode) == int(code) and customer_detail.customer_username == username):  # validate the generated code and user type code
-            return render(request, "reset_password.html")
-        else:
-            print("Invalid Code provided")
-    return render(request, "code_reset.html")
-
-
-def reset_passwordDone(request):
-    if request.method == "POST":
-        password = request.POST['password']
-        c_password = request.POST['c_password']
-        email = request.session.get('customer_email')
-        # now we can access every data of that user via email
-        customer_detail = Customer.objects.get(customer_email=email)
-
-        if password == c_password:
-            if password != customer_detail.customer_password:
-                customer_detail.customer_password = password
-                customer_detail.save()
-                print("Password Updated")
-                return render(request, "signin.html")
-            else:
-                print("Password can't be same with old one")
-        else:
-            print("Confirm password didn't match")
-    return render(request, "reset_password.html")
+#     if request.method == "POST":
+#         username = request.POST['username']
+#         code = request.POST['code']
+#         print(customer_detail.customer_username)
+#         if (int(customer_detail.customer_resetcode) == int(code) and customer_detail.customer_username == username):  # validate the generated code and user type code
+#             return render(request, "reset_password.html")
+#         else:
+#             print("Invalid Code provided")
+#     return render(request, "code_reset.html")
 
 
-def send_offerEmail(request):
-    # threshold_time = timezone.now() - timedelta(hours=1)
-    # inactive_users = Customer.objects.filter(
-    #     customer_login_history__lt=threshold_time)
-    threshold_date = timezone.now() - timedelta(hours=1)
-    print(threshold_date)
-    inactive_users = Customer.objects.filter(customer_login_history__lt=threshold_date)
-    print(inactive_users)
-    emails = []
-    for user in inactive_users:
-        emails.append(user.customer_email)
+# def reset_passwordDone(request):
+#     if request.method == "POST":
+#         password = request.POST['password']
+#         c_password = request.POST['c_password']
+#         email = request.session.get('customer_email')
+#         # now we can access every data of that user via email
+#         customer_detail = Customer.objects.get(customer_email=email)
 
-        subject = "Haven't Seen You Lately!"
-        html_content = render_to_string('offer_mail.html',{
-                                        'fname': user.customer_fname, 'lname': user.customer_lname, 'email': user.customer_email})
-        from_email = 'team.bookex@gmail.com'
-        print(user.customer_fname)
-        to = [user.customer_email]
+#         if password == c_password:
+#             if password != customer_detail.customer_password:
+#                 customer_detail.customer_password = password
+#                 customer_detail.save()
+#                 print("Password Updated")
+#                 return render(request, "signin.html")
+#             else:
+#                 print("Password can't be same with old one")
+#         else:
+#             print("Confirm password didn't match")
+#     return render(request, "reset_password.html")
 
-        text_content = strip_tags(html_content)
-        email = EmailMultiAlternatives(
-            subject,
-            text_content,
-            from_email,
-            to,
-        )
-        email.attach_alternative(html_content, "text/html")
-        email.send(fail_silently=False)
-    return render(request, "signin.html")
+
+# def send_offerEmail(request):
+#     # threshold_time = timezone.now() - timedelta(hours=1)
+#     # inactive_users = Customer.objects.filter(
+#     #     customer_login_history__lt=threshold_time)
+#     threshold_date = timezone.now() - timedelta(hours=1)
+#     print(threshold_date)
+#     inactive_users = Customer.objects.filter(customer_login_history__lt=threshold_date)
+#     print(inactive_users)
+#     emails = []
+#     for user in inactive_users:
+#         emails.append(user.customer_email)
+
+#         subject = "Haven't Seen You Lately!"
+#         html_content = render_to_string('offer_mail.html',{
+#                                         'fname': user.customer_fname, 'lname': user.customer_lname, 'email': user.customer_email})
+#         from_email = 'team.bookex@gmail.com'
+#         print(user.customer_fname)
+#         to = [user.customer_email]
+
+#         text_content = strip_tags(html_content)
+#         email = EmailMultiAlternatives(
+#             subject,
+#             text_content,
+#             from_email,
+#             to,
+#         )
+#         email.attach_alternative(html_content, "text/html")
+#         email.send(fail_silently=False)
+#     return render(request, "signin.html")
