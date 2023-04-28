@@ -69,47 +69,47 @@ def forget_pass(request):
     return render(request, "forget_pass.html")
 
 
-def reset_code(request):
-    if request.method == "POST":
-        email = request.POST['email']
-        print(email)  # in future we will send the code to the provided if it exist
-        # generate code and send via email
-        if Customer.objects.filter(customer_email=email).exists():
-            random_float = random.randint(100000, 999999)
-            print(random_float)
-            c_details = Customer.objects.get(customer_email=email)
+# def reset_code(request):
+#     if request.method == "POST":
+#         email = request.POST['email']
+#         print(email)  # in future we will send the code to the provided if it exist
+#         # generate code and send via email
+#         if Customer.objects.filter(customer_email=email).exists():
+#             random_float = random.randint(100000, 999999)
+#             print(random_float)
+#             c_details = Customer.objects.get(customer_email=email)
 
-            # saving the generated password reset code to database
-            c_details.customer_resetcode = random_float
-            c_details.save()
+#             # saving the generated password reset code to database
+#             c_details.customer_resetcode = random_float
+#             c_details.save()
 
-            # creating the session to send email of user to change password in reset_passwordDone method
-            request.session['customer_email'] = c_details.customer_email
+#             # creating the session to send email of user to change password in reset_passwordDone method
+#             request.session['customer_email'] = c_details.customer_email
 
-            #sending forget password code to user mail
+#             #sending forget password code to user mail
 
-            user = Customer.objects.get(customer_email = email)
+#             user = Customer.objects.get(customer_email = email)
 
-            subject = "Reset Password"
-            html_content = render_to_string('forgetpass_email.html',{
-                                            'fname': user.customer_fname, 'lname': user.customer_lname, 'email': user.customer_email,'code':random_float})
-            from_email = 'team.bookex@gmail.com'
-            to = [c_details.customer_email]
+#             subject = "Reset Password"
+#             html_content = render_to_string('forgetpass_email.html',{
+#                                             'fname': user.customer_fname, 'lname': user.customer_lname, 'email': user.customer_email,'code':random_float})
+#             from_email = 'team.bookex@gmail.com'
+#             to = [c_details.customer_email]
 
-            text_content = strip_tags(html_content)
-            email = EmailMultiAlternatives(
-                subject,
-                text_content,
-                from_email,
-                to,
-            )
-            email.attach_alternative(html_content, "text/html")
-            email.send(fail_silently=False)
+#             text_content = strip_tags(html_content)
+#             email = EmailMultiAlternatives(
+#                 subject,
+#                 text_content,
+#                 from_email,
+#                 to,
+#             )
+#             email.attach_alternative(html_content, "text/html")
+#             email.send(fail_silently=False)
 
-            return render(request, "code_reset.html", {'fname': c_details.customer_fname,'code':c_details.customer_resetcode})
-        else:
-            print("This email doesn't exist.")
-    return render(request, "forget_pass.html")
+#             return render(request, "code_reset.html", {'fname': c_details.customer_fname,'code':c_details.customer_resetcode})
+#         else:
+#             print("This email doesn't exist.")
+#     return render(request, "forget_pass.html")
 
 
 def reset_password(request):
