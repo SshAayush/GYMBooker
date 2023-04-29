@@ -130,6 +130,7 @@
   color: #fff;
   border: 1px solid red;
   background-color: red;
+  cursor: pointer;
 }
 
 .box-container {
