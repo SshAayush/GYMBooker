@@ -200,6 +200,38 @@
       </div>
     </section>
 
-    <script src="" async defer></script>
+    <!-- BMI SECTION -->
+    <section class="bmi-section">
+      <div class="bmi-container">
+        <div class="bmi-header">
+          <h2>Let's Calculate your <span style="color: red">BMI</span></h2>
+          <p>
+            Easily determine your body mass index with our accurate calculation
+            tool.
+          </p>
+        </div>
+        <div class="bmi-input">
+          <input
+            type="number"
+            name="weight"
+            id="weight"
+            placeholder="Weight/Kg"
+          />
+
+          <input
+            type="number"
+            name="height"
+            id="height"
+            placeholder="Height/Cm"
+          />
+          <br />
+          <button class="calculate btn">Calculate</button>
+          <p class="bmi-ans">your bmi is: <span class="ans">0</span></p>
+        </div>
+      </div>
+      <div class="bmi-img"></div>
+    </section>
+
+    <script src="/static/js/landingpage.js" async defer></script>
   </body>
 </html>

@@ -371,3 +371,72 @@
   color: #fff;
   font-size: 18px;
 }
+.bmi-section {
+  height: 50vh;
+  max-width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  background-color: black;
+}
+.bmi-container {
+  width: 60%;
+  margin-top: 3rem;
+}
+.bmi-img {
+  background-image: url("/static/image/classes/workout.jpg");
+  width: 40%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: grayscale(100);
+}
+.bmi-header {
+  width: 100%;
+}
+.bmi-header h2 {
+  color: #fff;
+  font-size: 36px;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+}
+.bmi-header p {
+  text-align: center;
+  margin-top: 1rem;
+  color: #fff;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+.bmi-input {
+  text-align: center;
+  margin-top: 2rem;
+}
+.bmi-input input {
+  height: 3rem;
+  background-color: #333;
+  padding: 1rem;
+  color: white;
+}
+.bmi-input input::placeholder {
+  color: red;
+}
+.calculate {
+  width: 8rem;
+  font-size: 16px;
+  height: 3rem;
+  border: 1px solid white;
+  margin-top: 2rem;
+  border-radius: 10px;
+  transition: ease-in-out 0.3s;
+}
+.calculate:hover {
+  background-color: #fff;
+  color: black;
+  cursor: pointer;
+}
+.bmi-ans {
+  color: #fff;
+  margin-top: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+}
