@@ -122,6 +122,8 @@ def reset_password(request):
         code = request.POST['code']
         print(customer_detail.customer_username)
         if (int(customer_detail.customer_resetcode) == int(code) and customer_detail.customer_username == username):  # validate the generated code and user type code
+            customer_detail.customer_resetcode = None
+            customer_detail.save()
             return render(request, "reset_password.html")
         else:
             print("Invalid Code provided")
