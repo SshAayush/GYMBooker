@@ -95,7 +95,10 @@
 .hero {
   height: 100vh;
   width: 100%;
-  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
 }
 .main {
   background-image: url("/static/image/gym.jpg");
@@ -103,18 +106,16 @@
 
 .hero-text {
   color: #fff;
-  width: 25rem;
-  position: relative;
-  font-size: 40px;
-  top: 15rem;
-  left: 45rem;
+  width: 30rem;
+  font-size: 50px;
+  margin: 15rem 0 0 5rem;
 }
 .hero-btn {
   width: 8rem;
   height: 3rem;
-  position: relative;
+  /* position: relative;
   left: 45rem;
-  top: 18rem;
+  top: 18rem; */
 }
 .btn-hero {
   width: 8rem;
@@ -379,6 +380,7 @@
   display: flex;
   justify-content: space-around;
   background-color: black;
+  margin: 5rem 0 5rem 0;
 }
 .bmi-container {
   width: 60%;
