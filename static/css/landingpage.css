@@ -392,7 +392,7 @@
   height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  filter: grayscale(100);
+  /* filter: grayscale(100); */
 }
 .bmi-header {
   width: 100%;
@@ -447,14 +447,13 @@
 
 /* pricing section */
 .pricing {
-  height: 100vh;
+  height: 120vh;
   max-width: 100vw;
   background-image: url("/static/image/background.jpg");
 }
 
 .p-head {
   text-align: center;
-
   text-decoration: underline solid red;
   text-transform: uppercase;
 }
@@ -470,6 +469,71 @@
   font-size: 16px;
   width: 100%;
   text-transform: capitalize;
-
   margin-top: 1rem;
+}
+.pricing-container {
+  max-width: 100vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+.pack {
+  width: 25%;
+  height: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.pack-img {
+  width: 100%;
+  height: 15rem;
+}
+.pack-img img {
+  width: 100%;
+  height: 100%;
+}
+.p-inside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.price-heading {
+  text-transform: uppercase;
+  font-size: 22px;
+  margin-top: 1rem;
+  text-align: center;
+  text-align: center;
+}
+.pack-price {
+  margin-top: 2rem;
+  font-size: 35px;
+  color: red;
+  text-align: center;
+}
+.inside-list {
+  margin-top: 1rem;
+}
+.inside-list ul li {
+  list-style: none;
+  margin: 1rem;
+  text-align: center;
+}
+.purchase {
+  margin: 1rem 0 1rem 0;
+  width: 10rem;
+  height: 3rem;
+  background-color: black;
+  border-radius: 10px;
+  transition: ease-in-out 0.3s;
+  text-align: center;
+}
+.purchase a {
+  width: 8rem;
+  height: 3rem;
+  color: white;
+}
+.purchase:hover {
+  cursor: pointer;
+  background-color: red;
 }
