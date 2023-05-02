@@ -40,6 +40,8 @@ def signup(request):  # Password need to be hashed
                                 customer_email=email, customer_password=password, customer_login_history=timezone.now())
                 user.save()
                 print("User Account created successfully")
+                msg = "User Account created successfully"
+                return render(request, "signup.html",{'acc_created': msg})
         else:
             print("Confirmation password mismatched")
     return render(request, "signup.html")
@@ -61,8 +63,10 @@ def signin(request):
 
         else:
             print("Invalid credentials")
+            msg = "Invalid credentials"
+            return render(request, "signin.html",{'message': msg})
 
-    return render(request, "signin.html")
+    return render(request, "signin.html", {'message': ""})
 
 
 def forget_pass(request):
