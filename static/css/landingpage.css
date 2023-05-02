@@ -176,7 +176,10 @@
   font-weight: 500;
 }
 .box:hover {
-  background-image: url("/static/image/bg-text.png");
+  background-image: url("/static/image/pricing/bg-text.png");
+  filter: opacity(1px);
+  background-color: black;
+  color: #fff;
 }
 .about {
   width: 100%;
