@@ -143,6 +143,9 @@ STATICFILES_DIRS = [STATIC_DIR]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+JAZZMIN_UI_TWEAKS = {
+    "theme": "cyborg",
+}
 # connection code for SMTP server
 # add code here <DC>-> <#commant-to-install> <pinned msg>
 
