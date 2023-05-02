@@ -537,3 +537,63 @@
   cursor: pointer;
   background-color: red;
 }
+
+/* footer section */
+.footer-section {
+  max-width: 100vw;
+  max-height: 40vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #1750ad;
+}
+.site-details {
+  width: 40%;
+}
+.site-name {
+  font-size: 30px;
+  font-weight: 300;
+  text-decoration: underline solid red;
+  color: #fff;
+}
+.description {
+  margin-top: 1rem;
+  width: 25rem;
+  font-size: 16px;
+  color: #fff;
+}
+.fa-brands {
+  margin: 1rem 0 1rem 0;
+  font-size: 30px;
+  padding: 1rem;
+  color: #fff;
+}
+.link-header {
+  margin-bottom: 1rem;
+  border-bottom: 2px solid red;
+  text-transform: capitalize;
+}
+.classes-links ul li {
+  list-style: none;
+  padding: 0.5rem;
+}
+.classes-links ul li a {
+  text-decoration: none;
+  color: white;
+  transition: ease-in-out 0.3s;
+  font-size: 18px;
+}
+
+.classes-links ul li a:hover {
+  color: red;
+}
+.hours {
+  margin-bottom: 1rem;
+  border-bottom: 2px solid red;
+  text-transform: capitalize;
+}
+.time {
+  padding: 0.7rem;
+  font-size: 19px;
+  color: #fff;
+}
