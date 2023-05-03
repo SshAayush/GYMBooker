@@ -19,11 +19,13 @@
     <main>
       <div class="navbar">
         <div class="logo">
-          <img
-            class="hero-img"
-            src="{% static '/image/logo.png' %}"
-            alt="img-1"
-          />
+          <a href="{% url 'landingpage' %}">
+            <img
+              class="hero-img"
+              src="{% static '/image/logo.png' %}"
+              alt="img-1"
+            />
+          </a>
         </div>
         <div class="nav-links">
           <ul>
@@ -34,7 +36,7 @@
             <li><a href="#">Contact</a></li>
           </ul>
           <div class="nav-right">
-            <a href="#"><i class="fa-solid fa-user"></i></a>
+            <a href="{% url 'signin' %}"><i class="fa-solid fa-user"></i></a>
           </div>
         </div>
       </div>
@@ -52,7 +54,7 @@
         <div class="form-container">
           <h2 class="form-header">leave us your info</h2>
           <form action="" class="contact-form">
-            <input type="text" name="name" placeholder="ful name" id="name" />
+            <input type="text" name="name" placeholder="full name" id="name" />
             <input
               type="email"
               name="email"

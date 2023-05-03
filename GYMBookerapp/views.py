@@ -32,9 +32,13 @@ def signup(request):  # Password need to be hashed
             # checks weather email is used or not
             if Customer.objects.filter(customer_email=email).exists():
                 print("Email is already in use.")
+                msg = "Email is already in use"
+                return render(request, "signup.html",{'acc_created': msg})
             # checks weather username is used or not
             elif Customer.objects.filter(customer_username=username).exists():
                 print("Username is already taken.")
+                msg = "Username is already taken"
+                return render(request, "signup.html",{'acc_created': msg})
             else:
                 user = Customer(customer_fname=fname, customer_lname=lname, customer_username=username,
                                 customer_email=email, customer_password=password, customer_login_history=timezone.now())

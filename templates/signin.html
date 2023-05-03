@@ -16,11 +16,13 @@
   <body>
     <div class="nav">
       <div class="logo">
-        <img
-          class="hero-img"
-          src="{% static '/image/logo.png' %}"
-          alt="img-1"
-        />
+        <a href="{% url 'landingpage' %}">
+          <img
+            class="hero-img"
+            src="{% static '/image/logo.png' %}"
+            alt="img-1"
+          />
+        </a>
       </div>
       <p class="text">Don't have an account? Create Now</p>
       <button class="btn login"><a href="{% url 'signup' %}">SignUp</a></button>
