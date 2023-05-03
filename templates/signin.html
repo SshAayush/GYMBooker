@@ -34,6 +34,7 @@
     <div class="container">
       <div class="form-box">
         <h2 class="heading">login</h2>
+        <p class="error">{{ message }}</p>
         <form action="" method="post" class="form">
           {% csrf_token %}
           <input
@@ -64,8 +65,7 @@
           <a href="{% url 'forget_pass' %}">Forget password?</a>
         </p>
       </div>
-      <p>{{ message }}</p>
     </div>
-    <script src="" async defer></script>
+    <script src="/static/js/validate.js" async defer></script>
   </body>
 </html>

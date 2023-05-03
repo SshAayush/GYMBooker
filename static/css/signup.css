@@ -15,9 +15,11 @@
   padding-top: 10px;
 }
 .error {
-  text-align: center;
-  font-size: 20px;
+  text-align: start;
+  text-transform: capitalize;
+  font-size: 16px;
   color: red;
+  margin-bottom: 0.2rem;
 }
 .btn {
   width: 7rem;
