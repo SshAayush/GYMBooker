@@ -5,7 +5,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Contact</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/static/css/joinClass.css" />
   </head>
   <body>
     <main>
@@ -26,8 +34,50 @@
             <li><a href="#">Contact</a></li>
           </ul>
           <div class="nav-right">
-            <a href="#"><i class="fa-solid fa-user"></i>
+            <a href="#"><i class="fa-solid fa-user"></i></a>
           </div>
+        </div>
+      </div>
+      <h2 class="contact-head">contact us</h2>
+      <div class="contact-container">
+        <div class="contact-text">
+          <p class="text-head">We are here for help you! To Shape Your Body.</p>
+          <p class="text-body">
+            At Gymate, we are dedicated to helping you achieve the body of your
+            dreams. Our expert trainers and nutritionists will work with you to
+            create a personalized fitness and nutrition plan that helps you
+            reach your specific goals.
+          </p>
+        </div>
+        <div class="form-container">
+          <h2 class="form-header">leave us your info</h2>
+          <form action="" class="contact-form">
+            <input type="text" name="name" placeholder="ful name" id="name" />
+            <input
+              type="email"
+              name="email"
+              placeholder="email address"
+              id="email"
+            />
+            <select name="Select Class" id="s-class">
+              <option selected disabled>choose a class</option>
+              <option value="body-building">body-building</option>
+              <option value="boxing">boxing</option>
+              <option value="cycling">cycling</option>
+              <option value="running">running</option>
+              <option value="fitness">fitness</option>
+              <option value="yoga">yoga</option>
+              <option value="workout">workout</option>
+            </select>
+            <textarea
+              class="text-area"
+              name="comment"
+              placeholder="comment"
+            ></textarea>
+            <button type="submit" name="submit" class="submit btn">
+              submit now
+            </button>
+          </form>
         </div>
       </div>
     </main>
