@@ -1,7 +1,5 @@
 @import url("style.css");
-body {
-  background-color: #333;
-}
+
 .nav {
   background-color: black;
   width: 100%;
@@ -16,7 +14,11 @@ body {
   margin: 1rem;
   padding-top: 10px;
 }
-
+.error {
+  text-align: center;
+  font-size: 20px;
+  color: red;
+}
 .btn {
   width: 7rem;
   background-color: black;
@@ -32,12 +34,9 @@ body {
 .btn a {
   text-decoration: none;
   color: white;
-  font-size: 20px;
-  display: block;
+  font-size: 18px;
   width: 7rem;
   height: 3rem;
-  /* padding-top: 0.6rem; */
-  text-align: center;
 }
 .logo {
   width: 7rem;
@@ -52,49 +51,58 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  max-height: 100vh;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 .heading {
-  color: #fff;
+  text-transform: capitalize;
   margin-bottom: 1rem;
 }
 
 .form-box {
   margin-top: 2rem;
-  border: 2px solid white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
   padding: 2rem;
   width: 30rem;
 }
 .name-input input {
-  width: 49.5%;
+  width: 49%;
 }
 input {
   padding: 1.5rem;
-  border: 1px solid red;
   border-radius: 10px;
   width: 100%;
-  background-color: black;
   margin-bottom: 0.5rem;
-  color: #fff;
-}
-input::placeholder {
-  color: #fff;
+  border: 1px solid red;
 }
 .submit {
+  display: flex;
+  justify-content: center;
+}
+.btn-submit {
+  width: 8rem;
+  height: 3rem;
+  background-color: red;
   color: #fff;
   padding: 1rem;
-  margin-left: 9rem;
 }
+.btn-submit:hover {
+  background-color: #fff;
+  color: black;
+  cursor: pointer;
+}
+
+/* for login page  */
 .f-pass {
+  margin-top: 0.5rem;
   text-align: center;
 }
 .f-pass a {
+  color: black;
   text-decoration: none;
   transition: ease-in-out 0.5s;
-  color: #fff;
 }
 .f-pass a:hover {
   color: red;
