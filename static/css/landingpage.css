@@ -548,7 +548,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #1750ad;
+  background-color: black;
 }
 .site-details {
   width: 40%;
@@ -571,10 +571,14 @@
   padding: 1rem;
   color: #fff;
 }
+
+.fa-brands:hover {
+  color: red;
+}
 .link-header {
-  margin-bottom: 1rem;
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid #fff;
   text-transform: capitalize;
+  color: red;
 }
 .classes-links ul li {
   list-style: none;
@@ -592,11 +596,12 @@
 }
 .hours {
   margin-bottom: 1rem;
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid white;
   text-transform: capitalize;
+  color: red;
 }
 .time {
-  padding: 0.7rem;
-  font-size: 19px;
+  padding: 0.2rem;
+  font-size: 18px;
   color: #fff;
 }
