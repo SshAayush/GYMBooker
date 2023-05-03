@@ -1,0 +1,56 @@
+@import url("style.css");
+.logo {
+  width: 8rem;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  max-height: 5rem;
+  padding-top: 1rem;
+  width: 100%;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links ul {
+  display: flex;
+  margin-right: 17rem;
+}
+
+.nav-links ul li {
+  padding: 1rem;
+  list-style: none;
+}
+.nav-links ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: ease-in-out 0.3s;
+}
+.nav-links ul li a:hover {
+  color: red;
+}
+.nav-right {
+  display: flex;
+  padding-right: 2rem;
+}
+
+.fa-user {
+  color: #fff;
+  margin-top: 1.2rem;
+  font-size: 24px;
+  transition: ease-in-out 0.3s;
+}
+.fa-user:hover {
+  color: red;
+}
