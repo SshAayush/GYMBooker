@@ -44,12 +44,12 @@
             <li><a href="#">Contact</a></li>
           </ul>
           <div class="nav-right">
-            <a href={% url 'signin' %}><i class="fa-solid fa-user"></i>
+            <a href="{% url 'signin' %}"><i class="fa-solid fa-user"></i></a>
             <div class="join">
-              <i class="fa-solid fa-plus"></i>
-              <button class="btn">
-                <a href="#">JOIN CLASS NOW</a>
-              </button>
+              <a href="{% url 'joinclass' %}">
+                <i class="fa-solid fa-plus"></i>
+                <button class="btn">JOIN CLASS NOW</button>
+              </a>
             </div>
           </div>
         </div>
@@ -58,7 +58,9 @@
       <div class="hero">
         <div class="hero-text"><b>MAKE YOUR BODY</b> FIT & PERFECT</div>
         <div class="hero-btn">
-          <button class="btn-hero">Join our class</button>
+          <a href="{% url 'joinclass' %}">
+            <button class="btn-hero">Join our class</button>
+          </a>
         </div>
       </div>
     </section>

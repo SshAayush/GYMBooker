@@ -184,3 +184,6 @@ def send_offerEmail(request):
         email.attach_alternative(html_content, "text/html")
         email.send(fail_silently=False)
     return render(request, "signin.html")
+
+def joinclass(request):
+    return render(request, 'joinClass.html')
