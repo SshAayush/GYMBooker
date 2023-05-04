@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from .models import Customer
 import random
+
+from django.urls import reverse
+from django.shortcuts import redirect
+
 # used to send mail
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
@@ -187,7 +191,8 @@ def send_offerEmail(request):
         )
         email.attach_alternative(html_content, "text/html")
         email.send(fail_silently=False)
-    return render(request, "signin.html")
+    # return render(request, "signin.html")
+    return redirect('/admin/GYMBookerapp/customer/')
 
 def joinclass(request):
     return render(request, 'joinClass.html')

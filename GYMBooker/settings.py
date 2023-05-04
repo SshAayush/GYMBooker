@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'GYMBookerapp',  # for using models
+    'django_object_actions', #used to add buttons in admin panel
 
 ]
 
@@ -143,8 +144,25 @@ STATICFILES_DIRS = [STATIC_DIR]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+#Tweaks in Jazzmin admin 
 JAZZMIN_UI_TWEAKS = {
     "theme": "cyborg",
+}
+
+JAZZMIN_SETTINGS = {
+    'site_title': "GYMBooker Admin",
+    'site_header': "GYMBooker Admin",
+    "site_brand": "GYMBooker Admin",
+
+    'site_logo': "/image/logo.png",
+    'site_logo_classes': "img-square",
+    "hide_apps": ['auth'],
+    "icons": {
+        "GYMBookerapp.Customer": "fas fa-user",
+    },
+    "order_with_respect_to": ["GYMBookerapp.Customer",],
+    
 }
 # connection code for SMTP server
 # add code here <DC>-> <#commant-to-install> <pinned msg>

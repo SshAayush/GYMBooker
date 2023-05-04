@@ -9,6 +9,10 @@ class Customer(models.Model):
     customer_password = models.CharField(max_length=125)
     customer_login_history = models.DateTimeField(auto_now_add=False)
     customer_resetcode = models.IntegerField(null=True)
+
     def __str__(self):
         return self.customer_fname + " " +self.customer_lname
+
+class SendMail(models.Model):
+    pass
     

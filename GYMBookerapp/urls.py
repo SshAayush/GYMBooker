@@ -1,6 +1,9 @@
 from django.urls import path
 from . import views
 
+from django.contrib import admin
+from .models import Customer
+
 urlpatterns = [
     path('', views.landingpage, name="landingpage"),
     path('landingpage/', views.landingpage, name="landingpage"),
@@ -13,4 +16,5 @@ urlpatterns = [
     path('reset_passwordDone/',views.reset_passwordDone, name='reset_passwordDone'),
     path('send_offerEmail/',views.send_offerEmail, name='send_offerEmail'),
     path('joinclass/',views.joinclass, name='joinclass'),
+
 ]
