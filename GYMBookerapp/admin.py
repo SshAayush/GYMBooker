@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Customer, SendMail
+from .models import Customer,CustomerQuery
 
 #used to add custom button in admin panel
 from django_object_actions import DjangoObjectActions
@@ -30,3 +30,6 @@ class MyModelAdmin(DjangoObjectActions, admin.ModelAdmin):
     changelist_actions = ('send_mail', )
 
 admin.site.register(Customer, MyModelAdmin)
+
+
+admin.site.register(CustomerQuery)

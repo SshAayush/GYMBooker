@@ -88,6 +88,18 @@ WSGI_APPLICATION = 'GYMBooker.wsgi.application'
 # }
 
 # code to connect mySql
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'gymbooker',
+#         'USER': 'root',
+#         'PASSWORD': '',
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306',
+#         'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -99,6 +111,7 @@ DATABASES = {
         'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
     }
 }
+
 
 
 # Password validation
@@ -160,6 +173,7 @@ JAZZMIN_SETTINGS = {
     "hide_apps": ['auth'],
     "icons": {
         "GYMBookerapp.Customer": "fas fa-user",
+        "GYMBookerapp.CustomerQuery": "fas fa-comments",
     },
     "order_with_respect_to": ["GYMBookerapp.Customer",],
     

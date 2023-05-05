@@ -13,6 +13,15 @@ class Customer(models.Model):
     def __str__(self):
         return self.customer_fname + " " +self.customer_lname
 
-class SendMail(models.Model):
-    pass
+class CustomerQuery(models.Model):
+    Cquery_name = models.CharField(max_length=100)
+    Cquery_email = models.EmailField(max_length=100)
+    Cquery_class = models.CharField(max_length=100)
+    Cquery_comment = models.CharField(max_length=1000)
+
+    def __str__(self):
+        return self.Cquery_name
+
+
+
     
