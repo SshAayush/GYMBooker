@@ -26,7 +26,6 @@
     <div class="container">
       <div class="form-box">
         <h2 class="heading">Create an account</h2>
-        <div class="error"></div>
         <form action="{% url 'signup' %}" method="post" id="form">
           {% csrf_token %}
           <div class="name-input">
@@ -42,33 +41,43 @@
               placeholder="Last Name"
               id="lname"
             />
+            <div class="error"></div>
           </div>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            placeholder="Username"
-          />
-          <br />
-          <input
-            type="text"
-            name="email"
-            id="email"
-            placeholder="E-mail"
-          /><br />
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Password"
-          />
-          <br />
-          <input
-            type="password"
-            id="c_password"
-            name="c_password"
-            placeholder="Confirm Password"
-          /><br />
+          <div class="username-input">
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Username"
+            />
+            <div class="error"></div>
+          </div>
+
+          <div class="email-input">
+            <input type="text" name="email" id="email" placeholder="E-mail" />
+            <div class="error"></div>
+          </div>
+
+          <div class="password-input">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+            />
+            <div class="error"></div>
+          </div>
+
+          <div class="c_pass-input">
+            <input
+              type="password"
+              id="c_password"
+              name="c_password"
+              placeholder="Confirm Password"
+            />
+            <div class="error"></div>
+          </div>
+
           <div class="submit">
             <input
               class="btn-submit"

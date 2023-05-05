@@ -4,43 +4,96 @@ const firstName = document.querySelector("#fname");
 const lastName = document.querySelector("#lname");
 const username = document.querySelector("#username");
 const form = document.querySelector("#form");
-const errorElement = document.querySelector(".error");
+// const errorElement = document.querySelector(".error");
 const password = document.querySelector("#password");
 const cPassword = document.querySelector("#c_password");
 const email = document.querySelector("#email");
 
-var mailformat = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
-
 form.addEventListener("submit", (e) => {
-  let messages = [];
-
-  if (
-    firstName.value === "" ||
-    (firstName.value === null && lastName.value === "") ||
-    lastName.value === null
-  ) {
-    messages.push("Name is required");
-  }
-  if (password.value.length < 8) {
-    messages.push("Password must be of 8 characters");
-  }
-  if (username.value === null) {
-    messages.push("Username Cannot be empty");
-  }
-  else if (username.value.length < 5) {
-    messages.push("Username must be of 5 characters");
-  }
-  if (password.value !== cPassword.value) {
-    messages.push("password not matched");
-  }
-  if (email.value.match(mailformat)) {
-    messages.push("");
-  } else {
-    messages.push("invalid email address");
-  }
-
-  if (messages.length > 0) {
-    e.preventDefault();
-    errorElement.innerText = messages.join(", ");
-  }
+  e.preventDefault();
+  validate();
 });
+
+function setError(element, errorMsg) {
+  const parent = element.parentElement;
+  const errorDiv = parent.lastElementChild;
+  errorDiv.textContent = errorMsg;
+}
+
+function removeError(element) {
+  const parent = element.parentElement;
+  const errorDiv = parent.lastElementChild;
+  errorDiv.textContent = "";
+}
+
+function validate() {
+  validateFirstName();
+  validateLastName();
+  validateUsername();
+  validateEmail();
+  validatePassword();
+  validateConfirmPassword();
+}
+
+function validateFirstName() {
+  if (firstName.value === "" || firstName.value == null) {
+    setError(firstName, "Name cannot be empty");
+  } else if (/\d/.test(username.value)) {
+    setError(firstName, "Name cannot contain number");
+  } else {
+    removeError(firstName);
+  }
+}
+function validateLastName() {
+  if (lastName.value === "" || lastName.value == null) {
+    setError(lastName, "Name cannot be empty");
+  } else if (/\d/.test(username.value)) {
+    setError(lastName, "Name cannot contain number");
+  } else {
+    removeError(lastName);
+  }
+}
+
+function validateUsername() {
+  if (username.value === "" || username.value == null) {
+    setError(username, "Username cannot be empty");
+  } else {
+    removeError(username);
+  }
+}
+
+function validateEmail() {
+  const ePattern = /^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/;
+  if (email.value === "") {
+    setError(email, "email cannot be empty");
+  } else if (!email.value.match(ePattern)) {
+    setError(email, "invalid email");
+  } else {
+    removeError(email);
+  }
+}
+
+function validatePassword() {
+  const pPattern = /^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/;
+
+  if (password.value === "") {
+    setError(password, "password cannot be empty");
+  } else if (password.value.length < 8) {
+    setError(password, "password must be of at least 8 characters");
+  } else if (!password.value.match(pPattern)) {
+    setError(password, "password must contain at least 1 letter and 1 number");
+  } else {
+    removeError(password);
+  }
+}
+
+function validateConfirmPassword() {
+  if (cPassword.value === "") {
+    setError(cPassword, "password cannot be empty!");
+  } else if (cPassword.value != password.value) {
+    setError(cPassword, "password not matched");
+    setError(password, "password not matched");
+  } else {
+    removeError(cPassword);
+  }
+}
