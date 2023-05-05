@@ -10,14 +10,29 @@
     <link rel="stylesheet" href="" />
     <style>
       @import url("/static/css/signup.css");
+      .container {
+        height: 100vh;
+        margin: 0;
+        justify-content: center;
+      }
     </style>
   </head>
   <body>
-    <form action="{% url 'reset_code' %}" method="POST">
-      {% csrf_token %}
-      <input type="text" name="email" placeholder="Email" />
-      <input type="submit" value="Send Code!" />
-    </form>
+    <div class="container">
+      <div class="form-box">
+        <div class="heading">
+          Enter the email where you want to receive the steps for resting your
+          password.
+        </div>
+        <form action="{% url 'reset_code' %}" method="POST">
+          {% csrf_token %}
+          <input type="text" name="email" placeholder="Email" />
+          <div class="submit">
+            <input type="submit" value="Send Code!" class="btn-submit" />
+          </div>
+        </form>
+      </div>
+    </div>
     <script src="" async defer></script>
   </body>
 </html>
