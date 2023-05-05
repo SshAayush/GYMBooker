@@ -29,11 +29,11 @@
         </div>
         <div class="nav-links">
           <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="{% url 'landingpage' %}">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Classes</a></li>
             <li><a href="#">Pricing</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="{% url 'joinclass' %}">Contact</a></li>
           </ul>
           <div class="nav-right">
             <a href="{% url 'signin' %}"><i class="fa-solid fa-user"></i></a>
@@ -53,7 +53,8 @@
         </div>
         <div class="form-container">
           <h2 class="form-header">Leave us your info</h2>
-          <form action="" class="contact-form">
+          <form action="{% url 'joinclass' %}" class="contact-form" method="POST">
+            {% csrf_token %}
             <input type="text" name="name" placeholder="Full name" id="name" />
             <input
               type="email"

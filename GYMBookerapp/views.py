@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Customer
+from .models import Customer, CustomerQuery
 import random
 
 from django.urls import reverse
@@ -67,7 +67,7 @@ def signin(request):
                 time.customer_login_history = timezone.now()
                 time.save()
                 request.session['username'] = u_username #set the session of their username after loggin in
-                return render(request, "home.html")
+                return render(request, "dashboard.html")
 
         else:
             print("Invalid credentials")
@@ -195,4 +195,20 @@ def send_offerEmail(request):
     return redirect('/admin/GYMBookerapp/customer/')
 
 def joinclass(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        classInfo = request.POST['Select Class']
+        comment = request.POST['comment']
+        
+        customer_query = CustomerQuery.objects.create(
+            Cquery_name=name,
+            Cquery_email=email,
+            Cquery_class=classInfo,
+            Cquery_comment=comment
+        )
+        customer_query.save()
     return render(request, 'joinClass.html')
+
+# def dashboard(request):
+#     return render(request, 'dashboard.html')

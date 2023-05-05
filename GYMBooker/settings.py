@@ -173,6 +173,7 @@ JAZZMIN_SETTINGS = {
     "hide_apps": ['auth'],
     "icons": {
         "GYMBookerapp.Customer": "fas fa-user",
+        "GYMBookerapp.CustomerQuery": "fas fa-comments",
     },
     "order_with_respect_to": ["GYMBookerapp.Customer",],
     

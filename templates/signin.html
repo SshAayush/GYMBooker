@@ -35,7 +35,7 @@
       <div class="form-box">
         <h2 class="heading">login</h2>
         <p class="error">{{ message }}</p>
-        <form action="" method="post" class="form">
+        <form action="{% url 'signin' %}" method="post" class="form">
           {% csrf_token %}
           <input
             type="text"
