@@ -8,6 +8,15 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="" />
+    <style>
+      @import url("/static/css/signup.css");
+      .container {
+        height: 100vh;
+        margin: 0;
+        justify-content: center;
+      }
+      {% comment %} Add css above this is clone of forget_pass.html {% endcomment %}
+    </style>
   </head>
   <body>
     <form action="{% url 'reset_password' %}" method="POST">
