@@ -17,5 +17,6 @@ urlpatterns = [
     path('send_offerEmail/',views.send_offerEmail, name='send_offerEmail'),
     path('joinclass/',views.joinclass, name='joinclass'),
     # path('dashboard/',views.dashboard, name='dashboard'),
+    path('dashnoard/',views.dashnoard, name='dashnoard'),
 
 ]

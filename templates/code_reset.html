@@ -15,21 +15,27 @@
         margin: 0;
         justify-content: center;
       }
-      {% comment %} Add css above this is clone of forget_pass.html {% endcomment %}
+      /* {% comment %} Add css above this is clone of forget_pass.html {% endcomment %} */
     </style>
   </head>
   <body>
-    <form action="{% url 'reset_password' %}" method="POST">
-      {% csrf_token %}
-      <input
-        type="text"
-        name="username"
-        id="username"
-        placeholder="Enter Username"
-      />
-      <input type="text" name="code" id="code" placeholder="code" />
-      <input type="submit" value="Change Password" />
-    </form>
+    <div class="container">
+
+      <form action="{% url 'reset_password' %}" method="POST">
+        {% csrf_token %}
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Enter Username"
+        />
+        <input type="text" name="code" id="code" placeholder="code" />
+        <div class="submit">
+
+          <input class="" type="submit" value="Change Password" />
+        </div>
+      </form>
+    </div>
     <script src="" async defer></script>
   </body>
 </html>
