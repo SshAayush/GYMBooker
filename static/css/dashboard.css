@@ -205,12 +205,15 @@ header .image-text .header-text {
   transform: translateY(-50%);
   background: var(--sidebar-color);
 }
-.container {
+.dash-container {
   margin-left: 15.7rem;
   max-width: 100vw;
   max-height: 100vh;
+  overflow-y: hidden;
+  display: none;
 }
 .user-details {
+  margin-top: 3rem;
   background-color: #fff;
   height: 5rem;
   width: 100%;
@@ -231,7 +234,59 @@ header .image-text .header-text {
   height: 15rem;
   transition: ease-in-out 0.3s;
   background-color: #695cfe;
+  text-align: center;
+  border-radius: 40px 0;
 }
 .box:hover {
   transform: scale(1.1);
+  cursor: pointer;
+}
+.header {
+  margin-top: 1rem;
+  color: #ddd;
+}
+.joined {
+  margin-top: 2rem;
+  color: #ddd;
+}
+.joined-detail {
+  color: #ddd;
+}
+.class-container {
+  position: relative;
+  margin-left: 15.7rem;
+  max-width: 100vw;
+  height: 100vh;
+  overflow-y: hidden;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* display: none; */
+}
+.class-title {
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+.class-text {
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 24px;
+}
+.lorem {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.class-left {
+  width: 30%;
+}
+
+.class-right {
+  width: 50%;
+}
+.class-right img {
+  border: 1px solid #695cfe;
+  border-radius: 20px;
+  filter: grayscale(100%);
 }
