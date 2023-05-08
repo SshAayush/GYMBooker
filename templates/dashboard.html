@@ -43,19 +43,19 @@
             <li class="nav-link">
               <a href="#">
                 <i class="bx bx-home-alt icon"></i>
-                <span class="text nav-text">Dashboard</span>
+                <span id="dashboard" class="text nav-text">Dashboard</span>
               </a>
             </li>
             <li class="nav-link">
               <a href="#">
                 <i class="bx bx-tv icon"></i>
-                <span class="text nav-text">Classes</span>
+                <span id="classes" class="text nav-text">Classes</span>
               </a>
             </li>
             <li class="nav-link">
               <a href="#">
                 <i class="bx bx-movie-play icon"></i>
-                <span class="text nav-text">Activity</span>
+                <span id="activity" class="text nav-text">Activity</span>
               </a>
             </li>
             <li class="nav-link">
@@ -101,7 +101,7 @@
         </div>
       </div>
     </nav>
-    <div class="dash-container">
+    <div class="dash-container" id="dashboard-container">
       <div class="user-details">
         <p class="u-name">User-name</p>
         <p class="u-age">User-age</p>
@@ -130,7 +130,7 @@
       </div>
     </div>
 
-    <div class="activity-container">
+    <div class="activity-container" id="activity-container">
       <div class="activity-left">
         <h2 class="activity-title">Joined classes</h2>
         <p class="activity-text">Currently joined class &rarr;</p>
@@ -147,7 +147,7 @@
       </div>
     </div>
 
-    <div class="classes-container">
+    <div class="classes-container" id="class-container">
       <h2 class="class-header">Add additional classes to your package</h2>
       <div class="classes">
         <div class="class-1 class">
@@ -219,6 +219,6 @@
       </div>
     </div>
 
-    <script src="" async defer></script>
+    <script src="/static/js/dashboard.js" async defer></script>
   </body>
 </html>
