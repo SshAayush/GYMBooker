@@ -252,7 +252,7 @@ header .image-text .header-text {
 .joined-detail {
   color: #ddd;
 }
-.class-container {
+.activity-container {
   position: relative;
   margin-left: 15.7rem;
   max-width: 100vw;
@@ -261,14 +261,14 @@ header .image-text .header-text {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* display: none; */
+  display: none;
 }
-.class-title {
+.activity-title {
   margin-bottom: 2rem;
   text-transform: uppercase;
   text-align: center;
 }
-.class-text {
+.activity-text {
   text-align: center;
   text-transform: capitalize;
   font-size: 24px;
@@ -278,15 +278,87 @@ header .image-text .header-text {
   margin-top: 1rem;
 }
 
-.class-left {
+.activity-left {
   width: 30%;
 }
 
-.class-right {
+.activity-right {
   width: 50%;
 }
-.class-right img {
+.activity-right img {
   border: 1px solid #695cfe;
   border-radius: 20px;
   filter: grayscale(100%);
+}
+.classes-container {
+  position: relative;
+  margin-left: 15.7rem;
+  max-width: 100vw;
+  height: auto;
+  overflow-y: hidden;
+}
+.class-header {
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 5rem;
+}
+.classes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 100vw;
+  height: 100%;
+}
+.class {
+  position: relative;
+  width: 27%;
+  height: 20rem;
+
+  margin: 2rem 2rem 2rem 2rem;
+  border-radius: 10px;
+}
+.class img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  filter: contrast(70%);
+}
+.class-content {
+  position: absolute;
+  top: 3rem;
+  left: 2rem;
+  color: #fff;
+}
+
+.class-content h2 {
+  text-decoration: underline solid red;
+  text-align: start;
+}
+.trainer {
+  margin-top: 0.5rem;
+}
+.trainer i {
+  text-align: start;
+  text-transform: capitalize;
+  padding: 0.5rem;
+  font-size: 14px;
+}
+.join-btn {
+  margin-top: 2rem;
+  width: 8rem;
+  height: 3rem;
+  background-color: red;
+  border: none;
+  border-radius: 10px;
+}
+.join-btn a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+}
+.join-btn:hover {
+  border: 1px solid red;
+  background-color: transparent;
 }
