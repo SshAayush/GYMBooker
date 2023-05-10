@@ -18,5 +18,6 @@ urlpatterns = [
     path('joinclass/',views.joinclass, name='joinclass'),
     # path('dashboard/',views.dashboard, name='dashboard'),
     path('dashboard/',views.dashboard, name='dashboard'),
+    path('logout/',views.logout, name='logout'),
 
 ]

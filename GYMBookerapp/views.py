@@ -16,6 +16,10 @@ from django.utils.html import strip_tags
 from django.utils import timezone
 from datetime import timedelta, datetime
 
+#Used to hash the password
+from argon2 import PasswordHasher
+from django.contrib.auth.hashers import check_password
+
 # Create your views here.
 
 
@@ -44,8 +48,10 @@ def signup(request):  # Password need to be hashed
                 msg = "Username is already taken"
                 return render(request, "signup.html",{'acc_created': msg})
             else:
+                ph_hash = PasswordHasher()
+                hashed_password = ph_hash.hash(password)
                 user = Customer(customer_fname=fname, customer_lname=lname, customer_username=username,
-                                customer_email=email, customer_password=password, customer_login_history=timezone.now())
+                                customer_email=email, customer_password=hashed_password, customer_login_history=timezone.now())
                 user.save()
                 print("User Account created successfully")
                 msg = "User Account created successfully"
@@ -62,7 +68,7 @@ def signin(request):
 
         s_details = Customer.objects.all()
         for s in s_details:
-            if (s.customer_username == u_username and s.customer_password == u_password):
+            if (s.customer_username == u_username and check_password(u_password, s.customer_password)):
                 time = Customer.objects.get(id=s.id)
                 time.customer_login_history = timezone.now()
                 time.save()
@@ -215,3 +221,7 @@ def joinclass(request):
 
 def dashboard(request):
     return render(request, 'dashboard.html')
+
+def logout(request):
+    return render(request, 'landingpage.html')
+
