@@ -18,7 +18,7 @@ from datetime import timedelta, datetime
 
 #Used to hash the password
 from argon2 import PasswordHasher
-from django.contrib.auth.hashers import check_password
+from django.contrib.auth.hashers import check_password, make_password
 
 # Create your views here.
 
@@ -35,6 +35,7 @@ def signup(request):  # Password need to be hashed
         password = request.POST["password"]
         c_password = request.POST["c_password"]
         email = request.POST["email"]
+        hashed_pwd = make_password(password)
 
         if password == c_password:
             # checks weather email is used or not
@@ -48,10 +49,10 @@ def signup(request):  # Password need to be hashed
                 msg = "Username is already taken"
                 return render(request, "signup.html",{'acc_created': msg})
             else:
-                ph_hash = PasswordHasher()
-                hashed_password = ph_hash.hash(password)
-                user = Customer(customer_fname=fname, customer_lname=lname, customer_username=username,
-                                customer_email=email, customer_password=hashed_password, customer_login_history=timezone.now())
+                # ph_hash = PasswordHasher()
+                # hashed_password = ph_hash.hash(password)
+                user = Customer(customer_fname= fname, customer_lname= lname, customer_username= username,
+                                customer_email= email, customer_password= hashed_pwd, customer_login_history= timezone.now())
                 user.save()
                 print("User Account created successfully")
                 msg = "User Account created successfully"
