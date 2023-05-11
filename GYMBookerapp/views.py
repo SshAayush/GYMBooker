@@ -67,6 +67,10 @@ def signin(request):
         u_username = request.POST['username']
         u_password = request.POST['password']
 
+        #USed to store logged user full name
+        customer_name = Customer.objects.get(customer_username = u_username)
+        customer_fullName = customer_name.customer_fname + " " + customer_name.customer_lname
+
         s_details = Customer.objects.all()
         for s in s_details:
             if (s.customer_username == u_username and check_password(u_password, s.customer_password)):
@@ -77,14 +81,14 @@ def signin(request):
                 request.session.save() # start the session
                 # current_user = request.session.get['username']
                 # print(current_user)
-                return render(request, "dashboard.html")
+                return render(request, "dashboard.html", {'fullName': customer_fullName})
 
         else:
             print("Invalid credentials")
             msg = "Invalid credentials"
             return render(request, "signin.html",{'message': msg})
-
-    return render(request, "signin.html", {'message': ""})
+        
+    return render(request, "signin.html")
 
 
 def forget_pass(request):
@@ -162,7 +166,7 @@ def reset_passwordDone(request):
 
         if password == c_password:
             if password != customer_detail.customer_password:
-                customer_detail.customer_password = password
+                customer_detail.customer_password = make_password(password)
                 customer_detail.save()
                 print("Password Updated")
                 return render(request, "signin.html")
