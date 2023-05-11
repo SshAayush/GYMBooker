@@ -261,7 +261,7 @@ header .image-text .header-text {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  display: none;
+  /* display: none; */
 }
 .activity-title {
   margin-bottom: 2rem;
@@ -296,6 +296,7 @@ header .image-text .header-text {
   max-width: 100vw;
   height: auto;
   overflow-y: hidden;
+  display: none;
 }
 .class-header {
   text-align: center;

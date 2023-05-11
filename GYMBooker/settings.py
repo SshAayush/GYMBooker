@@ -113,6 +113,12 @@ DATABASES = {
 }
 
 
+# Password validation
+# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
+PASSWORD_HASHERS = [
+    # argon 
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -181,10 +187,3 @@ JAZZMIN_SETTINGS = {
 # connection code for SMTP server
 # add code here <DC>-> <#commant-to-install> <pinned msg>
 
-EMAIL_HOST = 'smtp.elasticemail.com'
-EMAIL_PORT = 2525
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'team.bookex@gmail.com'
-EMAIL_HOST_PASSWORD = 'D351DFF8894CC6A85D3505B55A664E14F25E'
-
-DEFAULT_FROM_EMAIL = 'team.bookex@gmail.com' 

@@ -10,11 +10,15 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
-
-
 # used tp access timezone and store time wile timezone is active in django
 from django.utils import timezone
 from datetime import timedelta, datetime
+
+#Used to hash the password
+from django.contrib.auth.hashers import check_password, make_password
+
+# USed to destroy the session
+from django.contrib.sessions.models import Session
 
 # Create your views here.
 
@@ -31,6 +35,7 @@ def signup(request):  # Password need to be hashed
         password = request.POST["password"]
         c_password = request.POST["c_password"]
         email = request.POST["email"]
+        hashed_pwd = make_password(password)
 
         if password == c_password:
             # checks weather email is used or not
@@ -44,8 +49,10 @@ def signup(request):  # Password need to be hashed
                 msg = "Username is already taken"
                 return render(request, "signup.html",{'acc_created': msg})
             else:
-                user = Customer(customer_fname=fname, customer_lname=lname, customer_username=username,
-                                customer_email=email, customer_password=password, customer_login_history=timezone.now())
+                # ph_hash = PasswordHasher()
+                # hashed_password = ph_hash.hash(password)
+                user = Customer(customer_fname= fname, customer_lname= lname, customer_username= username,
+                                customer_email= email, customer_password= hashed_pwd, customer_login_history= timezone.now())
                 user.save()
                 print("User Account created successfully")
                 msg = "User Account created successfully"
@@ -60,21 +67,28 @@ def signin(request):
         u_username = request.POST['username']
         u_password = request.POST['password']
 
+        #USed to store logged user full name
+        customer_name = Customer.objects.get(customer_username = u_username)
+        customer_fullName = customer_name.customer_fname + " " + customer_name.customer_lname
+
         s_details = Customer.objects.all()
         for s in s_details:
-            if (s.customer_username == u_username and s.customer_password == u_password):
+            if (s.customer_username == u_username and check_password(u_password, s.customer_password)):
                 time = Customer.objects.get(id=s.id)
                 time.customer_login_history = timezone.now()
                 time.save()
                 request.session['username'] = u_username #set the session of their username after loggin in
-                return render(request, "dashboard.html")
+                request.session.save() # start the session
+                # current_user = request.session.get['username']
+                # print(current_user)
+                return render(request, "dashboard.html", {'fullName': customer_fullName})
 
         else:
             print("Invalid credentials")
             msg = "Invalid credentials"
             return render(request, "signin.html",{'message': msg})
-
-    return render(request, "signin.html", {'message': ""})
+        
+    return render(request, "signin.html")
 
 
 def forget_pass(request):
@@ -152,7 +166,7 @@ def reset_passwordDone(request):
 
         if password == c_password:
             if password != customer_detail.customer_password:
-                customer_detail.customer_password = password
+                customer_detail.customer_password = make_password(password)
                 customer_detail.save()
                 print("Password Updated")
                 return render(request, "signin.html")
@@ -210,8 +224,27 @@ def joinclass(request):
         customer_query.save()
     return render(request, 'joinClass.html')
 
-# def dashboard(request):
-#     return render(request, 'dashboard.html')
 
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    username = request.session.get('username', None)
+    if username is not None:
+        print(f'Active user: {username}')
+        return render(request, 'dashboard.html')
+    else:
+        print("None active user available")
+        return render(request, "signin.html")
+
+def logout(request):
+    # get the session id
+    session_id = request.session.session_key
+
+    # delete the session from the database
+    Session.objects.filter(session_key=session_id).delete()
+
+    # flush the session data from memory
+    request.session.flush()
+
+    # remove the session cookie
+    request.session.clear_expired()
+    return render(request, 'landingpage.html')
+
