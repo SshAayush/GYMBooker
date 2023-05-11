@@ -10,8 +10,6 @@ const dashContainer = document.querySelector("#dashboard-container");
 const classesContainer = document.querySelector("#class-container");
 const activityContainer = document.querySelector("#activity-container");
 
-// removing every container
-
 dashboardButton.addEventListener("click", () => {
   removeContainer();
   dashContainer.style.display = "block";
@@ -25,6 +23,7 @@ activityButton.addEventListener("click", () => {
   activityContainer.style.display = "flex";
 });
 
+// removing every container
 function removeContainer() {
   dashContainer.style.display = "none";
   classesContainer.style.display = "none";

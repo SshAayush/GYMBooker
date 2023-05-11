@@ -74,7 +74,7 @@ function validateEmail() {
 }
 
 function validatePassword() {
-  const pPattern = /^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/;
+  const pPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]/;
 
   if (password.value === "") {
     setError(password, "password cannot be empty");
