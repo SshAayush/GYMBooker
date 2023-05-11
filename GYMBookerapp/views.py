@@ -10,15 +10,15 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
-
-
 # used tp access timezone and store time wile timezone is active in django
 from django.utils import timezone
 from datetime import timedelta, datetime
 
 #Used to hash the password
-from argon2 import PasswordHasher
 from django.contrib.auth.hashers import check_password, make_password
+
+# USed to destroy the session
+from django.contrib.sessions.models import Session
 
 # Create your views here.
 
@@ -74,6 +74,9 @@ def signin(request):
                 time.customer_login_history = timezone.now()
                 time.save()
                 request.session['username'] = u_username #set the session of their username after loggin in
+                request.session.save() # start the session
+                # current_user = request.session.get['username']
+                # print(current_user)
                 return render(request, "dashboard.html")
 
         else:
@@ -217,12 +220,27 @@ def joinclass(request):
         customer_query.save()
     return render(request, 'joinClass.html')
 
-# def dashboard(request):
-#     return render(request, 'dashboard.html')
 
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    username = request.session.get('username', None)
+    if username is not None:
+        print(f'Active user: {username}')
+        return render(request, 'dashboard.html')
+    else:
+        print("None active user available")
+        return render(request, "signin.html")
 
 def logout(request):
+    # get the session id
+    session_id = request.session.session_key
+
+    # delete the session from the database
+    Session.objects.filter(session_key=session_id).delete()
+
+    # flush the session data from memory
+    request.session.flush()
+
+    # remove the session cookie
+    request.session.clear_expired()
     return render(request, 'landingpage.html')
 
