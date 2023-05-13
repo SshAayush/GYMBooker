@@ -180,6 +180,7 @@ JAZZMIN_SETTINGS = {
     "icons": {
         "GYMBookerapp.Customer": "fas fa-user",
         "GYMBookerapp.CustomerQuery": "fas fa-comments",
+        "GYMBookerapp.Class": "fas fa-dumbbell",
     },
     "order_with_respect_to": ["GYMBookerapp.Customer",],
     

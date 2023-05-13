@@ -21,7 +21,21 @@ class CustomerQuery(models.Model):
 
     def __str__(self):
         return self.Cquery_name
-
-
-
     
+class Class(models.Model):
+    class_name = models.CharField(max_length=100)
+    class_instructor = models.CharField(max_length=100)
+    DAY_CHOICES = (
+        ('Sun', 'Sunday'),
+        ('Mon', 'Monday'),
+        ('Tue', 'Tuesday'),
+        ('Wed', 'Wednesday'),
+        ('Thu', 'Thursday'),
+        ('Fri', 'Friday'),
+        ('Sat', 'Saturday'),
+    )
+    class_day = models.CharField(max_length=3, choices=DAY_CHOICES, default='Sun')
+    class_time = models.TimeField(auto_now_add=False)
+
+    def __str__(self):
+        return self.class_name
