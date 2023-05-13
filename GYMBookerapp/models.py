@@ -33,9 +33,11 @@ class Class(models.Model):
         ('Thu', 'Thursday'),
         ('Fri', 'Friday'),
         ('Sat', 'Saturday'),
+        ('Everyday', 'Everyday'),
     )
-    class_day = models.CharField(max_length=3, choices=DAY_CHOICES, default='Sun')
+    class_day = models.CharField(max_length=8, choices=DAY_CHOICES, default='Sun')
     class_time = models.TimeField(auto_now_add=False)
+    class_image = models.ImageField(upload_to='static/image/classes/')
 
     def __str__(self):
         return self.class_name

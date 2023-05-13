@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Customer, CustomerQuery
+from .models import Customer, CustomerQuery, Class
 import random
 
 from django.urls import reverse
@@ -81,7 +81,8 @@ def signin(request):
                 request.session.save() # start the session
                 # current_user = request.session.get['username']
                 # print(current_user)
-                return render(request, "dashboard.html", {'fullName': customer_fullName})
+                classes = Class.objects.all()
+                return render(request, "dashboard.html", {'fullName': customer_fullName, 'classes': classes})
 
         else:
             print("Invalid credentials")
@@ -233,6 +234,7 @@ def dashboard(request):
     else:
         print("None active user available")
         return render(request, "signin.html")
+    
 
 def logout(request):
     # get the session id

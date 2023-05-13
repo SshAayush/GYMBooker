@@ -154,18 +154,20 @@
     <div class="classes-container container" id="class-container">
       <h2 class="class-header">Add additional classes to your package</h2>
       <div class="classes">
+        {% for class in classes %}
         <div class="class-1 class">
-          <img src="/static/image/classes/cycling.jpg" alt="" />
+          <img src= "/{{ class.class_image }}" alt="" />
           <div class="class-content">
-            <h2 class="class-header">cycling</h2>
+            <h2 class="class-header">{{ class.class_name }}</h2>
             <p class="trainer">
-              <i class="fa-regular fa-user"> John doe</i>
-              <i class="fa-regular fa-clock"> wed: 9: am</i>
+              <i class="fa-regular fa-user">{{ class.class_instructor }}</i>
+              <i class="fa-regular fa-clock"> {{ class.class_day }}: {{ class.class_time }}</i>
             </p>
             <button class="btn join-btn"><a href="">Join now</a></button>
           </div>
         </div>
-        <div class="class-2 class">
+        {% endfor %}
+        {% comment %} <div class="class-2 class">
           <img src="/static/image/classes/karate.jpg" alt="" />
           <div class="class-content">
             <h2 class="class-header">karate</h2>
@@ -219,7 +221,7 @@
             </p>
             <button class="btn join-btn"><a href="">Join now</a></button>
           </div>
-        </div>
+        </div> {% endcomment %}
       </div>
     </div>
 
