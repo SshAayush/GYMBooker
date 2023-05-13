@@ -11,7 +11,8 @@ const email = document.querySelector("#email");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  if(validate()) {  // if validata() returns the true value then only submit the form...
+  if (validate()) {
+    // if validata() returns the true value then only submit the form...
     form.submit();
   }
 });
