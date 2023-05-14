@@ -227,13 +227,14 @@ def joinclass(request):
 
 
 def dashboard(request):
-    username = request.session.get('username', None)
-    if username is not None:
-        print(f'Active user: {username}')
-        return render(request, 'dashboard.html')
-    else:
-        print("None active user available")
-        return render(request, "signin.html")
+    # username = request.session.get('username', None)
+    # if username is not None:
+    #     print(f'Active user: {username}')
+    #     return render(request, 'dashboard.html')
+    # else:
+    #     print("None active user available")
+    #     return render(request, "signin.html")
+    return render(request, 'dashboard.html')
     
 
 def logout(request):

@@ -121,9 +121,9 @@
           <p class="joined-detail">Details about joined class</p>
         </div>
         <div class="box-2 box">
-          <h2 class="header">Activity</h2>
+          <h2 class="header">Profile</h2>
           <p class="joined">See your presence in the gym</p>
-          <p class="joined-detail">Workout deatails</p>
+          <p class="joined-detail">View your profile</p>
         </div>
 
         <div class="box-3 box">
@@ -156,18 +156,20 @@
       <div class="classes">
         {% for class in classes %}
         <div class="class-1 class">
-          <img src= "/{{ class.class_image }}" alt="" />
+          <img src="/{{ class.class_image }}" alt="" />
           <div class="class-content">
             <h2 class="class-header">{{ class.class_name }}</h2>
             <p class="trainer">
               <i class="fa-regular fa-user">{{ class.class_instructor }}</i>
-              <i class="fa-regular fa-clock"> {{ class.class_day }}: {{ class.class_time }}</i>
+              <i class="fa-regular fa-clock">
+                {{ class.class_day }}: {{ class.class_time }}</i
+              >
             </p>
             <button class="btn join-btn"><a href="">Join now</a></button>
           </div>
         </div>
-        {% endfor %}
-        {% comment %} <div class="class-2 class">
+        {% endfor %} {% comment %}
+        <div class="class-2 class">
           <img src="/static/image/classes/karate.jpg" alt="" />
           <div class="class-content">
             <h2 class="class-header">karate</h2>
@@ -221,7 +223,41 @@
             </p>
             <button class="btn join-btn"><a href="">Join now</a></button>
           </div>
-        </div> {% endcomment %}
+        </div>
+        {% endcomment %}
+      </div>
+    </div>
+
+    <div class="profile-container">
+      <div class="profile-nav">
+        <div class="workout nav-box">
+          <p class="current">Current Workout</p>
+          <p class="current-number">0/2</p>
+        </div>
+        <div class="weight nav-box">
+          <div class="difference">
+            <p class="unit">KG'S</p>
+            <p class="diference">-12Kg</p>
+          </div>
+          <div class="start-current">
+            <p class="s-weigth starting">Start - 120Kg</p>
+            <p class="c-weigth current">Current - 108Kg</p>
+          </div>
+        </div>
+        <div class="bmi nav-box">
+          <div class="difference">
+            <p class="unit">BMI%</p>
+            <p class="diference">-2.5%</p>
+          </div>
+          <div class="start-current">
+            <p class="s-bmi starting">Start - 29%</p>
+            <p class="c-bmi current">Current - 26.5%</p>
+          </div>
+        </div>
+      </div>
+      <div class="profile-details">
+        <div class="profile-img"></div>
+        <div class="profile-info"></div>
       </div>
     </div>
 
