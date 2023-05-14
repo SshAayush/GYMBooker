@@ -162,7 +162,7 @@
             <p class="trainer">
               <i class="fa-regular fa-user">{{ class.class_instructor }}</i>
               <i class="fa-regular fa-clock">
-                {{ class.class_day }}: {{ class.class_time }}</i
+                {{ class.class_startDay }} {% if class.class_endDay != "NONE" %}- {{ class.class_endDay }} {% endif %}: {{ class.class_time }}</i
               >
             </p>
             <button class="btn join-btn"><a href="">Join now</a></button>
