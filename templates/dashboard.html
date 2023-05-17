@@ -7,7 +7,10 @@
     <title>Home Page</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% comment %}
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+    {% endcomment %}
+    <link rel="stylesheet" href="/static/css/dashboard.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -65,7 +68,7 @@
             <li class="nav-link">
               <a href="#">
                 <i class="bx bx-podcast icon"></i>
-                <span class="text nav-text btn">Schedule</span>
+                <span class="text nav-text btn" id="Schedule">Schedule</span>
               </a>
             </li>
             <li class="nav-link">
@@ -162,10 +165,12 @@
             <p class="trainer">
               <i class="fa-regular fa-user">{{ class.class_instructor }}</i>
               <i class="fa-regular fa-clock">
-                {{ class.class_startDay }} {% if class.class_endDay != "NONE" %}- {{ class.class_endDay }} {% endif %}: {{ class.class_time }}</i
+                {{ class.class_startDay }} {% if class.class_endDay != "NONE"
+                %}- {{ class.class_endDay }} {% endif %}: {{ class.class_time
+                }}</i
               >
             </p>
-  
+
             <button class="btn join-btn"><a href="">Join now</a></button>
           </div>
         </div>
@@ -229,7 +234,7 @@
       </div>
     </div>
 
-    <div class="profile-container">
+    <div class="profile-container container">
       <div class="profile-nav">
         <div class="workout nav-box">
           <p class="current">Current Workout</p>
@@ -263,13 +268,65 @@
           </div>
           <div class="user-detail">
             <p class="name">Aashish satyal</p>
-            <p class="email">nephop98@gmail.com</p>
+            <p class="email">ashishsatyal4@gmail.com</p>
             <p class="age">21</p>
             <p class="gender">M</p>
-            <button class="role" disabled="disabled">Role</button>
+            <p class="role">Role</p>
+            <button class="trainer-role" disabled="disabled">Trainer</button>
           </div>
         </div>
-        <div class="profile-info"></div>
+
+        <div class="profile-info">
+          <h3 class="info-header">Contact Information</h3>
+          <div class="profile-contact">
+            <div class="mobile">
+              <p class="moble">Mobile</p>
+              <p class="mobile-num">9812345678</p>
+            </div>
+            <div class="social">
+              <p>Instagram(username)</p>
+              <p class="social-name">Ace_01</p>
+            </div>
+            <div class="address">
+              <p>Address</p>
+              <p class="profile-address">Dhapakel-23,lalitpur</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- schedule-container -->
+
+    <div class="schedule-container container">
+      <h2 class="header Schedule-header">Gym Timing</h2>
+      <div class="working-hour">
+        <h2 class="hours">working hours</h2>
+        <p class="time m-f">
+          Monday - Friday: <br />
+
+          7:00 - 21:00
+        </p>
+        <p class="time sat">
+          Saturday: <br />
+
+          7:00 - 19:00
+        </p>
+        <p class="time sun">Sunday - Closed</p>
+      </div>
+      <div class="class-timing">
+
+        <div class="class-2 class">
+          <h2 class="hours">Class Timing</h2>
+          <img src="/static/image/classes/karate.jpg" alt="" />
+          <div class="class-content">
+            <h2 class="class-header">karate</h2>
+            <p class="trainer">
+              <i class="fa-regular fa-user"> John doe</i>
+              <i class="fa-regular fa-clock"> sat: 6: am</i>
+            </p>
+            
+          </div>
       </div>
     </div>
 

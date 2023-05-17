@@ -365,7 +365,6 @@ header .image-text .header-text {
 }
 
 /* profile container  */
-
 .profile-container {
   margin-left: 15.7rem;
   max-width: 100vw;
@@ -381,10 +380,11 @@ header .image-text .header-text {
 
 .nav-box {
   width: 30%;
-  border: 1px solid white;
+  border: 1px solid red;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 1rem;
 }
 .profile-nav {
   /* background-color: #fff; */
@@ -401,7 +401,7 @@ header .image-text .header-text {
   flex-direction: column;
   width: fit-content;
   height: fit-content;
-  border: 1px solid white;
+  border: 1px solid red;
   margin: 4rem 0 0 2rem;
 }
 .profile-img {
@@ -419,9 +419,43 @@ header .image-text .header-text {
   text-align: end;
   padding-right: 1rem;
 }
-.role {
+.trainer-role {
   width: 5rem;
   height: 2rem;
   background-color: rgb(113, 215, 113);
   border: 1px solid;
+  border-radius: 10px;
+  color: #fff;
+}
+.profile-contact {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  row-gap: 1rem;
+}
+
+/* schedule container */
+
+.schedule-container {
+  margin-left: 15.7rem;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow-y: hidden;
+  display: none;
+}
+.schedule-header {
+  margin-left: 2rem;
+  color: #fff;
+}
+.working-hour {
+  margin: 2rem 2rem;
+}
+.hours {
+  margin-bottom: 1rem;
+  border-bottom: 2px solid white;
+  text-transform: capitalize;
+  color: red;
+}
+.time {
+  padding: 0.5rem;
+  font-size: 18px;
 }
