@@ -396,3 +396,32 @@ header .image-text .header-text {
   font-size: 20px;
   font-weight: 500;
 }
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  height: fit-content;
+  border: 1px solid white;
+  margin: 4rem 0 0 2rem;
+}
+.profile-img {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #fff;
+}
+.profile-img img {
+  height: 20rem;
+  position: relative;
+  top: -3rem;
+  left: 2rem;
+}
+.user-detail {
+  text-align: end;
+  padding-right: 1rem;
+}
+.role {
+  width: 5rem;
+  height: 2rem;
+  background-color: rgb(113, 215, 113);
+  border: 1px solid;
+}
