@@ -8,7 +8,7 @@ class Customer(models.Model):
     customer_email = models.EmailField(max_length=100)
     customer_password = models.CharField(max_length=250)
     customer_login_history = models.DateTimeField(auto_now_add=False)
-    customer_resetcode = models.IntegerField(null=True)
+    customer_resetcode = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
         return self.customer_fname + " " +self.customer_lname
@@ -34,8 +34,10 @@ class Class(models.Model):
         ('Fri', 'Friday'),
         ('Sat', 'Saturday'),
         ('Everyday', 'Everyday'),
+        ('NONE', 'NONE'),
     )
-    class_day = models.CharField(max_length=8, choices=DAY_CHOICES, default='Sun')
+    class_startDay = models.CharField(max_length=8, choices=DAY_CHOICES, default='Sun')
+    class_endDay = models.CharField(max_length=8, choices=DAY_CHOICES, default='Sun')
     class_time = models.TimeField(auto_now_add=False)
     class_image = models.ImageField(upload_to='static/image/classes/')
 
