@@ -165,16 +165,14 @@
             <p class="trainer">
               <i class="fa-regular fa-user">{{ class.class_instructor }}</i>
               <i class="fa-regular fa-clock">
-                {{ class.class_startDay }} {% if class.class_endDay != "NONE"
-                %}- {{ class.class_endDay }} {% endif %}: {{ class.class_time
-                }}</i
-              >
+                {{ class.class_startDay }} {% if class.class_endDay != "NONE"%}- {{ class.class_endDay }} {% endif %}: {{ class.class_time}}</i>
             </p>
 
             <button class="btn join-btn"><a href="">Join now</a></button>
           </div>
         </div>
-        {% endfor %} {% comment %}
+        {% endfor %} 
+        {% comment %}
         <div class="class-2 class">
           <img src="/static/image/classes/karate.jpg" alt="" />
           <div class="class-content">
