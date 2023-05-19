@@ -32,7 +32,7 @@ class Customer(models.Model):
     customer_password = models.CharField(max_length=250)
     customer_login_history = models.DateTimeField(auto_now_add=False)
     customer_resetcode = models.IntegerField(blank=True, null=True)
-    joined_class = models.ManyToManyField(Class)
+    joined_class = models.ManyToManyField(Class, null=True)
 
     def __str__(self):
         return self.customer_fname + " " +self.customer_lname

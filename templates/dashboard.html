@@ -54,7 +54,7 @@
             <li class="nav-link">
               <a href="#">
                 <i class="bx bx-tv icon"></i>
-                <span id="classes" class="text nav-text span-btn">Classes</span>
+                <span id="classes" class="text nav-text span-btn">Available Classes</span>
               </a>
             </li>
             <li class="nav-link">
@@ -168,76 +168,19 @@
                 {{ class.class_startDay }} {% if class.class_endDay != "NONE"%}- {{ class.class_endDay }} {% endif %}: {{ class.class_time}}</i>
             </p>
             {% comment %} <form action="" methos="POST"> {% endcomment %}
-              <button class="btn join-btn"><a href="{% url 'joinclass' %}">Join now</a></button>
+              <button class="btn join-btn"><a href="{% url 'addclass' %}">Join now</a></button>
             {% comment %} </form> {% endcomment %}
           </div>
         </div>
         {% endfor %} 
-        {% comment %}
-        <div class="class-2 class">
-          <img src="/static/image/classes/karate.jpg" alt="" />
-          <div class="class-content">
-            <h2 class="class-header">karate</h2>
-            <p class="trainer">
-              <i class="fa-regular fa-user"> John doe</i>
-              <i class="fa-regular fa-clock"> sat: 6: am</i>
-            </p>
-            <button class="btn join-btn"><a href="">Join now</a></button>
-          </div>
-        </div>
-        <div class="class-3 class">
-          <img src="/static/image/classes/yoga.jpg" alt="" />
-          <div class="class-content">
-            <h2 class="class-header">yoga</h2>
-            <p class="trainer">
-              <i class="fa-regular fa-user"> John doe</i>
-              <i class="fa-regular fa-clock"> everyday 6: am</i>
-            </p>
-            <button class="btn join-btn"><a href="">Join now</a></button>
-          </div>
-        </div>
-        <div class="class-4 class">
-          <img src="/static/image/classes/mma.jpg" alt="" />
-          <div class="class-content">
-            <h2 class="class-header">MMA</h2>
-            <p class="trainer">
-              <i class="fa-regular fa-user"> John doe</i>
-              <i class="fa-regular fa-clock"> sun: 7: am</i>
-            </p>
-            <button class="btn join-btn"><a href="">Join now</a></button>
-          </div>
-        </div>
-        <div class="class-5 class">
-          <img src="/static/image/classes/powerlifting.jpg" alt="" />
-          <div class="class-content">
-            <h2 class="class-header">powerlifting</h2>
-            <p class="trainer">
-              <i class="fa-regular fa-user"> John doe</i>
-              <i class="fa-regular fa-clock"> sat: 5: pm</i>
-            </p>
-            <button class="btn join-btn"><a href="">Join now</a></button>
-          </div>
-        </div>
-        <div class="class-6 class">
-          <img src="/static/image/classes/workout.jpg" alt="" />
-          <div class="class-content">
-            <h2 class="class-header">workout</h2>
-            <p class="trainer">
-              <i class="fa-regular fa-user"> John doe</i>
-              <i class="fa-regular fa-clock"> sat- fri: 6: am</i>
-            </p>
-            <button class="btn join-btn"><a href="">Join now</a></button>
-          </div>
-        </div>
-        {% endcomment %}
       </div>
     </div>
 
     <div class="profile-container container">
       <div class="profile-nav">
         <div class="workout nav-box">
-          <p class="current">Current Workout</p>
-          <p class="current-number">0/2</p>
+          <p class="current">Total Current Workouts</p>
+          <p class="current-number">{{ count }}</p>
         </div>
         <div class="weight nav-box">
           <div class="difference">
@@ -266,8 +209,8 @@
             <img src="/static/image/trainer1.png" alt="profile pic" />
           </div>
           <div class="user-detail">
-            <p class="name">Aashish satyal</p>
-            <p class="email">ashishsatyal4@gmail.com</p>
+            <p class="name">{{ customer_name.customer_fname }} {{ customer_name.customer_lname  }}</p>
+            <p class="email">{{ customer_name.customer_email }}</p>
             <p class="age">21</p>
             <p class="gender">M</p>
             <p class="role">Role</p>

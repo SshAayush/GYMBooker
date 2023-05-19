@@ -252,8 +252,18 @@ def logout(request):
     return render(request, 'landingpage.html')
 
 
-def joinclass(request):
-    customer_fullName = request.session.get('username')
-    classes = Class.objects.all()
-    return render(request, "dashboard.html", {'fullName': customer_fullName, 'classes': classes})
+def addclass(request):
+    customer_uname = request.session.get('username')
+    customer_name = Customer.objects.get(customer_username = customer_uname)
+
+    classes  = Class.objects.all()
+    customer_fullName = customer_name.customer_fname + " " + customer_name.customer_lname
+    customer_classes = customer_name.joined_class.all()
+    count = 0
+
+    for cls in customer_classes:
+        print(cls)
+        count += 1
+
+    return render(request, "dashboard.html", {'classes': classes, 'count': count, 'customer_name': customer_name})
 
