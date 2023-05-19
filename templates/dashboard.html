@@ -110,7 +110,7 @@
     </nav>
     <div class="dash-container container" id="dashboard-container">
       <div class="user-details">
-        <p class="u-name">{{ fullName }}</p>
+        <p class="u-name">{{ customer_name.customer_fname }} {{ customer_name.customer_lname }}</p>
         <p class="u-age">User-age</p>
         <p class="u-sex">User-sex</p>
         <p class="u-dob">User-dob</p>
@@ -188,18 +188,18 @@
             <p class="diference">-12Kg</p>
           </div>
           <div class="start-current">
-            <p class="s-weigth starting">Start - 120Kg</p>
-            <p class="c-weigth current">Current - 108Kg</p>
+            <p class="s-weigth starting">Start - {{ customer_name.customer_weight }}Kg</p>
+            <p class="c-weigth current">Current - {{ customer_name.customer_weight }}Kg</p>
           </div>
         </div>
         <div class="bmi nav-box">
           <div class="difference">
             <p class="unit">BMI%</p>
-            <p class="diference">-2.5%</p>
+            <p class="diference">-{{ customer_name.customer_bmi }}%</p>
           </div>
           <div class="start-current">
-            <p class="s-bmi starting">Start - 29%</p>
-            <p class="c-bmi current">Current - 26.5%</p>
+            <p class="s-bmi starting">Start - {{ customer_name.customer_bmi }}%</p>
+            <p class="c-bmi current">Current - {{ customer_name.customer_bmi }}%</p>
           </div>
         </div>
       </div>
@@ -211,8 +211,8 @@
           <div class="user-detail">
             <p class="name">{{ customer_name.customer_fname }} {{ customer_name.customer_lname  }}</p>
             <p class="email">{{ customer_name.customer_email }}</p>
-            <p class="age">21</p>
-            <p class="gender">M</p>
+            <p class="age">{{ customer_name.customer_age }}</p>
+            <p class="gender">{{ customer_name.customer_gender }}</p>
             <p class="role">Role</p>
             <button class="trainer-role" disabled="disabled">Trainer</button>
           </div>
@@ -223,7 +223,7 @@
           <div class="profile-contact">
             <div class="mobile">
               <p class="moble">Mobile</p>
-              <p class="mobile-num">9812345678</p>
+              <p class="mobile-num">{{ customer_name.customer_phone }}</p>
             </div>
             <div class="social">
               <p>Instagram(username)</p>
@@ -231,7 +231,7 @@
             </div>
             <div class="address">
               <p>Address</p>
-              <p class="profile-address">Dhapakel-23,lalitpur</p>
+              <p class="profile-address">{{ customer_name.customer_address }}</p>
             </div>
           </div>
         </div>

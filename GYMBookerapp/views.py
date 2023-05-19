@@ -67,22 +67,16 @@ def signin(request):
         u_username = request.POST['username']
         u_password = request.POST['password']
 
-        #USed to store logged user full name
-        customer_name = Customer.objects.get(customer_username = u_username)
-        customer_fullName = customer_name.customer_fname + " " + customer_name.customer_lname
-
-        s_details = Customer.objects.all()
-        for s in s_details:
-            if (s.customer_username == u_username and check_password(u_password, s.customer_password)):
-                time = Customer.objects.get(id=s.id)
+        ss = Customer.objects.get(customer_username = u_username)
+        if (ss.customer_username == u_username and check_password(u_password, ss.customer_password)):
+                time = Customer.objects.get(id=ss.id)
                 time.customer_login_history = timezone.now()
                 time.save()
                 request.session['username'] = u_username #set the session of their username after loggin in
                 request.session.save() # start the session
-                # current_user = request.session.get['username']
-                # print(current_user)
-                classes = Class.objects.all()
-                return render(request, "dashboard.html", {'fullName': customer_fullName, 'classes': classes})
+                # current_user = request.session.get('username')
+                # print(f'{current_user} yoyoyoyyo')
+                return redirect('dashboard')
 
         else:
             print("Invalid credentials")
@@ -227,14 +221,29 @@ def joinclass(request):
 
 
 def dashboard(request):
-    # username = request.session.get('username', None)
-    # if username is not None:
-    #     print(f'Active user: {username}')
-    #     return render(request, 'dashboard.html')
-    # else:
-    #     print("None active user available")
-    #     return render(request, "signin.html")
-    return render(request, 'dashboard.html')
+    username = request.session.get('username')
+    print(username)
+    if username is not None:
+        print(f'Active user: {username}')
+        classes = Class.objects.all()
+
+         #Used to store logged user full name
+        u_username = request.session.get('username')
+        customer_name = Customer.objects.get(customer_username = u_username)
+
+        customer_classes = customer_name.joined_class.all()
+        count = 0
+
+        for cls in customer_classes:
+            print(cls)
+            count += 1
+    
+        return render(request, "dashboard.html", {'classes': classes, 'count': count, 'customer_name': customer_name})
+    
+    else:
+        print("None active user available")
+        return render(request, "signin.html")
+    # return render(request, 'dashboard.html')
     
 
 def logout(request):
