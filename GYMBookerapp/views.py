@@ -253,6 +253,7 @@ def logout(request):
 
 
 def joinclass(request):
-    print("Yoyo")
-    return render(request, 'dashboard.html')
+    customer_fullName = request.session.get('username')
+    classes = Class.objects.all()
+    return render(request, "dashboard.html", {'fullName': customer_fullName, 'classes': classes})
 
