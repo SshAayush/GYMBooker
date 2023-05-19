@@ -167,8 +167,9 @@
               <i class="fa-regular fa-clock">
                 {{ class.class_startDay }} {% if class.class_endDay != "NONE"%}- {{ class.class_endDay }} {% endif %}: {{ class.class_time}}</i>
             </p>
-
-            <button class="btn join-btn"><a href="">Join now</a></button>
+            {% comment %} <form action="" methos="POST"> {% endcomment %}
+              <button class="btn join-btn"><a href="{% url 'joinclass' %}">Join now</a></button>
+            {% comment %} </form> {% endcomment %}
           </div>
         </div>
         {% endfor %} 

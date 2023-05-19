@@ -251,3 +251,8 @@ def logout(request):
     request.session.clear_expired()
     return render(request, 'landingpage.html')
 
+
+def joinclass(request):
+    print("Yoyo")
+    return render(request, 'dashboard.html')
+
