@@ -221,6 +221,7 @@ def joinclass(request):
 
 
 def dashboard(request):
+    #dashboard
     username = request.session.get('username')
     print(username)
     if username is not None:
