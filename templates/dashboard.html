@@ -257,7 +257,7 @@
         </p>
         <p class="time sun">Sunday - Closed</p>
       </div>
-      <div class="class-timing">
+      {% comment %} <div class="class-timing">
 
         <div class="class-2 class">
           <h2 class="hours">Class Timing</h2>
@@ -268,8 +268,25 @@
               <i class="fa-regular fa-user"> John doe</i>
               <i class="fa-regular fa-clock"> sat: 6: am</i>
             </p>
-            
           </div>
+      </div> {% endcomment %}
+      <div class="classes">
+        {% for class in classes %}
+        {% if class not in joined_classes %}
+        {% else %}
+        <div class="class-1 class">
+          <img src="/{{ class.class_image }}" alt="" />
+          <div class="class-content">
+            <h2 class="class-header">{{ class.class_name }}</h2>
+            <p class="trainer">
+              <i class="fa-regular fa-user">{{ class.class_instructor }}</i>
+              <i class="fa-regular fa-clock">
+                {{ class.class_startDay }} {% if class.class_endDay != "NONE"%}- {{ class.class_endDay }} {% endif %}: {{ class.class_time}}</i>
+            </p>
+          </div>
+        </div>
+        {% endif%}
+        {% endfor %} 
       </div>
     </div>
 
