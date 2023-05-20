@@ -6,8 +6,7 @@ const classesButton = document.querySelector("#classes");
 const activityButton = document.querySelector("#activity");
 const profileButton = document.querySelector(".box-2");
 const scheduleButton = document.querySelector("#schedule");
-console.log(scheduleButton);
-console.log(activityButton);
+const scheduleBox = document.querySelector(".box-3");
 // selecting containers
 const dashContainer = document.querySelector("#dashboard-container");
 const classesContainer = document.querySelector("#class-container");
@@ -34,6 +33,11 @@ profileButton.addEventListener("click", () => {
 });
 
 scheduleButton.addEventListener("click", () => {
+  removeContainer();
+  scheduleContainer.style.display = "block";
+});
+
+scheduleBox.addEventListener("click", () => {
   removeContainer();
   scheduleContainer.style.display = "block";
 });
