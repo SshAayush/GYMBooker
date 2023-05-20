@@ -60,8 +60,7 @@
             <li class="nav-link">
               <a href="#">
                 <i class="bx bx-movie-play icon"></i>
-                <span id="activity" class="text nav-text span-btn"
-                  >Activity</span
+                <span id="activity" class="text nav-text span-btn">Activity</span
                 >
               </a>
             </li>
@@ -167,9 +166,11 @@
               <i class="fa-regular fa-clock">
                 {{ class.class_startDay }} {% if class.class_endDay != "NONE"%}- {{ class.class_endDay }} {% endif %}: {{ class.class_time}}</i>
             </p>
-            {% comment %} <form action="" methos="POST"> {% endcomment %}
+              {% if class not in joined_classes %}
               <button class="btn join-btn"><a href="{% url 'addclass' %}">Join now</a></button>
-            {% comment %} </form> {% endcomment %}
+              {% else %}
+              <button class="btn joined-btn"><a href="#">Joined</a></button>
+              {% endif%}
           </div>
         </div>
         {% endfor %} 

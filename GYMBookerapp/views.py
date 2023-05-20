@@ -227,18 +227,20 @@ def dashboard(request):
         print(f'Active user: {username}')
         classes = Class.objects.all()
 
-         #Used to store logged user full name
+        #Used to store logged user full name
         u_username = request.session.get('username')
         customer_name = Customer.objects.get(customer_username = u_username)
 
+        #acessing ManytoMany field
         customer_classes = customer_name.joined_class.all()
         count = 0
-
+        joined_classes = []
         for cls in customer_classes:
             print(cls)
+            joined_classes.append(cls)
             count += 1
     
-        return render(request, "dashboard.html", {'classes': classes, 'count': count, 'customer_name': customer_name})
+        return render(request, "dashboard.html", {'classes': classes, 'count': count, 'customer_name': customer_name, 'joined_classes': joined_classes})
     
     else:
         print("None active user available")
