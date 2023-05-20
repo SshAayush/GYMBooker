@@ -262,18 +262,18 @@ def logout(request):
     return render(request, 'landingpage.html')
 
 
-def addclass(request):
+def addclass(request, pk):
     customer_uname = request.session.get('username')
     customer_name = Customer.objects.get(customer_username = customer_uname)
 
-    classes  = Class.objects.all()
-    customer_fullName = customer_name.customer_fname + " " + customer_name.customer_lname
-    customer_classes = customer_name.joined_class.all()
-    count = 0
+    # customer_classes = customer_name.joined_class.all()
+    # print(classes)
 
-    # for cls in customer_classes:
-    #     print(cls)
-    #     count += 1
+    # print(customer_classes)
 
-    # return render(request, "dashboard.html", {'classes': classes, 'count': count, 'customer_name': customer_name})
+    #take the id of the class that user have just clicked and store it inot many to many field
+
+    classes = Class.objects.get(id=pk)
+    customer_name.joined_class.add(classes)
+
     return redirect('dashboard')

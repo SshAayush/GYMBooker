@@ -29,7 +29,7 @@ class Customer(models.Model):
     customer_username = models.CharField(max_length=100)
     customer_email = models.EmailField(max_length=100)
     customer_password = models.CharField(max_length=250)
-    customer_login_history = models.DateTimeField(auto_now_add=False)
+    customer_login_history = models.DateTimeField(auto_now_add=False, blank = True,null = True)
     customer_resetcode = models.IntegerField(blank=True, null=True)
     joined_class = models.ManyToManyField(Class, blank = True)
     customer_age = models.IntegerField(blank=True, null = True)

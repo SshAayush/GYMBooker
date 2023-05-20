@@ -19,6 +19,6 @@ urlpatterns = [
     # path('dashboard/',views.dashboard, name='dashboard'),
     path('dashboard/',views.dashboard, name='dashboard'),
     path('logout/',views.logout, name='logout'),
-    path('addclass/',views.addclass, name='addclass'),
+    path('addclass/<str:pk>/',views.addclass, name='addclass'),
 
 ]

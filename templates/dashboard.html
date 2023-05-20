@@ -167,9 +167,9 @@
                 {{ class.class_startDay }} {% if class.class_endDay != "NONE"%}- {{ class.class_endDay }} {% endif %}: {{ class.class_time}}</i>
             </p>
               {% if class not in joined_classes %}
-              <button class="btn join-btn"><a href="{% url 'addclass' %}">Join now</a></button>
+              <button class="btn join-btn"><a href="{% url 'addclass' class.id %}">Join now</a></button>
               {% else %}
-              <button class="btn joined-btn"><a href="{% url 'addclass' %}">Joined</a></button>
+              <button class="btn joined-btn"><a href="{% url 'addclass' class.id %}">Joined</a></button>
               {% endif %}
           </div>
         </div>
