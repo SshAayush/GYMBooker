@@ -235,13 +235,11 @@ def dashboard(request):
         #acessing ManytoMany field
         customer_classes = customer_name.joined_class.all()
         count = 0
-        joined_classes = []
         for cls in customer_classes:
             print(cls)
-            joined_classes.append(cls)
             count += 1
     
-        return render(request, "dashboard.html", {'classes': classes, 'count': count, 'customer_name': customer_name, 'joined_classes': joined_classes})
+        return render(request, "dashboard.html", {'classes': classes, 'count': count, 'customer_name': customer_name, 'joined_classes': customer_classes})
     
     else:
         print("None active user available")
@@ -273,9 +271,9 @@ def addclass(request):
     customer_classes = customer_name.joined_class.all()
     count = 0
 
-    for cls in customer_classes:
-        print(cls)
-        count += 1
+    # for cls in customer_classes:
+    #     print(cls)
+    #     count += 1
 
-    return render(request, "dashboard.html", {'classes': classes, 'count': count, 'customer_name': customer_name})
-
+    # return render(request, "dashboard.html", {'classes': classes, 'count': count, 'customer_name': customer_name})
+    return redirect('dashboard')

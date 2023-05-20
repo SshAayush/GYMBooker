@@ -169,8 +169,8 @@
               {% if class not in joined_classes %}
               <button class="btn join-btn"><a href="{% url 'addclass' %}">Join now</a></button>
               {% else %}
-              <button class="btn joined-btn"><a href="#">Joined</a></button>
-              {% endif%}
+              <button class="btn joined-btn"><a href="{% url 'addclass' %}">Joined</a></button>
+              {% endif %}
           </div>
         </div>
         {% endfor %} 
@@ -257,36 +257,24 @@
         </p>
         <p class="time sun">Sunday - Closed</p>
       </div>
-      {% comment %} <div class="class-timing">
-
-        <div class="class-2 class">
-          <h2 class="hours">Class Timing</h2>
-          <img src="/static/image/classes/karate.jpg" alt="" />
-          <div class="class-content">
-            <h2 class="class-header">karate</h2>
-            <p class="trainer">
-              <i class="fa-regular fa-user"> John doe</i>
-              <i class="fa-regular fa-clock"> sat: 6: am</i>
-            </p>
+      <div class="class-timing">
+        <h2 class="hours">Class Timing</h2>
+        <div class="classes">
+          {% for j_class in joined_classes %}
+          <div class="class-1 class">
+            <img src="/{{ j_class.class_image }}" alt="" />
+            <div class="class-content">
+              <h2 class="class-header">{{ j_class.class_name }}</h2>
+              <p class="trainer">
+                <i class="fa-regular fa-user">{{ j_class.class_instructor }}</i>
+                <i class="fa-regular fa-clock">
+                  {{ j_class.class_startDay }} {% if j_class.class_endDay != "NONE"%}- {{ j_class.class_endDay }} {% endif %}: {{ j_class.class_time}}</i>
+              </p>
+            </div>
           </div>
-      </div> {% endcomment %}
-      <div class="classes">
-        {% for class in classes %}
-        {% if class not in joined_classes %}
-        {% else %}
-        <div class="class-1 class">
-          <img src="/{{ class.class_image }}" alt="" />
-          <div class="class-content">
-            <h2 class="class-header">{{ class.class_name }}</h2>
-            <p class="trainer">
-              <i class="fa-regular fa-user">{{ class.class_instructor }}</i>
-              <i class="fa-regular fa-clock">
-                {{ class.class_startDay }} {% if class.class_endDay != "NONE"%}- {{ class.class_endDay }} {% endif %}: {{ class.class_time}}</i>
-            </p>
-          </div>
+          {% endfor %} 
         </div>
-        {% endif%}
-        {% endfor %} 
+        </div>
       </div>
     </div>
 
