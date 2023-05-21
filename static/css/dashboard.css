@@ -284,11 +284,15 @@ header .image-text .header-text {
 
 .activity-right {
   width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 .activity-right img {
   border: 1px solid #695cfe;
   border-radius: 20px;
   filter: grayscale(100%);
+  width: calc(100% / 2);
 }
 .classes-container {
   position: relative;
@@ -466,6 +470,9 @@ header .image-text .header-text {
 }
 .working-hour {
   margin: 2rem 2rem;
+}
+.class-timing {
+  margin-left: 2rem;
 }
 .hours {
   margin-bottom: 1rem;
