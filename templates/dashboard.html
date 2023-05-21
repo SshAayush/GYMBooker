@@ -130,8 +130,12 @@
 
         <div class="box-3 box">
           <h2 class="header">Schedule</h2>
-          <p class="joined">See your Schedule in the gym</p>
-          <p class="joined-detail">Timings in the gym</p>
+          <p class="joined">
+            {% for u_class in upcoming_classes %}
+            <p class="joined-detail">{{ u_class.class_name }} - {{ u_class.class_time }}</p>
+            {% endfor %}
+          </p>
+          {% comment %} <p class="joined-detail">Timings in the gym</p> {% endcomment %}
         </div>
       </div>
     </div>

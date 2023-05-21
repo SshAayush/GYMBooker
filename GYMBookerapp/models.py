@@ -12,8 +12,6 @@ class Class(models.Model):
         ('Thu', 'Thursday'),
         ('Fri', 'Friday'),
         ('Sat', 'Saturday'),
-        ('Everyday', 'Everyday'),
-        ('NONE', 'NONE'),
     )
     class_startDay = models.CharField(max_length=8, choices=DAY_CHOICES, default='Sun')
     class_endDay = models.CharField(max_length=8, choices=DAY_CHOICES, default='Sun')

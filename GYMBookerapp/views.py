@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Customer, CustomerQuery, Class
+from django.db.models import Q  #the Q object is used to create complex queries with logical operators such as OR and AND.
 import random
 
 from django.urls import reverse
@@ -203,6 +204,7 @@ def send_offerEmail(request):
     # return render(request, "signin.html")
     return redirect('/admin/GYMBookerapp/customer/')
 
+#This function is used for customer Query
 def joinclass(request):
     if request.method == 'POST':
         name = request.POST['name']
@@ -238,13 +240,30 @@ def dashboard(request):
         for cls in customer_classes:
             print(cls)
             count += 1
-    
-        return render(request, "dashboard.html", {'classes': classes, 'count': count, 'customer_name': customer_name, 'joined_classes': customer_classes})
-    
+
+        #fetch upcoming classes
+        current_day = datetime.now().strftime('%a')  # Get abbreviated day name (e.g., Mon, Tue)
+        current_time = datetime.now().time()
+
+        # Filter the customer's joined classes based on the upcoming day and time
+        upcoming_classes = customer_classes.filter(
+            Q(class_startDay=current_day, class_time__gt=current_time) |  # Classes starting later today
+            Q(class_startDay__gt=current_day) |  # Classes starting on a future day
+            Q(class_endDay__gt=current_day)  # Classes ending on a future day
+        )
+
+        return render(request, "dashboard.html", {
+            'classes': classes,
+            'count': count,
+            'customer_name': customer_name,
+            'joined_classes': customer_classes,
+            'upcoming_classes':upcoming_classes,
+        })
     else:
         print("None active user available")
         return render(request, "signin.html")
     # return render(request, 'dashboard.html')
+
     
 
 def logout(request):
@@ -267,9 +286,6 @@ def addclass(request, pk):
     customer_name = Customer.objects.get(customer_username = customer_uname)
 
     # customer_classes = customer_name.joined_class.all()
-    # print(classes)
-
-    # print(customer_classes)
 
     #take the id of the class that user have just clicked and store it inot many to many field
 
