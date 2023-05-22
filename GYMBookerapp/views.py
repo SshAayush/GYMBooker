@@ -245,6 +245,7 @@ def dashboard(request):
         current_day = datetime.now().strftime('%a')  # Get abbreviated day name (e.g., Mon, Tue)
         current_time = datetime.now().time()
 
+        #views for Scheduled class on dashboarad
         # Filter the customer's joined classes based on the upcoming day and time
         upcoming_classes = customer_classes.filter(
             Q(class_startDay=current_day, class_time__gt=current_time) |  # Classes starting later today
@@ -252,12 +253,31 @@ def dashboard(request):
             Q(class_endDay__gt=current_day)  # Classes ending on a future day
         )
 
+        #views for Upcoming class on dashboarad
+        current_hour = current_time.hour
+        current_hour_add = current_time.hour+1
+        # print(type(current_hour))
+        # print(f'----{current_hour}----')
+        current_class= []
+        for classinfo in customer_classes:
+            # print(classinfo.class_time)
+            class_hour = classinfo.class_time.hour
+            # print(f'+++{class_hour}+++')
+            # print(type(class_hour))
+
+            # if class_hour >= current_time.hour and current_hour_add >= class_hour :
+            if class_hour >= current_hour and class_hour <= current_hour_add :
+                current_class.append(classinfo.class_name)
+
+        # print(current_class)
+
         return render(request, "dashboard.html", {
             'classes': classes,
             'count': count,
             'customer_name': customer_name,
             'joined_classes': customer_classes,
             'upcoming_classes':upcoming_classes,
+            'current_class':current_class,
         })
     else:
         print("None active user available")
@@ -265,7 +285,7 @@ def dashboard(request):
     # return render(request, 'dashboard.html')
 
     
-
+#have to remove only his session not whole server session
 def logout(request):
     # get the session id
     session_id = request.session.session_key
@@ -278,7 +298,7 @@ def logout(request):
 
     # remove the session cookie
     request.session.clear_expired()
-    return render(request, 'landingpage.html')
+    return redirect('landingpage')
 
 
 def addclass(request, pk):

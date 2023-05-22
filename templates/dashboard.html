@@ -120,8 +120,15 @@
       <div class="user-info">
         <div class="box-1 box">
           <h2 class="header">Joined class</h2>
-          <p class="joined">Currently joined class</p>
-          <p class="joined-detail">Details about joined class</p>
+          <p class="joined">
+            {% for r_class in current_class %}
+            {{r_class}}<br>
+            {% endfor %}
+            {% if current_class|length == 0 %}
+              <p class="joined-detail">Wooh time to have some rest</p>
+            {% endif %}
+          </p>
+          {% comment %} <p class="joined-detail">Details about joined class</p> {% endcomment %}
         </div>
         <div class="box-2 box">
           <h2 class="header">Profile</h2>
@@ -133,7 +140,7 @@
           <h2 class="header">Schedule</h2>
           <p class="joined">
             {% for u_class in upcoming_classes %}
-            <p class="joined-detail">{{ u_class.class_name }} - {{ u_class.class_time }}</p>
+              <p class="joined-detail">{{ u_class.class_name }} - {{ u_class.class_time }}</p>
             {% endfor %}
           </p>
           {% comment %} <p class="joined-detail">Timings in the gym</p> {% endcomment %}
