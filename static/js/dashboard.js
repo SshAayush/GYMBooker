@@ -59,3 +59,41 @@ function removeContainer() {
   scheduleContainer.style.display = "none";
   membershipContainer.style.display = "none";
 }
+
+// opening a preview
+
+const openModalButton = document.querySelectorAll("[data-modal-target]"); // selecting every classContainer
+const closeModalButton = document.querySelectorAll("[data-close-button]");
+
+const overlay = document.querySelector("#overlay");
+
+openModalButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    const modal = document.querySelector(button.dataset.modalTarget);
+    openModal(modal);
+  });
+});
+
+overlay.addEventListener("click", () => {
+  const modals = document.querySelectorAll(".preview-container.active");
+  modals.forEach((modal) => {
+    closeModal(modal);
+  });
+});
+
+closeModalButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    const modal = button.closest(".preview-container");
+    closeModal(modal);
+  });
+});
+function openModal(modal) {
+  if (modal == null) return;
+  modal.classList.add("active");
+  overlay.classList.add("active");
+}
+function closeModal(modal) {
+  if (modal == null) return;
+  modal.classList.remove("active");
+  overlay.classList.remove("active");
+}
