@@ -21,30 +21,6 @@ class Class(models.Model):
 
     def __str__(self):
         return self.class_name
-class Customer(models.Model):
-    customer_fname = models.CharField(max_length=100)
-    customer_lname = models.CharField(max_length=100)
-    customer_username = models.CharField(max_length=100)
-    customer_email = models.EmailField(max_length=100)
-    customer_password = models.CharField(max_length=250)
-    customer_login_history = models.DateTimeField(auto_now_add=False, blank = True,null = True)
-    customer_resetcode = models.IntegerField(blank=True, null=True)
-    joined_class = models.ManyToManyField(Class, blank = True)
-    customer_age = models.IntegerField(blank=True, null = True)
-    gender_choice = (
-        ('Male', 'Male'),
-        ('Female', 'Female'),
-        ('Others', 'Others'),
-    )
-    customer_gender = models.CharField(max_length = 6, choices = gender_choice,blank=True)
-    customer_phone = models.BigIntegerField(null = True,blank=True)
-    customer_address = models.CharField(max_length=500, blank=True)
-    customer_height = models.IntegerField(blank=True, null = True)
-    customer_weight = models.IntegerField(blank=True, null = True)
-    customer_bmi = models.IntegerField(blank=True, null = True)
-
-    def __str__(self):
-        return self.customer_fname + " " +self.customer_lname
 
 class CustomerQuery(models.Model):
     Cquery_name = models.CharField(max_length=100)
@@ -74,3 +50,30 @@ class Membership(models.Model):
     
     def __str__(self):
         return self.membership_name
+    
+
+class Customer(models.Model):
+    customer_fname = models.CharField(max_length=100)
+    customer_lname = models.CharField(max_length=100)
+    customer_username = models.CharField(max_length=100)
+    customer_email = models.EmailField(max_length=100)
+    customer_password = models.CharField(max_length=250)
+    customer_login_history = models.DateTimeField(auto_now_add=False, blank = True,null = True)
+    customer_resetcode = models.IntegerField(blank=True, null=True)
+    joined_class = models.ManyToManyField(Class, blank = True)
+    customer_age = models.IntegerField(blank=True, null = True)
+    gender_choice = (
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('Others', 'Others'),
+    )
+    customer_gender = models.CharField(max_length = 6, choices = gender_choice,blank=True)
+    customer_phone = models.BigIntegerField(null = True,blank=True)
+    customer_address = models.CharField(max_length=500, blank=True)
+    customer_height = models.IntegerField(blank=True, null = True)
+    customer_weight = models.IntegerField(blank=True, null = True)
+    customer_bmi = models.IntegerField(blank=True, null = True)
+    customer_membership = models.ForeignKey(Membership, on_delete=models.CASCADE, blank= True, null= True)
+
+    def __str__(self):
+        return self.customer_fname + " " +self.customer_lname

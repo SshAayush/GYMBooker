@@ -336,7 +336,7 @@
                     <li>{{ packages.membership_fac5 }}</li>
                   {% endif %}
               </div>
-              <button class="purchase btn"><a href="">Purchase Now</a></button>
+              <button class="purchase btn"><a href="{% url 'addmembership' packages.id %}">Purchase Now</a></button>
             </div>
           </div>
           {% endfor %}

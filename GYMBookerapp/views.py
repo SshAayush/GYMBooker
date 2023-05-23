@@ -317,3 +317,6 @@ def addclass(request, pk):
     customer_name.joined_class.add(classes)
 
     return redirect('dashboard')
+
+def addmembership(request,pk):
+    pass

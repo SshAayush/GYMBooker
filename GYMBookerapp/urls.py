@@ -20,5 +20,6 @@ urlpatterns = [
     path('dashboard/',views.dashboard, name='dashboard'),
     path('logout/',views.logout, name='logout'),
     path('addclass/<str:pk>/',views.addclass, name='addclass'),
+    path('addmembership/<str:pk>',views.addmembership, name='addmembership'),
 
 ]
