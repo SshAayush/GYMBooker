@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Customer, CustomerQuery, Class
+from .models import Customer, CustomerQuery, Class, Membership
 from django.db.models import Q  #the Q object is used to create complex queries with logical operators such as OR and AND.
 import random
 
@@ -269,6 +269,10 @@ def dashboard(request):
             if class_hour >= current_hour and class_hour <= current_hour_add :
                 current_class.append(classinfo.class_name)
 
+        
+        #Membership Page
+        membership = Membership.objects.all()
+
 
         return render(request, "dashboard.html", {
             'classes': classes,
@@ -277,6 +281,7 @@ def dashboard(request):
             'joined_classes': customer_classes,
             'upcoming_classes':upcoming_classes,
             'current_class':current_class,
+            'membership': membership,
         })
     else:
         print("None active user available")
