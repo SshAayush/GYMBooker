@@ -269,7 +269,6 @@ def dashboard(request):
             if class_hour >= current_hour and class_hour <= current_hour_add :
                 current_class.append(classinfo.class_name)
 
-        # print(current_class)
 
         return render(request, "dashboard.html", {
             'classes': classes,
