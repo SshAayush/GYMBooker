@@ -513,6 +513,9 @@ header .image-text .header-text {
 .p-inside h2 {
   color: #333;
 }
+.inside-list {
+  min-height: 10rem;
+}
 .inside-list li {
   list-style: none;
   padding: 0.2rem;
@@ -520,7 +523,7 @@ header .image-text .header-text {
 .pack {
   width: 25%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  min-height: 550px;
+  /* min-height: 550px; */
 }
 
 .pack-img img {
