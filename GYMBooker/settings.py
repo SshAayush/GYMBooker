@@ -181,6 +181,9 @@ JAZZMIN_SETTINGS = {
         "GYMBookerapp.Customer": "fas fa-user",
         "GYMBookerapp.CustomerQuery": "fas fa-comments",
         "GYMBookerapp.Class": "fas fa-dumbbell",
+        "GYMBookerapp.Membership": "fas fa-key",
+        "GYMBookerapp.Facility": "fas fa-building",
+
     },
     "order_with_respect_to": ["GYMBookerapp.Customer",],
     

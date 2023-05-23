@@ -54,3 +54,23 @@ class CustomerQuery(models.Model):
 
     def __str__(self):
         return self.Cquery_name
+    
+class Facility(models.Model):
+    facility_name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.facility_name
+
+
+class Membership(models.Model):
+    membership_name = models.CharField(max_length=100)
+    membership_price = models.IntegerField(null= False)
+    membership_fac1 = models.ForeignKey(Facility, on_delete=models.CASCADE, blank= True, null= True, related_name='membership_fac1_set')
+    membership_fac2 = models.ForeignKey(Facility, on_delete=models.CASCADE, blank= True, null= True, related_name='membership_fac2_set')
+    membership_fac3 = models.ForeignKey(Facility, on_delete=models.CASCADE, blank= True, null= True, related_name='membership_fac3_set')
+    membership_fac4 = models.ForeignKey(Facility, on_delete=models.CASCADE, blank= True, null= True, related_name='membership_fac4_set')
+    membership_fac5 = models.ForeignKey(Facility, on_delete=models.CASCADE, blank= True, null= True, related_name='membership_fac5_set')
+    membership_image = models.ImageField(upload_to='static/image/membership/')
+    
+    def __str__(self):
+        return self.membership_name

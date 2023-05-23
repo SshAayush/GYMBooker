@@ -160,8 +160,10 @@
         </p>
       </div>
       <div class="activity-right">
-        <!-- <h1 class="class-title">Weightlifting</h1> -->
-        <img src="/static/image/classes/powerlifting.jpg" alt="class img" />
+        {% for j_classes in joined_classes %}
+          {% comment %} <h1 class="class-title">{{j_classes.class_name}}</h1> {% endcomment %}
+          <img src="/{{ j_classes.class_image }}" alt="class img" />
+        {% endfor %}
       </div>
     </div>
 
@@ -323,26 +325,37 @@
 
       <div class="memberships">
         <div class="pricing-container">
+          {% for packages in membership %}
           <div class="begineer-pack pack">
             <div class="pack-img">
-              <img src="/static/image/pricing/img1.jpg" alt="image-1" />
+              <img src="/{{ packages.membership_image }}" alt="image-1" />
             </div>
             <div class="begineer-content p-inside">
-              <h2 class="price-heading">Begineers</h2>
-              <h2 class="pack-price">Rs.2069 p/m</h2>
+              <h2 class="price-heading">{{ packages.membership_name }}</h2>
+              <h2 class="pack-price">Rs.{{packages.membership_price}} p/m</h2>
               <div class="inside-list">
                 <ul>
-                  <li>Free Hand</li>
-                  <li>Gym Fitness</li>
-                  <li>Weight Loss</li>
-                  <li>personal training</li>
-                  <li>cycling</li>
-                </ul>
+                  {% if packages.membership_fac1%}
+                    <li>{{ packages.membership_fac1 }}</li>
+                  {% endif %}
+                  {% if packages.membership_fac2%}
+                    <li>{{ packages.membership_fac2 }}</li>
+                  {% endif %}
+                  {% if packages.membership_fac3 %}
+                    <li>{{ packages.membership_fac3 }}</li>
+                  {% endif %}
+                  {% if packages.membership_fac4%}
+                    <li>{{ packages.membership_fac4 }}</li>
+                  {% endif %}
+                  {% if packages.membership_fac5%}
+                    <li>{{ packages.membership_fac5 }}</li>
+                  {% endif %}
               </div>
               <button class="purchase btn"><a href="">Purchase Now</a></button>
             </div>
           </div>
-          <div class="medium-pack pack">
+          {% endfor %}
+          {% comment %} <div class="medium-pack pack">
             <div class="pack-img">
               <img src="/static/image/pricing/img2.jpg" alt="image-2" />
             </div>
@@ -378,9 +391,9 @@
                 </ul>
               </div>
               <button class="purchase btn"><a href="">Purchase Now</a></button>
-            </div>
+            </div> 
+          </div>{% endcomment %}
           </div>
-        </div>
 
       </div>
       
