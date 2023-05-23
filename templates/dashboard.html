@@ -55,7 +55,7 @@
             <li class="nav-link">
               <a href="#">
                 <i class="bx bx-tv icon"></i>
-                <span id="classes" class="text nav-text span-btn">Available Classes</span>
+                <span id="classes" class="text nav-text span-btn">Classes</span>
               </a>
             </li>
             <li class="nav-link">
@@ -165,7 +165,7 @@
       </div>
     </div>
 
-    <div class="classes-container container" id="class-container">
+    <div class="classes-container container"              id="class-container">
       <h2 class="class-header">Add additional classes to your package</h2>
       <div class="classes">
         {% for class in classes %}
@@ -186,8 +186,23 @@
               {% endif %}
           </div>
         </div>
+        
         {% endfor %} 
+       
       </div>
+      <div class="preview-container">
+        <button class="preview-close">&times;</button>
+        <div class="preview-header">
+          <h3>MMA</h3>
+        </div>
+        <div class="preview-img">
+          <img src="/static/image/classes/mma.jpg" alt="" />
+        </div>
+        <div class="preview-info">
+          <p>Mixed martial arts (MMA) is a full-contact combat sport that allows a wide variety of fighting techniques and skills from a mixture of other combat sports to be used in competition. The rules allow usage of both striking and grappling techniques while standing and on the ground. Competitions allow athletes of different disciplines of martial arts to compete under a set of unified rules.</p>
+        </div>
+      </div>
+      <div id ="overlay"></div>
     </div>
 
     <div class="profile-container container">
