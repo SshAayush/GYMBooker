@@ -271,7 +271,7 @@ def dashboard(request):
 
         
         #Membership Page
-        membership = Membership.objects.all()
+        
 
 
         return render(request, "dashboard.html", {
@@ -319,4 +319,12 @@ def addclass(request, pk):
     return redirect('dashboard')
 
 def addmembership(request,pk):
-    pass
+    customer_uname = request.session.get('username')
+    customer_name = Customer.objects.get(customer_username = customer_uname)
+
+    membership = Membership.objects.get(id=pk)  # Retrieve a customer object by its primary key
+    print(f'-----{membership}----')
+    # customer_name.customer_membership.add(membership)
+    customer_name.customer_membership = membership
+    customer_name.save()
+    return redirect('dashboard')
