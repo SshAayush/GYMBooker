@@ -501,7 +501,7 @@ header .image-text .header-text {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 .p-inside {
   text-align: center;
@@ -667,4 +667,9 @@ header .image-text .header-text {
 #overlay.active {
   opacity: 1;
   pointer-events: all;
+}
+
+.join-btn:hover {
+  background-color: #333;
+  border: none;
 }
