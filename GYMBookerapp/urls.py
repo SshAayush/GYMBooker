@@ -21,5 +21,6 @@ urlpatterns = [
     path('logout/',views.logout, name='logout'),
     path('addclass/<str:pk>/',views.addclass, name='addclass'),
     path('addmembership/<str:pk>',views.addmembership, name='addmembership'),
+    path('cancelmembership/', views.cancelmembership, name = 'cancelmembership'),
 
 ]

@@ -167,7 +167,7 @@
       </div>
     </div>
 
-    <div class="classes-container container"              id="class-container">
+    <div class="classes-container container" id="class-container">
       <h2 class="class-header">Add additional classes to your package</h2>
       <div class="classes">
         {% for class in classes %}
@@ -184,7 +184,7 @@
               {% if class not in joined_classes %}
               <button class="btn join-btn"><a href="{% url 'addclass' class.id %}">Join now</a></button>
               {% else %}
-              <button class="btn joined-btn"><a href="{% url 'addclass' class.id %}">Joined</a></button>
+              <button class="btn joined-btn"><a href="#">Joined</a></button>
               {% endif %}
           </div>
         </div>
@@ -315,11 +315,11 @@
       <!-- <h2 class="header-mem">Membership</h2> -->
 
       <div class="member-status">
-        <p class="joined-curr">Currently subscribed -  <span>NONE</span></p>
-        <p class="joined-on">subscribed date -  <span>NONE</span></p>
-        <p class="expires-on">expire date -  <span>NONE</span></p>
+        <p class="joined-curr">Currently subscribed -  <span>{{ customer_name.customer_membership }}</span></p>
+        <p class="joined-on">subscribed date -  <span>{{ customer_name.customer_membership_joinedDate }}</span></p>
+        <p class="expires-on">expire date -  <span>{{ customer_name.customer_membership_exipredDate }}</span></p>
         <button class="change">change membership</button>
-        <button class="cancel">cancel membership</button>
+        <button class="cancel"><a href="{% url 'cancelmembership' %}">cancel membership</a></button>
 
       </div>
 
@@ -352,7 +352,11 @@
                     <li>{{ packages.membership_fac5 }}</li>
                   {% endif %}
               </div>
-              <button class="purchase btn"><a href="{% url 'addmembership' packages.id %}">Purchase Now</a></button>
+              {% if not customer_name.customer_membership %}
+                <button class="purchase btn"><a href="{% url 'addmembership' packages.id %}">Purchase Now</a></button>
+              {% else %}
+                <button class="purchased btn"><a href="">Purchased</a></button>
+              {% endif %}
             </div>
           </div>
           {% endfor %}

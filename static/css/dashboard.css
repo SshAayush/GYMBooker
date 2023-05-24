@@ -382,10 +382,6 @@ header .image-text .header-text {
   font-size: 18px;
   display: block;
 }
-.joined-btn:hover {
-  border: 1px solid gray;
-  background-color: transparent;
-}
 
 /* profile container  */
 .profile-container {
@@ -547,6 +543,23 @@ header .image-text .header-text {
 .purchase:hover {
   background-color: black;
 }
+
+.purchased {
+  width: 8rem;
+  height: 3rem;
+  margin: 1rem 1rem;
+  background-color: grey;
+  border-radius: 10px;
+  border: none;
+  transition: ease-in-out 0.3s;
+}
+.purchased a {
+  width: 8rem;
+  height: 3rem;
+  color: #fff;
+  text-decoration: none;
+}
+
 .member-status {
   background-color: var(--toggle-color);
   padding: 2rem 1rem;
@@ -581,6 +594,14 @@ header .image-text .header-text {
 .cancel:hover {
   background-color: black;
 }
+
+.cancel a{
+  width: 8rem;
+  height: 3rem;
+  color: #fff;
+  text-decoration: none;
+}
+
 /* preview pop-up */
 .preview-container {
   position: fixed;

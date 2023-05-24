@@ -271,7 +271,7 @@ def dashboard(request):
 
         
         #Membership Page
-        
+        membership = Membership.objects.all()
 
 
         return render(request, "dashboard.html", {
@@ -319,6 +319,8 @@ def addclass(request, pk):
     return redirect('dashboard')
 
 def addmembership(request,pk):
+    currentdate = datetime.now().date()
+
     customer_uname = request.session.get('username')
     customer_name = Customer.objects.get(customer_username = customer_uname)
 
@@ -326,5 +328,26 @@ def addmembership(request,pk):
     print(f'-----{membership}----')
     # customer_name.customer_membership.add(membership)
     customer_name.customer_membership = membership
+
+    print(f'Date:{currentdate}')
+    customer_name.customer_membership_joinedDate = currentdate
+
+    threshold_date = timezone.now() + timedelta(days=30)
+    customer_name.customer_membership_exipredDate = threshold_date.date()
+
     customer_name.save()
     return redirect('dashboard')
+
+def cancelmembership(request):
+
+    customer_uname = request.session.get('username')
+    customer_name = Customer.objects.get(customer_username = customer_uname)
+
+    customer_name.customer_membership = None  # Set the membership to None
+    customer_name.customer_membership_joinedDate = None
+    customer_name.customer_membership_exipredDate = None
+
+    customer_name.save()
+
+    return redirect('dashboard')
+
