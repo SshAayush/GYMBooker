@@ -273,6 +273,21 @@ def dashboard(request):
         #Membership Page
         membership = Membership.objects.all()
 
+        #Check for Membership expiry date
+        # Check membership expiry date
+        current_date = datetime.now().date()
+        membership_expiry_date = customer_name.customer_membership_exipredDate if customer_name.customer_membership else None
+        
+        if membership_expiry_date and membership_expiry_date >= current_date:
+            # Membership is active
+            is_membership_active = True
+        else:
+            # Membership is expired or not available
+            is_membership_active = False
+            customer_name.customer_membership = None
+            customer_name.save()
+        
+        print(f'----------{is_membership_active}-------')
 
         return render(request, "dashboard.html", {
             'classes': classes,
@@ -333,6 +348,7 @@ def addmembership(request,pk):
     customer_name.customer_membership_joinedDate = currentdate
 
     threshold_date = timezone.now() + timedelta(days=30)
+    # threshold_date = timezone.now() + timedelta(days=1)
     customer_name.customer_membership_exipredDate = threshold_date.date()
 
     customer_name.save()

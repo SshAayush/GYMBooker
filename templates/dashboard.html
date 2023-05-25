@@ -111,10 +111,10 @@
     <div class="dash-container container" id="dashboard-container">
       <div class="user-details">
         <p class="u-name">{{ customer_name.customer_fname }} {{ customer_name.customer_lname }}</p>
-        <p class="u-age">User-age</p>
-        <p class="u-sex">User-sex</p>
+        <p class="u-age">{{ customer_name.customer_age }}</p>
+        <p class="u-sex">{{ customer_name.customer_gender }}</p>
         <p class="u-dob">User-dob</p>
-        <p class="u-package">User-package</p>
+        <p class="u-package">{{ customer_name.customer_membership }}</p>
       </div>
 
       <div class="user-info">
@@ -188,13 +188,13 @@
               {% endif %}
           </div>
         </div>
-        
         {% endfor %} 
        
       </div>
-      <div class="preview-container ">
+      {% for all_classes in classes %}
+      <div class="preview-container">
         <div class="preview-header">
-          <h3>MMA</h3>
+          <h3>{{ all_classes.class_name }}</h3>
           <button data-close-button class="preview-close">&times;</button>
         </div>
         <div class="preview-img">
@@ -205,12 +205,12 @@
         </div>
         <div class="preview-info">
           <p>Mixed martial arts (MMA) is a full-contact combat sport that allows a wide variety of fighting techniques and skills from a mixture of other combat sports to be used in competition. The rules allow usage of both striking and grappling techniques while standing and on the ground. Competitions allow athletes of different disciplines of martial arts to compete under a set of unified rules.</p>
-
           <button class="btn join-btn"><a href="">Join now</a></button>  
-
         </div>
       </div>
-      <div id ="overlay"></div>
+      {% endfor %}
+    <div id="overlay"></div>
+
     </div>
 
     <div class="profile-container container">
@@ -250,8 +250,8 @@
             <p class="email">{{ customer_name.customer_email }}</p>
             <p class="age">{{ customer_name.customer_age }}</p>
             <p class="gender">{{ customer_name.customer_gender }}</p>
-            <p class="role">Role</p>
-            <button class="trainer-role" disabled="disabled">Trainer</button>
+            <p class="role">Active Plan</p>
+            <button class="trainer-role" disabled="disabled">{{ customer_name.customer_membership }}</button>
           </div>
         </div>
 
