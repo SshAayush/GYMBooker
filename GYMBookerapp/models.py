@@ -1,23 +1,19 @@
 from django.db import models
 
 # Create your models here.
+
+class Days(models.Model):
+    day = models.CharField(max_length=9, blank=True, null= True)
+
+    def __str__(self):
+        return self.day
 class Class(models.Model):
     class_name = models.CharField(max_length=100)
     class_instructor = models.CharField(max_length=100)
-    DAY_CHOICES = (
-        ('Sun', 'Sunday'),
-        ('Mon', 'Monday'),
-        ('Tue', 'Tuesday'),
-        ('Wed', 'Wednesday'),
-        ('Thu', 'Thursday'),
-        ('Fri', 'Friday'),
-        ('Sat', 'Saturday'),
-    )
-    class_startDay = models.CharField(max_length=8, choices=DAY_CHOICES, default='Sun')
-    class_endDay = models.CharField(max_length=8, choices=DAY_CHOICES, default='Sun')
     class_time = models.TimeField(auto_now_add=False)
     class_image = models.ImageField(upload_to='static/image/classes/')
     class_info = models.CharField(max_length=1000)
+    class_day = models.ManyToManyField(Days, blank = True)
 
     def __str__(self):
         return self.class_name

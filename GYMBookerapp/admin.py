@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Customer,CustomerQuery, Class, Membership, Facility
+from .models import Customer,CustomerQuery, Class, Membership, Facility, Days
 
 #used to add custom button in admin panel
 from django_object_actions import DjangoObjectActions
@@ -39,3 +39,5 @@ admin.site.register(Class)
 admin.site.register(Membership)
 
 admin.site.register(Facility)
+
+# admin.site.register(Days)

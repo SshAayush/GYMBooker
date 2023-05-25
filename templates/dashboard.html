@@ -171,15 +171,23 @@
       <h2 class="class-header">Add additional classes to your package</h2>
       <div class="classes">
         {% for class in classes %}
-       
-        <div class="class-1 class" data-modal-target=".preview-container">
+        <div class="class-1 class" data-modal-target=".preview-container-{{class.id}}">
           <img src="/{{ class.class_image }}" alt="" />
           <div class="class-content">
             <h2 class="class-header">{{ class.class_name }}</h2>
             <p class="trainer">
               <i class="fa-regular fa-user">{{ class.class_instructor }}</i>
-              <i class="fa-regular fa-clock">
-                {{ class.class_startDay }} {% if class.class_endDay != "NONE"%}- {{ class.class_endDay }} {% endif %}: {{ class.class_time}}</i>
+              {% if class.class_day.count > 1 %}
+                <i class="fa-regular fa-clock">
+                  {{ class.class_day.first.day }} - {{ class.class_day.last.day }} : {{ class.class_time }}
+                </i>
+              {% else %}
+                {% for day in class.class_day.all %}
+                  <i class="fa-regular fa-clock">
+                    {{ day.day }} - {{ day.day }} : {{ class.class_time }}
+                  </i>
+                {% endfor %}
+              {% endif %}
             </p>
               {% if class not in joined_classes %}
               <button class="btn join-btn"><a href="{% url 'addclass' class.id %}">Join now</a></button>
@@ -191,22 +199,26 @@
         {% endfor %} 
        
       </div>
-      {% for all_classes in classes %}
-      <div class="preview-container">
+      {% for class in classes %}
+      <div class="preview-container preview-container-{{class.id}}">
         <div class="preview-header">
-          <h3>{{ all_classes.class_name }}</h3>
+          <h3>{{ class.class_name }}</h3>
           <button data-close-button class="preview-close">&times;</button>
         </div>
         <div class="preview-img">
-          <img src="/static/image/classes/mma.jpg" alt="" />
+          <img src="/{{ class.class_image }}" alt="" />
         </div>
         <div class="preview-info">
-          <p>Mixed martial arts (MMA) is a full-contact combat sport that allows a wide variety of fighting techniques and skills from a mixture of other combat sports to be used in competition. The rules allow usage of both striking and grappling techniques while standing and on the ground. Competitions allow athletes of different disciplines of martial arts to compete under a set of unified rules.</p>
-          <button class="btn join-btn"><a href="">Join now</a></button>  
+          <p>{{ class.class_info }}</p>
+            {% if class not in joined_classes %}
+              <button class="btn join-btn"><a href="{% url 'addclass' class.id %}">Join now</a></button>
+              {% else %}
+              <button class="btn joined-btn"><a href="#">Joined</a></button>
+            {% endif %}
         </div>
       </div>
       {% endfor %}
-    <div id="overlay"></div>
+      <div id="overlay"></div>
 
     </div>
 
