@@ -236,56 +236,77 @@ def dashboard(request):
 
         #acessing ManytoMany field
         customer_classes = customer_name.joined_class.all()
-        count = 0
-        for cls in customer_classes:
-            print(cls)
-            count += 1
-
         #fetch upcoming classes
         current_day = datetime.now().strftime('%a')  # Get abbreviated day name (e.g., Mon, Tue)
         current_time = datetime.now().time()
         current_date = datetime.now().date()
 
-        #views for Scheduled class on dashboarad
+        #views for Scheduled class on dashboard
+        # upcoming_classes = ""
+
+        classes = Class.objects.all()
+
+        count = 0
+        # for cls in customer_classes:
+        #     print(cls)
+        #     count += 1
 
 
-        # Filter the customer's joined classes based on the upcoming day and time
-        # customer_classes = Customer.objects.get(customer_username=u_username).joined_class.all()
-        # upcoming_classes = Class.objects.filter(
-        #     Q(class_day__day__contains=current_day) |  # Classes with the current day in their week
-        #     Q(class_day__day__gt=current_day)  # Classes starting on a future day
-        # ).exclude(
-        #     Q(class_day__day=current_day, class_time__lt=current_time) |  # Exclude classes that have already ended
-        #     Q(class_day__day=current_day, class_time=current_time)  # Exclude classes that are currently ongoing
-        # ).filter(
-        #     id__in=customer_classes.values_list('id', flat=True)  # Filter classes based on joined classes of the user
-        # ).order_by('class_day', 'class_time')[:2]  # Retrieve the first two upcoming classes
-                    
-                    
-        #views for Upcoming class on dashboarad
         current_hour = current_time.hour
         current_hour_add = current_time.hour+1
-        # print(type(current_hour))
-        # print(f'----{current_hour}----')
+        # # print(type(current_hour))
+        # # print(f'----{current_hour}----')
         current_class= []
-        # upcoming_classes=[]
-        for classinfo in customer_classes:
-            # print(classinfo.class_time)
-            class_hour = classinfo.class_time.hour
-            class_day = classinfo.class_day
-            # print(f'+++{class_hour}+++')
-            # print(type(class_hour))
-
-            #schedule ko part
-            # if class_hour >= current_time.hour and current_hour_add >= class_hour :
+        upcoming_classes=[]
+        
+        for cls in customer_classes:
+            count += 1
+            print(f"------{cls.class_name}-----")
+            print(f"------{cls.class_time}-----")
+            
+            class_days = cls.class_day.all()  # Access the ManyToManyField related objects
+            
+            
+            class_hour = cls.class_time.hour
+            # print(f'++{class_hour}++')
+            # print(f'++{current_hour}++')
+            # print(f'++{current_day}++')
+            # join
             if class_hour >= current_hour and class_hour <= current_hour_add:
-                if class_day == current_day:
-                    current_class.append(classinfo.class_name)
+                print(f'++{class_hour}++')
+                for day in class_days:
+                    print(day.day)  # Access the 'day' attribute of the 'Days' model
+                    if day.day == current_day:
+                        current_class.append(cls.class_name)
+                        # print(f'+222+{current_class}++')
 
-            #joined classes ko part
-            # if class_hour <= current_hour:
-            #     if class_day == current_day:
-            #         upcoming_classes.append(classinfo.class_name)
+# schedule
+            if class_hour > current_hour:
+                for day in class_days:
+                    if day.day == current_day:
+                        upcoming_classes.append(cls.class_name)
+                        # print(upcoming_classes)
+                        print(f'+5545454{upcoming_classes}++')
+
+
+
+
+        
+   
+
+
+
+        # for classinfo in customer_classes:
+        #     # print(classinfo.class_time)
+        #     class_day = classinfo.class_day
+        #     print(f'+++{class_hour}+++')
+        #     print(f'---{class_day}----')
+        #     print(type(class_hour))
+
+            # #schedule ko part
+            # # if class_hour >= current_time.hour and current_hour_add >= class_hour :
+
+            # #joined classes ko part
 
             
 
@@ -306,7 +327,7 @@ def dashboard(request):
             customer_name.customer_membership = None
             customer_name.save()
         
-        print(f'----------{is_membership_active}-------')
+            
 
         return render(request, "dashboard.html", {
             'classes': classes,
@@ -315,8 +336,8 @@ def dashboard(request):
             'joined_classes': customer_classes,
             'current_class':current_class,
             'membership': membership,
+            'upcoming_classes':upcoming_classes,
         })
-    # 'upcoming_classes':upcoming_classes,
     else:
         print("None active user available")
         return render(request, "signin.html")
