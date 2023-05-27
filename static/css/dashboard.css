@@ -538,6 +538,9 @@ header .image-text .header-text {
   border: none;
   transition: ease-in-out 0.3s;
 }
+.contain {
+  color: #fff;
+}
 .purchase a {
   width: 8rem;
   height: 3rem;
@@ -676,4 +679,128 @@ header .image-text .header-text {
 .join-btn:hover {
   background-color: #333;
   border: none;
+}
+
+/* manage Account  */
+.manage-container {
+  margin-left: 15.7rem;
+  max-width: 100vw;
+  height: 100vh;
+  overflow-y: hidden;
+  display: none;
+}
+.manage-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 4rem;
+  background-color: var(--toggle-color);
+}
+.nav-btns .btns {
+  width: 12rem;
+  margin: 0 1rem;
+}
+.manage-header {
+  color: #333;
+  font-size: 24px;
+  font-weight: 700;
+}
+.profile-settings {
+  margin-top: 5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.upload-container {
+  width: 500px;
+  height: 150px;
+  border: 1px solid #958d8db3;
+  border-radius: 10px;
+  background-color: #d6c8c84f;
+}
+.upload-container i {
+  width: 2rem;
+  height: 2rem;
+  margin-top: 1rem;
+  background-color: #fff;
+  border-radius: 50%;
+  padding-top: 0.5rem;
+}
+.upload-container p {
+  font-size: 14px;
+  text-transform: capitalize;
+  margin-top: 0.5rem;
+}
+.image-btn {
+  margin-top: 1rem;
+}
+.u-btn {
+  background-color: rgb(113, 215, 113);
+  font-size: 14px;
+  border: none;
+  color: #fff;
+  width: 8rem;
+  height: 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: ease-in-out 0.3s;
+}
+.d-btn {
+  font-size: 14px;
+  border: none;
+  color: #fff;
+  width: 8rem;
+  height: 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: ease-in-out 0.3s;
+  background-color: red;
+}
+.btns:hover {
+  background-color: black;
+}
+.update-profile {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.update-profile input {
+  width: 12rem;
+  height: 2rem;
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 0.5rem;
+  border: none;
+}
+.personal-info {
+  width: 40%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  min-height: 20rem;
+}
+.personal-info h3 {
+  font-size: 24px;
+  margin: 2rem 3rem;
+  text-align: center;
+  text-transform: capitalize;
+}
+.physical-info {
+  width: 40%;
+  /* border: 1px solid black; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  min-height: 20rem;
+}
+.physical-info h3 {
+  margin: 2rem 3rem;
+  font-size: 24px;
+  text-align: center;
+  text-transform: capitalize;
+}
+form button {
+  margin: 1rem 0;
 }
