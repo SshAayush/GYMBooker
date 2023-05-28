@@ -122,7 +122,7 @@
           <h2 class="header">Joined class</h2>
           <p class="joined">
             {% for r_class in current_class %}
-            {{r_class}}<br>
+              <p class="joined-detail">{{r_class}}</p><br>
             {% endfor %}
             {% if current_class|length == 0 %}
               <p class="joined-detail">Wooh time to have some rest</p>
@@ -142,6 +142,9 @@
             {% for u_class in upcoming_classes %}
               <p class="joined-detail">{{ u_class }}</p>
             {% endfor %}
+            {% if upcoming_classes|length == 0 %}
+              <p class="joined-detail">Wooh time to have some rest</p>
+            {% endif %}
           </p>
           {% comment %} <p class="joined-detail">Timings in the gym</p> {% endcomment %}
         </div>
