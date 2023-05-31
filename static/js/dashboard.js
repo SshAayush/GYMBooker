@@ -7,8 +7,8 @@ const activityButton = document.querySelector("#activity");
 const profileButton = document.querySelector(".box-2");
 const scheduleButton = document.querySelector("#schedule");
 const scheduleBox = document.querySelector(".box-3");
-
 const membershipButton = document.querySelector("#membership");
+const manageAccButton = document.querySelector("#manageAccount");
 // selecting containers
 const dashContainer = document.querySelector("#dashboard-container");
 const classesContainer = document.querySelector("#class-container");
@@ -16,6 +16,7 @@ const activityContainer = document.querySelector("#activity-container");
 const profileContainer = document.querySelector(".profile-container");
 const scheduleContainer = document.querySelector(".schedule-container");
 const membershipContainer = document.querySelector(".membership-container");
+const manageAccContainer = document.querySelector(".manage-container");
 
 dashboardButton.addEventListener("click", () => {
   removeContainer();
@@ -50,6 +51,11 @@ membershipButton.addEventListener("click", () => {
   membershipContainer.style.display = "block";
 });
 
+manageAccButton.addEventListener("click", () => {
+  removeContainer();
+  manageAccContainer.style.display = "block";
+});
+
 // removing every container
 function removeContainer() {
   dashContainer.style.display = "none";
@@ -58,6 +64,7 @@ function removeContainer() {
   profileContainer.style.display = "none";
   scheduleContainer.style.display = "none";
   membershipContainer.style.display = "none";
+  manageAccContainer.style.display = "none";
 }
 
 // opening a preview

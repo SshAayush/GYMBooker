@@ -11,13 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
     {% endcomment %}
     <link rel="stylesheet" href="/static/css/dashboard.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
    
   </head>
   <body>
@@ -80,7 +74,7 @@
             <li class="nav-link">
               <a href="#">
                 <i class="bx bxs-folder-open icon"></i>
-                <span class="text nav-text btn">Manage Account</span>
+                <span id="manageAccount" class="text nav-text btn">Manage Account</span>
               </a>
             </li>
           </ul>
@@ -344,9 +338,9 @@
       <!-- <h2 class="header-mem">Membership</h2> -->
 
       <div class="member-status">
-        <p class="joined-curr">Currently subscribed -  <span>{{ customer_name.customer_membership }}</span></p>
-        <p class="joined-on">subscribed date -  <span>{{ customer_name.customer_membership_joinedDate }}</span></p>
-        <p class="expires-on">expire date -  <span>{{ customer_name.customer_membership_exipredDate }}</span></p>
+        <p class="joined-curr contain">Currently subscribed -  <span>{{ customer_name.customer_membership }}</span></p>
+        <p class="joined-on contain">subscribed date -  <span>{{ customer_name.customer_membership_joinedDate }}</span></p>
+        <p class="expires-on contain">expire date -  <span>{{ customer_name.customer_membership_exipredDate }}</span></p>
         <button class="change">change membership</button>
         <button class="cancel"><a href="{% url 'cancelmembership' %}">cancel membership</a></button>
 
@@ -437,12 +431,61 @@
 
               <div class="manage-container">
                 <div class="manage-nav">
-                  <ul>
-                      <li>Home</li>
-                      <li>Class</li>
-                      <li>Membership</li>
-                      <li>account</li>
-                  </ul>
+                  <h3 class="manage-header">Account settings</h3>
+                  <div class="nav-btns">
+                    <button class="u-btn btns">Change Password</button>
+                    <button class="d-btn btns">Delete Account</button>
+                  </div>
+                </div>
+                <div class="profile-settings">
+                  <div class="upload-container">
+                    <i class="fa-regular fa-user"></i>
+                    <p>image must be 256 x 256px -Max 2MB</p>
+                    <div class="image-btn">
+                      <button class="btns u-btn">Upload image</button>
+                      <button class="btns d-btn">Delete image</button>
+                    </div>
+                  </div>
+                  <div class="update-profile">
+                    <div class="personal-info">
+                      <h3>Update your profile information</h3>
+                      <form action="#" method="post">
+                        <div class="name-input">
+                          <input type="text" id="fname" placeholder="First Name">
+                          <input type="text" id="lname" placeholder="Last Name">
+                        </div>
+                        <input type="email" id="email" placeholder="Email">
+                        <br>
+                        <input type="number" id="phone" placeholder="Phone Number">
+                        <br>
+                        <button class="btns u-btn">Update</button>
+                      </form>
+                    </div>
+                    <div class="physical-info">
+                      <h3>Update your physical info</h3>
+                      <div class="bmi-input">
+                        <input
+                          type="number"
+                          name="weight"
+                          id="weight"
+                          placeholder="Weight/Kg"
+                        />
+                        <br>
+              
+                        <input
+                          type="number"
+                          name="height"
+                          id="height"
+                          placeholder="Height/Cm"
+                        />
+                        <br />
+                       
+                        <p class="bmi-ans">Your BMI is -  <span class="ans">0</span></p>
+                      </div>
+
+                    </div>
+                  </div>
+
                 </div>
               </div>
           
