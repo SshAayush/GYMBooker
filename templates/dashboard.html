@@ -318,8 +318,17 @@
               <h2 class="class-header">{{ j_class.class_name }}</h2>
               <p class="trainer">
                 <i class="fa-regular fa-user">{{ j_class.class_instructor }}</i>
+                {% if j_class.class_day.count > 1 %}
                 <i class="fa-regular fa-clock">
-                  {{ j_class.class_startDay }} {% if j_class.class_endDay != "NONE"%}- {{ j_class.class_endDay }} {% endif %}: {{ j_class.class_time}}</i>
+                  {{ j_class.class_day.first.day }} - {{ j_class.class_day.last.day }} : {{ j_class.class_time }}
+                </i>
+              {% else %}
+                {% for day in j_class.class_day.all %}
+                  <i class="fa-regular fa-clock">
+                    {{ day.day }} - {{ day.day }} : {{ j_class.class_time }}
+                  </i>
+                {% endfor %}
+              {% endif %}
               </p>
             </div>
           </div>

@@ -271,6 +271,7 @@ def dashboard(request):
             # print(f'++{class_hour}++')
             # print(f'++{current_hour}++')
             # print(f'++{current_day}++')
+
             # join
             if class_hour >= current_hour and class_hour <= current_hour_add:
                 print(f'++{class_hour}++')
@@ -280,7 +281,7 @@ def dashboard(request):
                         current_class.append(cls.class_name)
                         # print(f'+222+{current_class}++')
 
-# schedule
+            # schedule
             if class_hour > current_hour:
                 for day in class_days:
                     if day.day == current_day:
@@ -288,29 +289,11 @@ def dashboard(request):
                         # print(upcoming_classes)
                         print(f'+5545454{upcoming_classes}++')
 
+        #calculate BMI
+        bmi = customer_name.customer_weight / (customer_name.customer_height/100)**2
+        customer_name.customer_bmi = round(bmi, 2)
+        customer_name.save()
 
-
-
-        
-   
-
-
-
-        # for classinfo in customer_classes:
-        #     # print(classinfo.class_time)
-        #     class_day = classinfo.class_day
-        #     print(f'+++{class_hour}+++')
-        #     print(f'---{class_day}----')
-        #     print(type(class_hour))
-
-            # #schedule ko part
-            # # if class_hour >= current_time.hour and current_hour_add >= class_hour :
-
-            # #joined classes ko part
-
-            
-
-        
         #Membership Page
         membership = Membership.objects.all()
 
