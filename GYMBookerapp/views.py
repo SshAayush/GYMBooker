@@ -28,7 +28,7 @@ def landingpage(request):
     return render(request, "landingpage.html")
 
 
-def signup(request):  # Password need to be hashed
+def signup(request):
     if request.method == "POST":
         username = request.POST["username"]
         fname = request.POST["fname"]
@@ -390,3 +390,57 @@ def cancelmembership(request):
 
     return redirect('dashboard')
 
+def update_profile (request):
+    customer_uname = request.session.get('username')
+    customer_name = Customer.objects.get(customer_username = customer_uname)
+
+    if request.method == "POST":
+        fname = request.POST['fname']
+        lname = request.POST['lname']
+        email = request.POST['email']
+        phone = request.POST['phone']
+
+        if fname == "" or lname == "":
+            print("Name cannot be empty")
+        
+        elif email == '':
+            print("Email cannot be empty")
+        
+        elif phone == '':
+            print("Phone cannot be empty")
+
+        elif Customer.objects.filter(customer_email=email).exists():
+            print("Email already exist!")
+        
+        elif Customer.objects.filter(customer_phone=phone).exists():
+            print("Phone number already exist!")
+        
+        else:
+            customer_name.customer_fname = fname
+            customer_name.customer_lname = lname
+            customer_name.customer_email = email
+            customer_name.customer_phone = phone
+            customer_name.save()
+
+    return redirect('dashboard')
+
+def update_physical_info (request):
+    customer_uname = request.session.get('username')
+    customer_name = Customer.objects.get(customer_username = customer_uname)
+
+    if request.method == "POST":
+        weight = request.POST['weight']
+        height = request.POST['height']
+
+        if weight == '' or height == '':
+            print("Height or Weight cannot be empty")
+        
+        else:
+            customer_name.customer_height = height
+            customer_name.customer_weight = weight
+            customer_name.save()
+
+    return redirect(dashboard)
+
+def delete_acc (request):
+    pass

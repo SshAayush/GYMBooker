@@ -449,20 +449,23 @@
                   <div class="update-profile">
                     <div class="personal-info">
                       <h3>Update your profile information</h3>
-                      <form action="#" method="post">
+                      <form action="{% url 'update_profile' %}" method="post">
+                        {% csrf_token %}
                         <div class="name-input">
-                          <input type="text" id="fname" placeholder="First Name">
-                          <input type="text" id="lname" placeholder="Last Name">
+                          <input type="text" name="fname" id="fname" placeholder="First Name">
+                          <input type="text" name="lname" id="lname" placeholder="Last Name">
                         </div>
-                        <input type="email" id="email" placeholder="Email">
+                        <input type="email" name="email" id="email" placeholder="Email">
                         <br>
-                        <input type="number" id="phone" placeholder="Phone Number">
+                        <input type="number" name="phone" id="phone" placeholder="Phone Number">
                         <br>
-                        <button class="btns u-btn">Update</button>
+                        <button class="btns u-btn" type="submit">Update</button>
                       </form>
                     </div>
                     <div class="physical-info">
                       <h3>Update your physical info</h3>
+                      <form action="{% url 'update_physical_info' %}" method="post">
+                        {% csrf_token %}
                       <div class="bmi-input">
                         <input
                           type="number"
@@ -479,9 +482,10 @@
                           placeholder="Height/Cm"
                         />
                         <br />
-                       
-                        <p class="bmi-ans">Your BMI is -  <span class="ans">0</span></p>
+                        <button class="btns u-btn" type="submit">Update</button>
+                        <p class="bmi-ans">Your current BMI is -  <span class="ans">{{ customer_name.customer_bmi }}</span></p>
                       </div>
+                    </form>
 
                     </div>
                   </div>

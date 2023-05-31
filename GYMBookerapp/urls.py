@@ -22,5 +22,7 @@ urlpatterns = [
     path('addclass/<str:pk>/',views.addclass, name='addclass'),
     path('addmembership/<str:pk>',views.addmembership, name='addmembership'),
     path('cancelmembership/', views.cancelmembership, name = 'cancelmembership'),
+    path('update_profile/',views.update_profile,name='update_profile'),
+    path('update_physical_info/',views.update_physical_info,name='update_physical_info'),
 
 ]
