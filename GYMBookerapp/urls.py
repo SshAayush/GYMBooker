@@ -24,5 +24,6 @@ urlpatterns = [
     path('cancelmembership/', views.cancelmembership, name = 'cancelmembership'),
     path('update_profile/',views.update_profile,name='update_profile'),
     path('update_physical_info/',views.update_physical_info,name='update_physical_info'),
+    path('request_membership/',views.request_membership,name='request_membership'),
 
 ]

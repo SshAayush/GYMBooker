@@ -443,4 +443,14 @@ def update_physical_info (request):
     return redirect(dashboard)
 
 def delete_acc (request):
-    pass
+    customer_uname = request.session.get('username')
+    customer_name = Customer.objects.get(customer_username = customer_uname)
+
+    #delete customer account
+    print(f'{customer_name} is deleted')
+    customer_name.delete()
+
+    return redirect('dashboard')
+
+def request_membership(request):
+    return render(request, "request_membership.html")

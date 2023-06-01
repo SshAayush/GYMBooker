@@ -252,7 +252,7 @@
       <div class="profile-details">
         <div class="profile-img">
           <div class="profile-pic">
-            <img src="/static/image/trainer1.png" alt="profile pic" />
+            <img src="/{{ customer_name.customer_image }}" alt="profile pic" />
           </div>
           <div class="user-detail">
             <p class="name">{{ customer_name.customer_fname }} {{ customer_name.customer_lname  }}</p>
@@ -341,7 +341,7 @@
         <p class="joined-curr contain">Currently subscribed -  <span>{{ customer_name.customer_membership }}</span></p>
         <p class="joined-on contain">subscribed date -  <span>{{ customer_name.customer_membership_joinedDate }}</span></p>
         <p class="expires-on contain">expire date -  <span>{{ customer_name.customer_membership_exipredDate }}</span></p>
-        <button class="change">change membership</button>
+        <button class="change"><a href="{% url 'request_membership' %}">change membership</a></button>
         <button class="cancel"><a href="{% url 'cancelmembership' %}">cancel membership</a></button>
 
       </div>
