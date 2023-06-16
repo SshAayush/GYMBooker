@@ -353,6 +353,7 @@ header .image-text .header-text {
   text-transform: capitalize;
   padding: 0.5rem;
   font-size: 14px;
+  width: 100%;
 }
 .join-btn {
   margin-top: 2rem;
