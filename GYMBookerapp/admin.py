@@ -9,7 +9,7 @@ from django.shortcuts import redirect
 
 
 # Register your models here.
-# admin.site.register(Customer)
+admin.site.register(Customer)
 
 
 # class MyModelAdmin(DjangoObjectActions, admin.ModelAdmin):
@@ -21,15 +21,15 @@ from django.shortcuts import redirect
 
 # admin.site.register(Customer, MyModelAdmin)
 
-class MyModelAdmin(DjangoObjectActions, admin.ModelAdmin):
-    def send_mail(self, request, queryset):
-        url = reverse('send_offerEmail')
-        return redirect(url)
+# class MyModelAdmin(DjangoObjectActions, admin.ModelAdmin):
+#     def send_mail(self, request, queryset):
+#         url = reverse('send_offerEmail')
+#         return redirect(url)
 
-    send_mail.short_description = "Send Mail"
-    changelist_actions = ('send_mail', )
+#     send_mail.short_description = "Send Mail"
+#     changelist_actions = ('send_mail', )
 
-admin.site.register(Customer, MyModelAdmin)
+# admin.site.register(Customer, MyModelAdmin)
 
 
 admin.site.register(CustomerQuery)
