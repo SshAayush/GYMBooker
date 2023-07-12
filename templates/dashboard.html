@@ -484,15 +484,7 @@
                         <input type="date" name="dob" id="dob" placehomder="Date of Birth" value="{{ customer_name.customer_dob|date:'Y-m-d' }}">
                         <br>
                         <input type="name" name="address" id="address" placeholder="Address" value="{{ customer_name.customer_address }}">
-                        <br>
-                        <label for="gender">Gender:</label>
-                        <select name="gender" id="gender">
-                          <option value="Male" {% if customer_name.customer_gender == 'Male' %}selected{% endif %}>Male</option>
-                          <option value="Female" {% if customer_name.customer_gender == 'Female' %}selected{% endif %}>Female</option>
-                          <option value="Others" {% if customer_name.customer_gender == 'Others' %}selected{% endif %}>Others</option>
-                        </select>
-                        
-                        <br>
+                        <br>  
                         <button class="btns u-btn" type="submit">Update</button>
                       </form>
                     </div>

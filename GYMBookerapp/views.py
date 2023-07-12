@@ -399,7 +399,6 @@ def update_profile(request):
         email = request.POST['email']
         phone = request.POST['phone']
         dob = request.POST['dob']
-        gender = request.POST['gender']
         address = request.POST['address']
         
 
@@ -418,7 +417,6 @@ def update_profile(request):
             customer_name.customer_email = email
             customer_name.customer_phone = phone
             customer_name.customer_dob = dob
-            customer_name.customer_gender = gender
             customer_name.customer_address = address
             customer_name.save()
     
