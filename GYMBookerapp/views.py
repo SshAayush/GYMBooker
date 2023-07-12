@@ -421,6 +421,20 @@ def update_profile(request):
             customer_name.customer_gender = gender
             customer_name.customer_address = address
             customer_name.save()
+    
+    customer_dob = datetime.strptime(customer_name.customer_dob, "%Y-%m-%d")
+    todayDate = datetime.now().date()
+    # print(todayDate.year)
+    # print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+    # print(customer_dob.year)
+
+    age = todayDate.year - customer_dob.year  
+    #.year is added beacuse we need to convert the customer_dob to a datetime.date object 
+    if todayDate.month < customer_dob.month or (todayDate.month == customer_dob.month and todayDate.day < customer_dob.day):
+        age -= 1
+    
+    customer_name.customer_age = age
+    customer_name.save()
 
     return redirect('dashboard')
 
