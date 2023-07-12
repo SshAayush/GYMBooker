@@ -442,6 +442,17 @@ def update_physical_info (request):
 
     return redirect(dashboard)
 
+def update_image(request):
+    customer_uname = request.session.get('username')
+    if request.method == "POST":
+        image = request.FILES.get("image")
+        
+        updateCustomer_image = Customer.objects.get(customer_username = customer_uname)
+        updateCustomer_image.customer_image = image
+
+        updateCustomer_image.save()
+    return redirect(dashboard)
+
 def delete_acc (request):
     customer_uname = request.session.get('username')
     customer_name = Customer.objects.get(customer_username = customer_uname)

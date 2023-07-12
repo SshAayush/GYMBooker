@@ -446,8 +446,12 @@
                     <i class="fa-regular fa-user"></i>
                     <p>image must be 256 x 256px -Max 2MB</p>
                     <div class="image-btn">
-                      <input type="file" id="profile-pic" accept="image/*">
-                      <label for="profile-pic">Choose a photo</label>
+                      <form action="{% url 'update_image' %}" method = "POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="file" name = "image" id="profile-pic" accept="image/*">
+                        <label for="profile-pic">Choose a photo</label>
+                        <input type="submit" value="Upload">
+                      </form>
                       <button class="btns d-btn">Delete image</button>
                     </div>
                   </div>

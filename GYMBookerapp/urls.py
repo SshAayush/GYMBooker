@@ -26,5 +26,6 @@ urlpatterns = [
     path('update_physical_info/',views.update_physical_info,name='update_physical_info'),
     path('request_membership/',views.request_membership,name='request_membership'),
     path('search/',views.search,name='search'),
+    path('update_image/',views.update_image,name='update_image'),
 
 ]
