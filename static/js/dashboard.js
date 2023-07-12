@@ -104,3 +104,22 @@ function closeModal(modal) {
   modal.classList.remove("active");
   overlay.classList.remove("active");
 }
+
+// delete account preview
+
+const deleteBtn = document.querySelector(".btn-preview");
+const deleteOverlay = document.querySelector("#overlay-delete");
+const cancelBtn = document.querySelector(".cancel-btn");
+
+function deletePre() {
+  deleteBtn.style.display = "flex";
+  deleteOverlay.classList.add("active");
+}
+deleteOverlay.addEventListener("click", () => {
+  deleteOverlay.classList.remove("active");
+  deleteBtn.style.display = "none";
+});
+cancelBtn.addEventListener("click", () => {
+  deleteOverlay.classList.remove("active");
+  deleteBtn.style.display = "none";
+});

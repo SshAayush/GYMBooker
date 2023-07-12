@@ -603,6 +603,11 @@ header .image-text .header-text {
   background-color: black;
 }
 
+.change a {
+  color: #fff;
+  text-decoration: none;
+}
+
 .cancel a {
   width: 8rem;
   height: 3rem;
@@ -737,6 +742,8 @@ header .image-text .header-text {
 }
 .image-btn {
   margin-top: 1rem;
+  display: flex;
+  justify-content: space-around;
 }
 .u-btn {
   background-color: rgb(113, 215, 113);
@@ -749,12 +756,25 @@ header .image-text .header-text {
   cursor: pointer;
   transition: ease-in-out 0.3s;
 }
+.image-btn label {
+  font-size: 14px;
+  border-radius: 10px;
+  color: #fff;
+  height: 40px;
+  width: 200px;
+  background-color: rgb(113, 215, 113);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .d-btn {
   font-size: 14px;
   border: none;
   color: #fff;
-  width: 8rem;
-  height: 2rem;
+  width: 200px;
+  height: 40px;
   border-radius: 10px;
   cursor: pointer;
   transition: ease-in-out 0.3s;
@@ -804,4 +824,38 @@ header .image-text .header-text {
 }
 form button {
   margin: 1rem 0;
+}
+
+.btn-preview {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 200px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-35%, -50%);
+  transition: ease-in-out 0.3s;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 10;
+}
+#overlay-delete {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  opacity: 0;
+}
+#overlay-delete.active {
+  opacity: 1;
+  pointer-events: all;
+}
+#profile-pic {
+  display: none;
 }

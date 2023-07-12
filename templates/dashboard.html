@@ -434,7 +434,7 @@
                   <h3 class="manage-header">Account settings</h3>
                   <div class="nav-btns">
                     <button class="u-btn btns">Change Password</button>
-                    <button class="d-btn btns">Delete Account</button>
+                    <button class="d-btn btns" onclick="deletePre()">Delete Account</button>
                   </div>
                 </div>
                 <div class="profile-settings">
@@ -442,7 +442,8 @@
                     <i class="fa-regular fa-user"></i>
                     <p>image must be 256 x 256px -Max 2MB</p>
                     <div class="image-btn">
-                      <button class="btns u-btn">Upload image</button>
+                      <input type="file" id="profile-pic" accept="image/*">
+                      <label for="profile-pic">Choose a photo</label>
                       <button class="btns d-btn">Delete image</button>
                     </div>
                   </div>
@@ -491,6 +492,16 @@
                   </div>
 
                 </div>
+                <div class="btn-preview">
+                    <div class="dialog">
+                      <p>permanantely delete your account</p>
+                      <div class="dialog-btns">
+                        <button class="delete-account d-btn btns">Delete</button>
+                        <button class="u-btn btns cancel-btn">cancel</button>
+                      </div>
+                    </div>
+                </div>
+                <div id="overlay-delete"></div>
               </div>
           
 
