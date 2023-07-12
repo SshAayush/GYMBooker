@@ -462,10 +462,6 @@ def search(request):
 
         serachClass = Class.objects.get(class_name = search_r)
 
-        className = serachClass.class_name
-        classInstructor = serachClass.class_instructor
-        
     return render(request, "search_result.html", {
-        "className" : className,
-        "classInstructor" : classInstructor,
+        "classResult" : serachClass,
         })

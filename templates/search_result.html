@@ -11,7 +11,9 @@
     <body>
         <script src="" async defer></script>
         <h1>Search</h1>
-        <p>{{ className }}</p>
-        <p>{{ classInstructor }}</p>
+        <p>{{ classResult.class_name }}</p>
+        <p>{{ classResult.class_instructor }}</p>
+        <p>{{ classResult.class_time }}</p>
+        <p>{{ classResult.class_day.first.day }} - {{classResult.class_day.last.day}}</p>
     </body>
 </html>
