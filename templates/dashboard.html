@@ -111,7 +111,7 @@
         <p class="u-name">{{ customer_name.customer_fname }} {{ customer_name.customer_lname }}</p>
         <p class="u-age">{{ customer_name.customer_age }}</p>
         <p class="u-sex">{{ customer_name.customer_gender }}</p>
-        <p class="u-dob">User-dob</p>
+        <p class="u-dob">{{ customer_name.customer_dob }}</p>
         <p class="u-package">{{ customer_name.customer_membership }}</p>
       </div>
 
@@ -437,7 +437,7 @@
                 <div class="manage-nav">
                   <h3 class="manage-header">Account settings</h3>
                   <div class="nav-btns">
-                    <button class="u-btn btns">Change Password</button>
+                    <a href="{% url 'reset_passwordDone' %}" ><button class="u-btn btns">Change Password</button></a>
                     <button class="d-btn btns" onclick="deletePre()">Delete Account</button>
                   </div>
                 </div>
@@ -465,7 +465,7 @@
                         });
                       </script>
                       
-                      <button class="btns d-btn">Delete image</button>
+                      <a href="{% url 'delete_image' %}"><button class="btns d-btn">Delete image</button></a>
                     </div>
                   </div>
                   <div class="update-profile">
@@ -474,12 +474,24 @@
                       <form action="{% url 'update_profile' %}" method="post">
                         {% csrf_token %}
                         <div class="name-input">
-                          <input type="text" name="fname" id="fname" placeholder="First Name">
-                          <input type="text" name="lname" id="lname" placeholder="Last Name">
+                          <input type="text" name="fname" id="fname" placeholder="First Name" value="{{ customer_name.customer_fname }}">
+                          <input type="text" name="lname" id="lname" placeholder="Last Name" value="{{ customer_name.customer_lname }}">
                         </div>
-                        <input type="email" name="email" id="email" placeholder="Email">
+                        <input type="email" name="email" id="email" placeholder="Email" value="{{ customer_name.customer_email }}">
                         <br>
-                        <input type="number" name="phone" id="phone" placeholder="Phone Number">
+                        <input type="number" name="phone" id="phone" placeholder="Phone Number" value="{{ customer_name.customer_phone }}">
+                        <br>
+                        <input type="date" name="dob" id="dob" placehomder="Date of Birth" value="{{ customer_name.customer_dob|date:'Y-m-d' }}">
+                        <br>
+                        <input type="name" name="address" id="address" placeholder="Address" value="{{ customer_name.customer_address }}">
+                        <br>
+                        <label for="gender">Gender:</label>
+                        <select name="gender" id="gender">
+                          <option value="Male" {% if customer_name.customer_gender == 'Male' %}selected{% endif %}>Male</option>
+                          <option value="Female" {% if customer_name.customer_gender == 'Female' %}selected{% endif %}>Female</option>
+                          <option value="Others" {% if customer_name.customer_gender == 'Others' %}selected{% endif %}>Others</option>
+                        </select>
+                        
                         <br>
                         <button class="btns u-btn" type="submit">Update</button>
                       </form>
@@ -494,6 +506,7 @@
                           name="weight"
                           id="weight"
                           placeholder="Weight/Kg"
+                          value="{{ customer_name.customer_weight }}"
                         />
                         <br>
               
@@ -502,6 +515,7 @@
                           name="height"
                           id="height"
                           placeholder="Height/Cm"
+                          value="{{ customer_name.customer_height }}"
                         />
                         <br />
                         <button class="btns u-btn" type="submit">Update</button>
@@ -517,7 +531,7 @@
                     <div class="dialog">
                       <p>permanantely delete your account</p>
                       <div class="dialog-btns">
-                        <button class="delete-account d-btn btns">Delete</button>
+                        <a href="{% url 'delete_account' %}"> <button class="delete-account d-btn btns">Delete</button></a>
                         <button class="u-btn btns cancel-btn">cancel</button>
                       </div>
                     </div>

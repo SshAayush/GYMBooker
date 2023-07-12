@@ -49,13 +49,14 @@ class Membership(models.Model):
     
 
 class Customer(models.Model):
-    customer_image = models.ImageField(upload_to='static/image/customer_image/')
+    customer_image = models.ImageField(upload_to='static/image/customer_image/',blank = True,null = True)
     customer_fname = models.CharField(max_length=100)
     customer_lname = models.CharField(max_length=100)
     customer_username = models.CharField(max_length=100)
     customer_email = models.EmailField(max_length=100)
     customer_password = models.CharField(max_length=250)
     customer_login_history = models.DateTimeField(auto_now_add=False, blank = True,null = True)
+    customer_dob = models.DateField(auto_now_add=False, blank = True,null = True)
     customer_resetcode = models.IntegerField(blank=True, null=True)
     joined_class = models.ManyToManyField(Class, blank = True)
     customer_age = models.IntegerField(blank=True, null = True)
