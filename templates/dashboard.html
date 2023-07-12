@@ -446,12 +446,25 @@
                     <i class="fa-regular fa-user"></i>
                     <p>image must be 256 x 256px -Max 2MB</p>
                     <div class="image-btn">
-                      <form action="{% url 'update_image' %}" method = "POST" enctype="multipart/form-data">
+                      <form action="{% url 'update_image' %}" method = "POST" enctype="multipart/form-data" id="my-form">
                         {% csrf_token %}
                         <input type="file" name = "image" id="profile-pic" accept="image/*">
                         <label for="profile-pic">Choose a photo</label>
-                        <input type="submit" value="Upload">
                       </form>
+                      <script>
+                        // Get the form element
+                        var form = document.getElementById("my-form");
+                      
+                        // Get the input element
+                        var input = document.getElementById("profile-pic");
+                      
+                        // Add an event listener to the input element
+                        input.addEventListener("change", function() {
+                          // Submit the form when the input value changes
+                          form.submit();
+                        });
+                      </script>
+                      
                       <button class="btns d-btn">Delete image</button>
                     </div>
                   </div>

@@ -273,13 +273,16 @@ def dashboard(request):
             # print(f'++{current_day}++')
 
             # join
-            if class_hour >= current_hour and class_hour <= current_hour_add:
+            if class_hour >= current_hour and class_hour < current_hour_add:
                 print(f'++{class_hour}++')
+                print(f'++{current_hour}++')
+                print(f'++{current_hour_add}++')
                 for day in class_days:
                     print(day.day)  # Access the 'day' attribute of the 'Days' model
                     if day.day == current_day:
                         current_class.append(cls.class_name)
-                        # print(f'+222+{current_class}++')
+                        print("Current Class")
+                        print(f'+++{current_class}++')
 
             # schedule
             if class_hour > current_hour:
@@ -287,7 +290,8 @@ def dashboard(request):
                     if day.day == current_day:
                         upcoming_classes.append(cls.class_name)
                         # print(upcoming_classes)
-                        print(f'+5545454{upcoming_classes}++')
+                        # print("upcoming_classes")
+                        # print(f'++{upcoming_classes}++')
 
         #calculate BMI
         bmi = customer_name.customer_weight / (customer_name.customer_height/100)**2
