@@ -35,7 +35,11 @@
         <div class="menu">
           <li class="search-box">
             <i class="bx bx-search icon"></i>
-            <input type="search" placeholder="search..." />
+            <form action="{% url 'search' %}" method="POST">
+              {% csrf_token %}
+              <input type="search" name="search" placeholder="search..." />
+            </form>
+            {% comment %} <input type="search" placeholder="search..." /> {% endcomment %}
           </li>
           <ul class="menu-links">
             <li class="nav-link">

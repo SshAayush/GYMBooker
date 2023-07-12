@@ -454,3 +454,14 @@ def delete_acc (request):
 
 def request_membership(request):
     return render(request, "request_membership.html")
+
+def search(request):
+    if request.method == "POST":
+        search_r = request.POST["search"]
+        print(search_r)
+
+        serachClass = Class.objects.get(class_name = search_r)
+
+    return render(request, "search_result.html", {
+        "classResult" : serachClass,
+        })
