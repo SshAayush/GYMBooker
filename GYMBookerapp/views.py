@@ -502,8 +502,12 @@ def search(request):
         search_r = request.POST["search"]
         print(search_r)
 
-        serachClass = Class.objects.get(class_name = search_r)
+        #Query to search for all rowa/name in models and present those result
+        searchClass = Class.objects.filter(
+            Q(class_name__icontains = search_r) | Q(class_instructor__icontains = search_r) | 
+            Q(class_time__icontains = search_r) | Q(class_info__icontains = search_r)
+            )
 
     return render(request, "search_result.html", {
-        "classResult" : serachClass,
+        "classResult" : searchClass,
         })
