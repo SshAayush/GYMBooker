@@ -25,7 +25,12 @@ from django.contrib.sessions.models import Session
 
 
 def landingpage(request):
-    return render(request, "landingpage.html")
+    fetchClass = Class.objects.all()
+    memberships = Membership.objects.all()
+    return render(request, "landingpage.html", {
+        "classes" : fetchClass,
+        "memberships" : memberships,
+    })
 
 
 def signup(request):
