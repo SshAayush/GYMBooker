@@ -293,11 +293,6 @@ def dashboard(request):
                         # print("upcoming_classes")
                         # print(f'++{upcoming_classes}++')
 
-        #calculate BMI
-        bmi = customer_name.customer_weight / (customer_name.customer_height/100)**2
-        customer_name.customer_bmi = round(bmi, 2)
-        customer_name.save()
-
         #Membership Page
         membership = Membership.objects.all()
 
@@ -394,7 +389,7 @@ def cancelmembership(request):
 
     return redirect('dashboard')
 
-def update_profile (request):
+def update_profile(request):
     customer_uname = request.session.get('username')
     customer_name = Customer.objects.get(customer_username = customer_uname)
 
@@ -403,6 +398,9 @@ def update_profile (request):
         lname = request.POST['lname']
         email = request.POST['email']
         phone = request.POST['phone']
+        dob = request.POST['dob']
+        address = request.POST['address']
+        
 
         if fname == "" or lname == "":
             print("Name cannot be empty")
@@ -412,19 +410,29 @@ def update_profile (request):
         
         elif phone == '':
             print("Phone cannot be empty")
-
-        elif Customer.objects.filter(customer_email=email).exists():
-            print("Email already exist!")
-        
-        elif Customer.objects.filter(customer_phone=phone).exists():
-            print("Phone number already exist!")
         
         else:
             customer_name.customer_fname = fname
             customer_name.customer_lname = lname
             customer_name.customer_email = email
             customer_name.customer_phone = phone
+            customer_name.customer_dob = dob
+            customer_name.customer_address = address
             customer_name.save()
+    
+    customer_dob = datetime.strptime(customer_name.customer_dob, "%Y-%m-%d")
+    todayDate = datetime.now().date()
+    # print(todayDate.year)
+    # print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+    # print(customer_dob.year)
+
+    age = todayDate.year - customer_dob.year  
+    #.year is added beacuse we need to convert the customer_dob to a datetime.date object 
+    if todayDate.month < customer_dob.month or (todayDate.month == customer_dob.month and todayDate.day < customer_dob.day):
+        age -= 1
+    
+    customer_name.customer_age = age
+    customer_name.save()
 
     return redirect('dashboard')
 
@@ -442,7 +450,12 @@ def update_physical_info (request):
         else:
             customer_name.customer_height = height
             customer_name.customer_weight = weight
+            #calculate BMI
+            bmi = int(customer_name.customer_weight) / (int(customer_name.customer_height)/100)**2
+            customer_name.customer_bmi = round(bmi, 2)
             customer_name.save()
+            # customer_name.save()
+
 
     return redirect(dashboard)
 
@@ -457,7 +470,7 @@ def update_image(request):
         updateCustomer_image.save()
     return redirect(dashboard)
 
-def delete_acc (request):
+def delete_account (request):
     customer_uname = request.session.get('username')
     customer_name = Customer.objects.get(customer_username = customer_uname)
 
@@ -465,10 +478,19 @@ def delete_acc (request):
     print(f'{customer_name} is deleted')
     customer_name.delete()
 
-    return redirect('dashboard')
+    return redirect('signin')
 
 def request_membership(request):
     return render(request, "request_membership.html")
+
+def delete_image(request):
+    customer_uname = request.session.get('username')
+    customer_name = Customer.objects.get(customer_username = customer_uname)
+
+    print(f'{customer_name} profile image is deleted')
+    customer_name.customer_image.delete()
+
+    return redirect('dashboard')
 
 def search(request):
     if request.method == "POST":

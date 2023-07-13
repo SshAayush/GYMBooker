@@ -27,5 +27,7 @@ urlpatterns = [
     path('request_membership/',views.request_membership,name='request_membership'),
     path('search/',views.search,name='search'),
     path('update_image/',views.update_image,name='update_image'),
+    path('delete_account/',views.delete_account,name='delete_account'),
+    path('delete_image/',views.delete_image,name='delete_image'),
 
 ]
