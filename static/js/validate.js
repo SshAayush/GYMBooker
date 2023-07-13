@@ -45,7 +45,7 @@ function validateFirstName() {
   if (firstName.value === "" || firstName.value == null) {
     setError(firstName, "Name cannot be empty");
     return false;
-  } else if (/\d/.test(username.value)) {
+  } else if (/\d/.test(firstName.value)) {
     setError(firstName, "Name cannot contain number");
     return false;
   } else {
@@ -57,7 +57,7 @@ function validateLastName() {
   if (lastName.value === "" || lastName.value == null) {
     setError(lastName, "Name cannot be empty");
     return false;
-  } else if (/\d/.test(username.value)) {
+  } else if (/\d/.test(lastName.value)) {
     setError(lastName, "Name cannot contain number");
     return false;
   } else {

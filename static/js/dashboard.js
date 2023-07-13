@@ -123,3 +123,17 @@ cancelBtn.addEventListener("click", () => {
   deleteOverlay.classList.remove("active");
   deleteBtn.style.display = "none";
 });
+
+// uploading a file
+
+// Get the form element
+var form = document.getElementById("my-form");
+
+// Get the input element
+var input = document.getElementById("profile-pic");
+
+// Add an event listener to the input element
+input.addEventListener("change", function () {
+  // Submit the form when the input value changes
+  form.submit();
+});
