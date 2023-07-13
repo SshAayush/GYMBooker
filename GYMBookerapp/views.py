@@ -511,3 +511,35 @@ def search(request):
     return render(request, "search_result.html", {
         "classResult" : searchClass,
         })
+
+def userreset_password(request):
+    customer_uname = request.session.get('username')
+    customer_detail = Customer.objects.get(customer_username = customer_uname)
+
+    if customer_uname is None:
+        return redirect("signin")
+    else:
+        if request.method == "POST":
+            password = request.POST['password']
+            c_password = request.POST['c_password']
+            old_password = request.POST['old_password']
+            if check_password(old_password, customer_detail.customer_password):
+                if password == c_password and password != "":
+                    if not check_password(password, customer_detail.customer_password):
+                        customer_detail.customer_password = make_password(password)
+                        customer_detail.save()
+                        print("Password Updated")
+                        return redirect("dashboard")
+                    else:
+                        return render(request, "userpassword_reset.html", {
+                            "message" : "Password can't be same with old one",
+                        })
+                else:
+                    return render(request, "userpassword_reset.html", {
+                            "message" : "Confirm password didn't match / password cannot be empty",
+                        })
+            else:
+                return render(request, "userpassword_reset.html", {
+                            "message" : "Current password didn't matched",
+                        })
+        return render(request, "userpassword_reset.html")

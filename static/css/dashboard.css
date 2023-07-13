@@ -725,7 +725,7 @@ header .image-text .header-text {
 }
 .upload-container {
   width: 500px;
-  height: 150px;
+  height: 180px;
   border: 1px solid #958d8db3;
   border-radius: 10px;
   background-color: #d6c8c84f;
@@ -771,6 +771,28 @@ header .image-text .header-text {
   justify-content: center;
   align-items: center;
 }
+
+
+/* Used for image container in manage account  -Aayush */
+.image-container {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: 12.5rem;
+  margin-top: 0.56rem;
+}
+
+.image-container img {
+  width: 160%;
+  height: auto;
+}
+
 
 .d-btn {
   font-size: 14px;
@@ -867,3 +889,4 @@ form button {
 #profile-pic {
   display: none;
 }
+
