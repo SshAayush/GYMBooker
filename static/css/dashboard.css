@@ -712,7 +712,7 @@ header .image-text .header-text {
   font-weight: 700;
 }
 .profile-settings {
-  margin-top: 5rem;
+  margin-top: 3rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -792,17 +792,19 @@ header .image-text .header-text {
 }
 
 .update-profile input {
-  width: 12rem;
+  width: 95%;
   height: 2rem;
   padding: 1rem;
   border-radius: 10px;
   margin: 0.5rem;
   border: none;
 }
+.name-input input {
+  width: 46%;
+}
 .personal-info {
-  width: 40%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  min-height: 20rem;
+  width: 45%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
 }
 .personal-info h3 {
   font-size: 24px;
@@ -811,21 +813,24 @@ header .image-text .header-text {
   text-transform: capitalize;
 }
 .physical-info {
-  width: 40%;
+  width: 45%;
   /* border: 1px solid black; */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  min-height: 20rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+  height: 400px;
 }
 .physical-info h3 {
-  margin: 2rem 3rem;
+  margin: 4rem 3rem;
   font-size: 24px;
   text-align: center;
   text-transform: capitalize;
 }
+
 form button {
   margin: 1rem 0;
 }
-
+.bmi-input button {
+  margin-top: 4rem;
+}
 .btn-preview {
   display: none;
   justify-content: center;
