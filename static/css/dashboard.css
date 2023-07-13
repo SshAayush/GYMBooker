@@ -213,19 +213,21 @@ header .image-text .header-text {
 .dash-container {
   margin-left: 15.7rem;
   max-width: 100vw;
-  max-height: 100vh;
+  height: 100vh;
   overflow-y: hidden;
+  background: url("/static/image/bg-text.png");
 
   /* display: none; */
 }
 .user-details {
-  /* margin-top: 3rem; */
   background-color: var(--toggle-color);
+  background: url("/static/image/pricing/bg-text.png");
   height: 6rem;
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  border-bottom: 1px solid black;
 }
 .user-info {
   width: 100%;
