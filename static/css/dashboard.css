@@ -215,12 +215,13 @@ header .image-text .header-text {
   max-width: 100vw;
   max-height: 100vh;
   overflow-y: hidden;
+
   /* display: none; */
 }
 .user-details {
   /* margin-top: 3rem; */
-  background-color: #fff;
-  height: 5rem;
+  background-color: var(--toggle-color);
+  height: 6rem;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -238,7 +239,7 @@ header .image-text .header-text {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   height: 15rem;
   transition: ease-in-out 0.3s;
-  background-color: #695cfe;
+  background-color: #333;
   text-align: center;
   border-radius: 40px 0;
 }
