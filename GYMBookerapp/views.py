@@ -502,8 +502,44 @@ def search(request):
         search_r = request.POST["search"]
         print(search_r)
 
-        serachClass = Class.objects.get(class_name = search_r)
+        #Query to search for all rowa/name in models and present those result
+        searchClass = Class.objects.filter(
+            Q(class_name__icontains = search_r) | Q(class_instructor__icontains = search_r) | 
+            Q(class_time__icontains = search_r) | Q(class_info__icontains = search_r)
+            )
 
     return render(request, "search_result.html", {
-        "classResult" : serachClass,
+        "classResult" : searchClass,
         })
+
+def userreset_password(request):
+    customer_uname = request.session.get('username')
+    customer_detail = Customer.objects.get(customer_username = customer_uname)
+
+    if customer_uname is None:
+        return redirect("signin")
+    else:
+        if request.method == "POST":
+            password = request.POST['password']
+            c_password = request.POST['c_password']
+            old_password = request.POST['old_password']
+            if check_password(old_password, customer_detail.customer_password):
+                if password == c_password and password != "":
+                    if not check_password(password, customer_detail.customer_password):
+                        customer_detail.customer_password = make_password(password)
+                        customer_detail.save()
+                        print("Password Updated")
+                        return redirect("dashboard")
+                    else:
+                        return render(request, "userpassword_reset.html", {
+                            "message" : "Password can't be same with old one",
+                        })
+                else:
+                    return render(request, "userpassword_reset.html", {
+                            "message" : "Confirm password didn't match / password cannot be empty",
+                        })
+            else:
+                return render(request, "userpassword_reset.html", {
+                            "message" : "Current password didn't matched",
+                        })
+        return render(request, "userpassword_reset.html")

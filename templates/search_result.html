@@ -11,9 +11,15 @@
     <body>
         <script src="" async defer></script>
         <h1>Search</h1>
-        <p>{{ classResult.class_name }}</p>
-        <p>{{ classResult.class_instructor }}</p>
-        <p>{{ classResult.class_time }}</p>
-        <p>{{ classResult.class_day.first.day }} - {{classResult.class_day.last.day}}</p>
+        {% if classResult %}
+        {% for classR in classResult %}
+            <p>{{ classR.class_name }}</p>
+            <p>{{ classR.class_instructor }}</p>
+            <p>{{ classR.class_time }}</p>
+            <p>{{ classR.class_day.first.day }} - {{classR.class_day.last.day}}</p>
+        {% endfor %}
+        {% else %}
+            <p><b>No matching result found!!</b></p>
+        {% endif %}
     </body>
 </html>

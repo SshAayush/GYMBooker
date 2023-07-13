@@ -117,7 +117,7 @@
 
       <div class="user-info">
         <div class="box-1 box">
-          <h2 class="header">Joined class</h2>
+          <h2 class="header">Active class</h2>
           <p class="joined">
             {% for r_class in current_class %}
               <p class="joined-detail">{{r_class}}</p><br>
@@ -437,13 +437,16 @@
                 <div class="manage-nav">
                   <h3 class="manage-header">Account settings</h3>
                   <div class="nav-btns">
-                    <a href="{% url 'reset_passwordDone' %}" ><button class="u-btn btns">Change Password</button></a>
+                    <a href="{% url 'userreset_password' %}" ><button class="u-btn btns">Change Password</button></a>
                     <button class="d-btn btns" onclick="deletePre()">Delete Account</button>
                   </div>
                 </div>
                 <div class="profile-settings">
                   <div class="upload-container">
-                    <i class="fa-regular fa-user"></i>
+                    <div class="image-container">
+                      <img src= "/{{ customer_name.customer_image }}" alt="Image">
+                    </div>
+                    {% comment %} <i class="fa-regular fa-user"></i> {% endcomment %}
                     <p>image must be 256 x 256px -Max 2MB</p>
                     <div class="image-btn">
                       <form action="{% url 'update_image' %}" method = "POST" enctype="multipart/form-data" id="my-form">

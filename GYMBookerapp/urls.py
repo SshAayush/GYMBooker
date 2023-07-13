@@ -29,5 +29,6 @@ urlpatterns = [
     path('update_image/',views.update_image,name='update_image'),
     path('delete_account/',views.delete_account,name='delete_account'),
     path('delete_image/',views.delete_image,name='delete_image'),
+    path('userreset_password/',views.userreset_password,name='userreset_password'),
 
 ]
