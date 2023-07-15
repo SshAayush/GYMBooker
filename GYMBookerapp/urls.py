@@ -20,6 +20,7 @@ urlpatterns = [
     path('dashboard/',views.dashboard, name='dashboard'),
     path('logout/',views.logout, name='logout'),
     path('addclass/<str:pk>/',views.addclass, name='addclass'),
+    path('leaveClass/<str:pk>/',views.leaveClass, name='leaveClass'),
     path('addmembership/<str:pk>',views.addmembership, name='addmembership'),
     path('cancelmembership/', views.cancelmembership, name = 'cancelmembership'),
     path('update_profile/',views.update_profile,name='update_profile'),
