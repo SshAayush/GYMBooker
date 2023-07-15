@@ -193,7 +193,7 @@
               {% if class not in joined_classes %}
               <button class="btn join-btn"><a href="{% url 'addclass' class.id %}">Join now</a></button>
               {% else %}
-              <button class="btn joined-btn"><a href="#">Joined</a></button>
+              <button class="btn joined-btn"><a href="{% url 'leaveClass' class.id %}">Leave</a></button>
               {% endif %}
           </div>
         </div>
@@ -256,7 +256,11 @@
       <div class="profile-details">
         <div class="profile-img">
           <div class="profile-pic">
-            <img src="/{{ customer_name.customer_image }}" alt="profile pic" />
+            {% if customer_name.customer_image %}
+                <img src= "/{{ customer_name.customer_image }}" alt="img">
+              {% else %}
+                <i class="fa-solid fa-user"></i>
+              {% endif %}
           </div>
           <div class="user-detail">
             <p class="name">{{ customer_name.customer_fname }} {{ customer_name.customer_lname  }}</p>
@@ -387,44 +391,6 @@
             </div>
           </div>
           {% endfor %}
-          {% comment %} <div class="medium-pack pack">
-            <div class="pack-img">
-              <img src="/static/image/pricing/img2.jpg" alt="image-2" />
-            </div>
-            <div class="medium-content p-inside">
-              <h2 class="price-heading">Advanced</h2>
-              <h2 class="pack-price">Rs.3036 p/m</h2>
-              <div class="inside-list">
-                <ul>
-                  <li>Free Hand</li>
-                  <li>Gym Fitness</li>
-                  <li>Weight Loss</li>
-                  <li>personal training</li>
-                  <li>cycling</li>
-                </ul>
-              </div>
-              <button class="purchase btn"><a href="">Purchase Now</a></button>
-            </div>
-          </div>
-          <div class="pro-pack pack">
-            <div class="pack-img">
-              <img src="/static/image/pricing/img3.jpg" alt="image-3" />
-            </div>
-            <div class="pro-content p-inside">
-              <h2 class="price-heading">Professional</h2>
-              <h2 class="pack-price">Rs.5036 p/m</h2>
-              <div class="inside-list">
-                <ul>
-                  <li>Free Hand</li>
-                  <li>Gym Fitness</li>
-                  <li>Weight Loss</li>
-                  <li>personal training</li>
-                  <li>cycling</li>
-                </ul>
-              </div>
-              <button class="purchase btn"><a href="">Purchase Now</a></button>
-            </div> 
-          </div>{% endcomment %}
           </div>
 
       </div>
@@ -444,7 +410,11 @@
                 <div class="profile-settings">
                   <div class="upload-container">
                     <div class="image-container">
-                      <img src= "/{{ customer_name.customer_image }}" alt="Image">
+                      {% if customer_name.customer_image %}
+                        <img src= "/{{ customer_name.customer_image }}" alt="img">
+                      {% else %}
+                        <i class="fa-solid fa-user"></i>
+                      {% endif %}
                     </div>
                     {% comment %} <i class="fa-regular fa-user"></i> {% endcomment %}
                     <p>image must be 256 x 256px -Max 2MB</p>
@@ -454,7 +424,7 @@
                         <input type="file" name = "image" id="profile-pic" accept="image/*">
                         <label for="profile-pic">Choose a photo</label>
                       </form>
-                      <button class="btns d-btn">Delete image</button>
+                      <a href="{% url 'delete_image' %}"><button class="btns d-btn">Delete image</button></a>
                     </div>
                   </div>
                   <div class="update-profile">

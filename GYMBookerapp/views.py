@@ -360,6 +360,15 @@ def addclass(request, pk):
 
     return redirect('dashboard')
 
+def leaveClass(request, pk):
+    customer_uname = request.session.get('username')
+    customer_name = Customer.objects.get(customer_username = customer_uname)
+
+    classes = Class.objects.get(id=pk)
+    customer_name.joined_class.remove(classes)
+
+    return redirect('dashboard')
+
 def addmembership(request,pk):
     currentdate = datetime.now().date()
 
