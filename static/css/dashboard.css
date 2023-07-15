@@ -543,7 +543,7 @@ header .image-text .header-text {
   transition: ease-in-out 0.3s;
 }
 .contain {
-  color: #fff;
+  color: #333;
 }
 .purchase a {
   width: 8rem;
