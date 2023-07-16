@@ -112,7 +112,11 @@
         <p class="u-age">{{ customer_name.customer_age }}</p>
         <p class="u-sex">{{ customer_name.customer_gender }}</p>
         <p class="u-dob">{{ customer_name.customer_dob }}</p>
-        <p class="u-package">{{ customer_name.customer_membership }}</p>
+        {% if customer_name.customer_membership %}
+          <p class="u-package">{{ customer_name.customer_membership }}</p>
+        {% else %}
+          <p class="u-package">Not Subscribed</p>
+        {% endif %}
       </div>
 
       <div class="user-info">

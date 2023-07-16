@@ -62,9 +62,15 @@ def signup(request):
                 user.save()
                 print("User Account created successfully")
                 msg = "User Account created successfully"
-                return render(request, "signup.html",{'acc_created': msg})
+                return render(request, 
+                              "signup.html",{'acc_created': msg}
+                              )
         else:
             print("Confirmation password mismatched")
+            msg = "Confirmation password mismatched"
+            return render(request, 
+                            "signup.html",{'acc_created': msg}
+                            )
     return render(request, "signup.html")
 
 
