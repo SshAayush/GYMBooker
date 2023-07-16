@@ -29,9 +29,8 @@ function removeError(element) {
   errorDiv.textContent = "";
 }
 
+let isValid = true;
 function validate() {
-  let isValid = true;
-
   isValid = isValid && validateFirstName();
   isValid = isValid && validateLastName();
   isValid = isValid && validateUsername();
