@@ -1,25 +1,55 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Search</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <script src="" async defer></script>
-        <h1>Search</h1>
-        {% if classResult %}
-        {% for classR in classResult %}
-            <p>{{ classR.class_name }}</p>
-            <p>{{ classR.class_instructor }}</p>
-            <p>{{ classR.class_time }}</p>
-            <p>{{ classR.class_day.first.day }} - {{classR.class_day.last.day}}</p>
-        {% endfor %}
-        {% else %}
-            <p><b>No matching result found!!</b></p>
-        {% endif %}
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Search</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/static/css/dashboard.css" />
+  </head>
+  <body>
+    <script src="" async defer></script>
+    <h1>Search</h1>
+    {% if classResult %} {% for classR in classResult %}
+    <p>{{ classR.class_name }}</p>
+    <p>{{ classR.class_instructor }}</p>
+    <p>{{ classR.class_time }}</p>
+    <p>{{ classR.class_day.first.day }} - {{classR.class_day.last.day}}</p>
+    {% endfor %} {% else %}
+    <p><b>No matching result found!!</b></p>
+    {% endif %}
+
+    <!-- // card container -->
+    {% if classResult %} {% for classR in classResult %}
+    <div class="classes">
+      <div
+        class="class-1 class"
+        data-modal-target=".preview-container-{{class.id}}"
+      >
+        <img src="/{{ class.class_image }}" alt="" />
+        <div class="class-content">
+          <h2 class="class-header">{{ classR.class_name }}</h2>
+          <p class="trainer">
+            <i class="fa-regular fa-user">{{ classR.class_instructor }}</i>
+
+            <i class="fa-regular fa-clock"> {{ classR.class_time }}</i>
+
+            <i class="fa-regular fa-clock"
+              >{{ classR.class_day.first.day }} - {{classR.class_day.last.day}}
+            </i>
+          </p>
+
+          <button class="btn join-btn">
+            <a href="#">Join now</a>
+          </button>
+
+          <button class="btn joined-btn">
+            <a href="#">Leave</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    {% endfor %} {% endif %}
+  </body>
 </html>
