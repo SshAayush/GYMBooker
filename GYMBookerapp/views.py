@@ -127,7 +127,7 @@ def reset_code(request):
             subject = "Reset Password"
             html_content = render_to_string('forgetpass_email.html',{
                                             'fname': user.customer_fname, 'lname': user.customer_lname, 'email': user.customer_email,'code':random_float})
-            from_email = 'team.bookex@gmail.com'
+            from_email = 'xayush.tc@gmail.com'
             to = [c_details.customer_email]
 
             text_content = strip_tags(html_content)
@@ -142,8 +142,11 @@ def reset_code(request):
 
             return render(request, "code_reset.html", {'fname': c_details.customer_fname,'code':c_details.customer_resetcode})
         else:
+            message = "This email doesn't exist."
             print("This email doesn't exist.")
-    return render(request, "forget_pass.html")
+    return render(request, "forget_pass.html",{
+        "message" : message,
+    })
 
 
 def reset_password(request):
@@ -160,8 +163,11 @@ def reset_password(request):
             customer_detail.save()
             return render(request, "reset_password.html")
         else:
+            message = "Invalid Code provided"
             print("Invalid Code provided")
-    return render(request, "code_reset.html")
+    return render(request, "code_reset.html", {
+        "message" : message,
+    })
 
 
 def reset_passwordDone(request):
@@ -180,9 +186,13 @@ def reset_passwordDone(request):
                 return render(request, "signin.html")
             else:
                 print("Password can't be same with old one")
+                message = "Password can't be same with old one"
         else:
             print("Confirm password didn't match")
-    return render(request, "reset_password.html")
+            message = "Password can't be same with old one"
+    return render(request, "reset_password.html",{
+        "message" : message,
+    })
 
 
 def send_offerEmail(request):

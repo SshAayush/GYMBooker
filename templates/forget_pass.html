@@ -21,12 +21,12 @@
     <div class="container">
       <div class="form-box">
         <div class="heading">
-          Enter the email where you want to receive the steps for resting your
-          password.
+          Enter the email to reset your account password
         </div>
         <form action="{% url 'reset_code' %}" method="POST">
           {% csrf_token %}
           <input type="text" name="email" placeholder="Email" />
+          <div class="error">{{ message }}</div>
           <div class="submit">
             <input type="submit" value="Send Code!" class="btn-submit" />
           </div>
