@@ -46,7 +46,7 @@
 
       <div class="form-container">
         <h2 class="form-header">Request new membership</h2>
-        <form action="{% url 'joinclass' %}" class="contact-form" method="POST">
+        <form action="{% url 'change_membershipFrom' %}" class="contact-form" method="POST">
           {% csrf_token %}
           <input type="text" name="name" placeholder="Full name" id="name" />
           <input
@@ -57,9 +57,9 @@
           />
           <select name="Select Class" id="s-class">
             <option selected disabled>Choose a Membership</option>
-            <option value="body-building">Begineer</option>
-            <option value="boxing">Advanced</option>
-            <option value="cycling">Professional</option>
+            <option value="Begineer">Begineer</option>
+            <option value="Advanced">Advanced</option>
+            <option value="Professional">Professional</option>
           </select>
           <textarea
             class="text-area"

@@ -20,6 +20,7 @@ from django.contrib.auth.hashers import check_password, make_password
 
 # USed to destroy the session
 from django.contrib.sessions.models import Session
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -185,6 +186,10 @@ def reset_passwordDone(request):
 
 
 def send_offerEmail(request):
+    customer_uname = request.session.get('username')
+    if customer_uname is None:
+        return redirect("signin")
+    
     # threshold_time = timezone.now() - timedelta(hours=1)
     # inactive_users = Customer.objects.filter(
     #     customer_login_history__lt=threshold_time)
@@ -320,7 +325,6 @@ def dashboard(request):
             customer_name.customer_membership = None
             customer_name.save()
         
-            
 
         return render(request, "dashboard.html", {
             'classes': classes,
@@ -355,6 +359,9 @@ def logout(request):
 
 def addclass(request, pk):
     customer_uname = request.session.get('username')
+    if customer_uname is None:
+        return redirect("signin")
+    
     customer_name = Customer.objects.get(customer_username = customer_uname)
 
     # customer_classes = customer_name.joined_class.all()
@@ -363,11 +370,16 @@ def addclass(request, pk):
 
     classes = Class.objects.get(id=pk)
     customer_name.joined_class.add(classes)
+    customer_name.save()
 
     return redirect('dashboard')
+    
 
 def leaveClass(request, pk):
     customer_uname = request.session.get('username')
+    if customer_uname is None:
+        return redirect("signin")
+    
     customer_name = Customer.objects.get(customer_username = customer_uname)
 
     classes = Class.objects.get(id=pk)
@@ -376,6 +388,10 @@ def leaveClass(request, pk):
     return redirect('dashboard')
 
 def addmembership(request,pk):
+    customer_uname = request.session.get('username')
+    if customer_uname is None:
+        return redirect("signin")
+    
     currentdate = datetime.now().date()
 
     customer_uname = request.session.get('username')
@@ -397,8 +413,10 @@ def addmembership(request,pk):
     return redirect('dashboard')
 
 def cancelmembership(request):
-
     customer_uname = request.session.get('username')
+    if customer_uname is None:
+        return redirect("signin")
+    
     customer_name = Customer.objects.get(customer_username = customer_uname)
 
     customer_name.customer_membership = None  # Set the membership to None
@@ -411,6 +429,10 @@ def cancelmembership(request):
 
 def update_profile(request):
     customer_uname = request.session.get('username')
+    if customer_uname is None:
+        return redirect("signin")
+    
+
     customer_name = Customer.objects.get(customer_username = customer_uname)
 
     if request.method == "POST":
@@ -458,6 +480,9 @@ def update_profile(request):
 
 def update_physical_info (request):
     customer_uname = request.session.get('username')
+    if customer_uname is None:
+        return redirect("signin")
+    
     customer_name = Customer.objects.get(customer_username = customer_uname)
 
     if request.method == "POST":
@@ -481,6 +506,9 @@ def update_physical_info (request):
 
 def update_image(request):
     customer_uname = request.session.get('username')
+    if customer_uname is None:
+        return redirect("signin")
+    
     if request.method == "POST":
         image = request.FILES.get("image")
         
@@ -488,10 +516,14 @@ def update_image(request):
         updateCustomer_image.customer_image = image
 
         updateCustomer_image.save()
+        
     return redirect(dashboard)
 
 def delete_account (request):
     customer_uname = request.session.get('username')
+    if customer_uname is None:
+        return redirect("signin")
+    
     customer_name = Customer.objects.get(customer_username = customer_uname)
 
     #delete customer account
@@ -501,7 +533,32 @@ def delete_account (request):
     return redirect('signin')
 
 def request_membership(request):
+    customer_uname = request.session.get('username')
+    if customer_uname is None:
+        return redirect("signin")
+    
     return render(request, "request_membership.html")
+
+def change_membershipFrom(request):
+    customer_uname = request.session.get('username')
+    if customer_uname:
+
+        if request.method == 'POST':
+            name = request.POST['name']
+            email = request.POST['email']
+            classInfo = request.POST['Select Class']
+            comment = request.POST['Reason']
+            
+            customer_query = CustomerQuery.objects.create(
+                Cquery_name=name,
+                Cquery_email=email,
+                Cquery_class=classInfo,
+                Cquery_comment=comment
+            )
+            customer_query.save()
+        return redirect('dashboard')
+    print("Not logged in")
+    return redirect('signin')
 
 def delete_image(request):
     customer_uname = request.session.get('username')
@@ -513,6 +570,10 @@ def delete_image(request):
     return redirect('dashboard')
 
 def search(request):
+    customer_uname = request.session.get('username')
+    if customer_uname is None:
+        return redirect("signin")
+    
     if request.method == "POST":
         search_r = request.POST["search"]
         print(search_r)

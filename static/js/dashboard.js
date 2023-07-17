@@ -56,6 +56,27 @@ manageAccButton.addEventListener("click", () => {
   manageAccContainer.style.display = "block";
 });
 
+
+
+
+// Set the active container in the URL hash and show it
+function setActiveContainer(containerId) {
+  window.location.hash = `#${containerId}`;
+  showContainer(containerId);
+}
+
+// Show the specified container and hide others
+function showContainer(containerId) {
+  hideAllContainers();
+  const container = document.querySelector(`#${containerId}`);
+  if (container) {
+    container.style.display = "block";
+  }
+}
+
+
+
+
 // removing every container
 function removeContainer() {
   dashContainer.style.display = "none";
