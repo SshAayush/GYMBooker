@@ -18,9 +18,25 @@ const scheduleContainer = document.querySelector(".schedule-container");
 const membershipContainer = document.querySelector(".membership-container");
 const manageAccContainer = document.querySelector(".manage-container");
 
+// let activeContainer;
+// activeContainer = dashContainer.className;
+// console.log(activeContainer);
+
+const navLinks = document.querySelectorAll(".nav-link");
+console.log(navLinks);
+
+dashboardButton.parentElement.classList.add("btn-active");
+navLinks.forEach((btns) => {
+  btns.addEventListener("click", () => {
+    document.querySelector(".btn-active")?.classList.remove("btn-active");
+    btns.classList.add("btn-active");
+  });
+});
+
 dashboardButton.addEventListener("click", () => {
   removeContainer();
   dashContainer.style.display = "block";
+  // activeContainer = dashContainer.className;
 });
 classesButton.addEventListener("click", () => {
   removeContainer();
@@ -56,26 +72,20 @@ manageAccButton.addEventListener("click", () => {
   manageAccContainer.style.display = "block";
 });
 
+// // Set the active container in the URL hash and show it
+// function setActiveContainer(containerId) {
+//   window.location.hash = `#${containerId}`;
+//   showContainer(containerId);
+// }
 
-
-
-// Set the active container in the URL hash and show it
-function setActiveContainer(containerId) {
-  window.location.hash = `#${containerId}`;
-  showContainer(containerId);
-}
-
-// Show the specified container and hide others
-function showContainer(containerId) {
-  hideAllContainers();
-  const container = document.querySelector(`#${containerId}`);
-  if (container) {
-    container.style.display = "block";
-  }
-}
-
-
-
+// // Show the specified container and hide others
+// function showContainer(containerId) {
+//   hideAllContainers();
+//   const container = document.querySelector(`#${containerId}`);
+//   if (container) {
+//     container.style.display = "block";
+//   }
+// }
 
 // removing every container
 function removeContainer() {

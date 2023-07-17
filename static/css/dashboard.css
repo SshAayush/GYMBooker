@@ -43,6 +43,10 @@ body {
 }
 
 /* ------------Sidebar------------- */
+.btn-active {
+  color: white;
+  background-color: red;
+}
 
 .sidebar {
   position: fixed;
@@ -354,10 +358,13 @@ header .image-text .header-text {
 .trainer i {
   text-align: start;
   text-transform: capitalize;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
   font-size: 14px;
   width: 100%;
+  /* font-style: normal; */
+  letter-spacing: 1.5px;
 }
+
 .join-btn {
   margin-top: 2rem;
   width: 8rem;
