@@ -893,3 +893,8 @@ form button {
 #profile-pic {
   display: none;
 }
+
+
+.invisible {
+  visibility: hidden;
+}

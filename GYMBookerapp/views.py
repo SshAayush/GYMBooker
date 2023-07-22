@@ -335,6 +335,7 @@ def dashboard(request):
             customer_name.customer_membership = None
             customer_name.save()
         
+        current_membership = customer_name.customer_membership
 
         return render(request, "dashboard.html", {
             'classes': classes,
@@ -344,6 +345,7 @@ def dashboard(request):
             'current_class':current_class,
             'membership': membership,
             'upcoming_classes':upcoming_classes,
+            'current_membership': current_membership,
         })
     else:
         print("None active user available")

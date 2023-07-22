@@ -368,7 +368,8 @@
             </div>
             <div class="begineer-content p-inside">
               <h2 class="price-heading">{{ packages.membership_name }}</h2>
-              <h2 class="pack-price">Rs.{{packages.membership_price}} p/m</h2>
+              <h2 class="pack-price">Rs.{{packages.membership_price}} per month</h2>
+              <br>
               <div class="inside-list">
                 <ul>
                   {% if packages.membership_fac1%}
@@ -387,10 +388,12 @@
                     <li>{{ packages.membership_fac5 }}</li>
                   {% endif %}
               </div>
-              {% if not customer_name.customer_membership %}
+              {% if not current_membership %}
                 <button class="purchase btn"><a href="{% url 'addmembership' packages.id %}">Purchase Now</a></button>
-              {% else %}
+              {% elif current_membership == packages %}
                 <button class="purchased btn"><a href="">Purchased</a></button>
+              {% else %}
+                <button class="purchased btn invisible"><a href=""></a></button>
               {% endif %}
             </div>
           </div>
