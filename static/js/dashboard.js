@@ -23,7 +23,6 @@ const manageAccContainer = document.querySelector(".manage-container");
 // console.log(activeContainer);
 
 const navLinks = document.querySelectorAll(".nav-link");
-console.log(navLinks);
 
 dashboardButton.parentElement.classList.add("btn-active");
 navLinks.forEach((btns) => {

@@ -44,8 +44,12 @@ body {
 
 /* ------------Sidebar------------- */
 .btn-active {
-  color: white;
+  color: white !important;
   background-color: red;
+}
+
+.btn-active a {
+  color: white;
 }
 
 .sidebar {
@@ -159,7 +163,10 @@ header .image-text .header-text {
 .sidebar li a:hover .text {
   color: var(--sidebar-color);
 }
-
+.sidebar li a:focus .icon,
+.sidebar li a:focus .text {
+  color: #fff;
+}
 .sidebar .menu-bar {
   height: calc(100% - 50px);
   display: flex;
