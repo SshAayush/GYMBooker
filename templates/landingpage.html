@@ -45,7 +45,9 @@
             <li><a href="{% url 'joinclass' %}">Contact</a></li>
           </ul>
           <div class="nav-right">
-            <a href="{% url 'signin' %}"><i class="fa-solid fa-user"></i></a>
+            <a href="{% url 'signin' %}"
+              ><i class="fa-solid fa-user">Login</i></a
+            >
             <div class="join">
               <a href="{% url 'joinclass' %}">
                 <i class="fa-solid fa-plus"></i>
@@ -159,7 +161,10 @@
           <div class="item-content">
             <h2>{{ class.class_name }}</h2>
             <div class="item-time">
-              <p>{{ class.class_day.first.day }} - {{ class.class_day.last.day }} : {{ class.class_time }}</p>
+              <p>
+                {{ class.class_day.first.day }} - {{ class.class_day.last.day }}
+                : {{ class.class_time }}
+              </p>
             </div>
           </div>
         </div>
@@ -205,14 +210,14 @@
       <div class="p-headings">
         <h2 class="p-head">pricing chart</h2>
         <p class="p-plan">exclusive pricing plan</p>
-        <p class="p-text">
+        <!-- <p class="p-text">
           Gymbooker an unknown printer took a galley of type and scrambled
           <br />make a type specimen book.
-        </p>
+        </p> -->
       </div>
       <div class="pricing-container">
         {% for membership in memberships %}
-        <div class="begineer-pack pack">   
+        <div class="begineer-pack pack">
           <div class="pack-img">
             <img src="/{{ membership.membership_image }}" alt="image-1" />
           </div>
@@ -222,41 +227,35 @@
             <div class="inside-list">
               <ul>
                 {% if membership.membership_fac1 %}
-                  <li>{{ membership.membership_fac1 }}</li>
-                  {% else %}
-                  <li>ㅤ</li>
-                  {% endif %}
-
-                {% if membership.membership_fac2 %}
-                  <li>{{ membership.membership_fac2 }}</li>
-                  {% else %}
-                  <li>ㅤ</li>
-                {% endif %}
-
-                {% if membership.membership_fac3 %}
-                  <li>{{ membership.membership_fac3 }}</li>
-                  {% else %}
-                  <li>ㅤ</li>
-                {% endif %}
-
-                {% if membership.membership_fac4 %}
-                  <li>{{ membership.membership_fac4 }}</li>
-                  {% else %}
-                  <li>ㅤ</li>
-                {% endif %}
-                
-                {% if membership.membership_fac5 %}
-                  <li>{{ membership.membership_fac5 }}</li>
-                  {% else %}
-                  <li>ㅤ</li>
+                <li>{{ membership.membership_fac1 }}</li>
+                {% else %}
+                <li>ㅤ</li>
+                {% endif %} {% if membership.membership_fac2 %}
+                <li>{{ membership.membership_fac2 }}</li>
+                {% else %}
+                <li>ㅤ</li>
+                {% endif %} {% if membership.membership_fac3 %}
+                <li>{{ membership.membership_fac3 }}</li>
+                {% else %}
+                <li>ㅤ</li>
+                {% endif %} {% if membership.membership_fac4 %}
+                <li>{{ membership.membership_fac4 }}</li>
+                {% else %}
+                <li>ㅤ</li>
+                {% endif %} {% if membership.membership_fac5 %}
+                <li>{{ membership.membership_fac5 }}</li>
+                {% else %}
+                <li>ㅤ</li>
                 {% endif %}
               </ul>
             </div>
-            <button class="purchase btn"><a href="{% url 'signin' %}">Purchase Now</a></button>
+            <button class="purchase btn">
+              <a href="{% url 'signin' %}">Purchase Now</a>
+            </button>
           </div>
         </div>
-        {% endfor %}
-        {% comment %} <div class="medium-pack pack">
+        {% endfor %} {% comment %}
+        <div class="medium-pack pack">
           <div class="pack-img">
             <img src="/static/image/pricing/img2.jpg" alt="image-2" />
           </div>
@@ -293,7 +292,8 @@
             </div>
             <button class="purchase btn"><a href="">Purchase Now</a></button>
           </div>
-        </div> {% endcomment %}
+        </div>
+        {% endcomment %}
       </div>
     </section>
 

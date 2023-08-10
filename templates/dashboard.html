@@ -354,10 +354,15 @@
         <p class="joined-on contain">subscribed date -  <span>{{ customer_name.customer_membership_joinedDate }}</span></p>
         <p class="expires-on contain">expire date -  <span>{{ customer_name.customer_membership_exipredDate }}</span></p>
         <button class="change"><a href="{% url 'request_membership' %}">change membership</a></button>
-        <button class="cancel"><a href="{% url 'cancelmembership' %}">cancel membership</a></button>
+        <button class="cancel mem-cancel"><a href="#">cancel membership</a></button>
 
       </div>
-
+        <div class="cancel-membership-preview">
+          <p>Do you want to cancel your membership?</p>
+          <button class="change">Confirm</button>
+          <button class="cancel cancel-inside-preview">Cancel</button>
+        </div>
+        <div id="overlay-delete"></div>
 
       <div class="memberships">
         <div class="pricing-container">

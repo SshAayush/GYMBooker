@@ -147,6 +147,7 @@ function deletePre() {
 }
 deleteOverlay.addEventListener("click", () => {
   deleteOverlay.classList.remove("active");
+  memCancel.style.display = "none";
   deleteBtn.style.display = "none";
 });
 cancelBtn.addEventListener("click", () => {
@@ -166,4 +167,19 @@ var input = document.getElementById("profile-pic");
 input.addEventListener("change", function () {
   // Submit the form when the input value changes
   form.submit();
+});
+// membership cancel
+
+const memCancelBtn = document.querySelector(".mem-cancel");
+const memCancel = document.querySelector(".cancel-membership-preview");
+const insideCancel = document.querySelector(".cancel-inside-preview");
+
+memCancelBtn.addEventListener("click", () => {
+  memCancel.style.display = "block";
+  deleteOverlay.classList.add("active");
+});
+
+insideCancel.addEventListener("click", () => {
+  deleteOverlay.classList.remove("active");
+  memCancel.style.display = "none";
 });
