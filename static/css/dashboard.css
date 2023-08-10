@@ -558,6 +558,9 @@ header .image-text .header-text {
 }
 .contain {
   color: #333;
+  /* font-size: 18px; */
+  font-weight: 600;
+  text-transform: uppercase;
 }
 .purchase a {
   width: 8rem;
@@ -899,4 +902,9 @@ form button {
 }
 #profile-pic {
   display: none;
+}
+
+
+.invisible {
+  visibility: hidden;
 }

@@ -82,6 +82,7 @@ def signin(request):
 
         ss = Customer.objects.get(customer_username = u_username)
         if (ss.customer_username == u_username and check_password(u_password, ss.customer_password)):
+            if(ss.is_active):
                 time = Customer.objects.get(id=ss.id)
                 time.customer_login_history = timezone.now()
                 time.save()
@@ -90,7 +91,10 @@ def signin(request):
                 # current_user = request.session.get('username')
                 # print(f'{current_user} yoyoyoyyo')
                 return redirect('dashboard')
-
+            else:
+                print("Your account is not active")
+                msg = "Your account is not active"
+                return render(request, "signin.html",{'message': msg})
         else:
             print("Invalid credentials")
             msg = "Invalid credentials"
@@ -211,10 +215,16 @@ def send_offerEmail(request):
     for user in inactive_users:
         emails.append(user.customer_email)
 
+        discount = random.randint(5,20)
+
         subject = "Haven't Seen You Lately!"
         html_content = render_to_string('offer_mail.html',{
-                                        'fname': user.customer_fname, 'lname': user.customer_lname, 'email': user.customer_email})
-        from_email = 'team.bookex@gmail.com'
+                                        'fname': user.customer_fname, 
+                                        'lname': user.customer_lname, 
+                                        'email': user.customer_email,
+                                        'discount': discount,
+                                        })
+        from_email = 'xayush.tc@gmail.com'
         print(user.customer_fname)
         to = [user.customer_email]
 
@@ -335,6 +345,7 @@ def dashboard(request):
             customer_name.customer_membership = None
             customer_name.save()
         
+        current_membership = customer_name.customer_membership
 
         return render(request, "dashboard.html", {
             'classes': classes,
@@ -344,6 +355,7 @@ def dashboard(request):
             'current_class':current_class,
             'membership': membership,
             'upcoming_classes':upcoming_classes,
+            'current_membership': current_membership,
         })
     else:
         print("None active user available")
