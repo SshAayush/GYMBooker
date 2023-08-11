@@ -149,6 +149,7 @@ deleteOverlay.addEventListener("click", () => {
   deleteOverlay.classList.remove("active");
   memCancel.style.display = "none";
   deleteBtn.style.display = "none";
+  memPurchase.style.display = "none";
 });
 cancelBtn.addEventListener("click", () => {
   deleteOverlay.classList.remove("active");
@@ -172,14 +173,30 @@ input.addEventListener("change", function () {
 
 const memCancelBtn = document.querySelector(".mem-cancel");
 const memCancel = document.querySelector(".cancel-membership-preview");
-const insideCancel = document.querySelector(".cancel-inside-preview");
+const insideCancel = document.querySelectorAll(".cancel-inside-preview");
 
 memCancelBtn.addEventListener("click", () => {
   memCancel.style.display = "block";
   deleteOverlay.classList.add("active");
 });
 
-insideCancel.addEventListener("click", () => {
-  deleteOverlay.classList.remove("active");
-  memCancel.style.display = "none";
+insideCancel.forEach((insideCancelBtns) => {
+  insideCancelBtns.addEventListener("click", () => {
+    deleteOverlay.classList.remove("active");
+    memCancel.style.display = "none";
+    memPurchase.style.display = "none";
+  });
+});
+
+// insideCancel.addEventListener("click", () => {
+//   deleteOverlay.classList.remove("active");
+//   memCancel.style.display = "none";
+// });
+
+const memPurchaseBtn = document.querySelector(".purchase");
+const memPurchase = document.querySelector(".confirm-membership-preview");
+
+memPurchaseBtn.addEventListener("click", () => {
+  memPurchase.style.display = "block";
+  deleteOverlay.classList.add("active");
 });
