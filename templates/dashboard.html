@@ -44,7 +44,7 @@
           <ul class="menu-links">
             <li class="nav-link">
               <a href="#dashboard-container">
-                <i class="bx bx-home-alt icon"></i>
+                <i class="fa-solid fa-house icon"></i>
                 <span id="dashboard" class="text nav-text span-btn"
                   >Dashboard</span
                 >
@@ -52,32 +52,32 @@
             </li>
             <li class="nav-link">
               <a href="#class-container">
-                <i class="bx bx-tv icon"></i>
+                <i class="fa-solid fa-clipboard-list icon"></i>
                 <span id="classes" class="text nav-text span-btn">Classes</span>
               </a>
             </li>
             <li class="nav-link">
               <a href="#activity-container">
-                <i class="bx bx-movie-play icon"></i>
+                <i class="fa-solid fa-list-check icon"></i>
                 <span id="activity" class="text nav-text span-btn">Activity</span
                 >
               </a>
             </li>
             <li class="nav-link">
               <a href="#schedule-container">
-                <i class="bx bx-podcast icon"></i>
+                <i class="fa-regular fa-clock icon"></i>
                 <span class="text nav-text btn" id="schedule">Schedule</span>
               </a>
             </li>
             <li class="nav-link" id="#membership">
               <a href="#membership-container">
-                <i class="bx bx-music icon"></i>
+                <i class="fa-solid fa-users-rectangle icon"></i>
                 <span id="membership" class="text nav-text btn">Membership</span>
               </a>
             </li>
             <li class="nav-link">
               <a href="#manage-container">
-                <i class="bx bxs-folder-open icon"></i>
+                <i class="fa-solid fa-gear icon"></i>
                 <span id="manageAccount" class="text nav-text btn">Manage Account</span>
               </a>
             </li>
@@ -87,12 +87,12 @@
         <div class="bottom-content">
           <li class="nav-link">
             <a href="{% url 'logout' %}">
-              <i class="bx bx-log-out icon"></i>
+              <i class="fa-solid fa-arrow-right-from-bracket icon"></i>
               <span class="text nav-text">Logout</span>
             </a>
           </li>
 
-          <li class="mode">
+          <!-- <li class="mode">
             <div class="moon-sun">
               <i class="bx bx-moon icon moon"></i>
               <i class="bx bx-sun icon sun"></i>
@@ -102,7 +102,7 @@
             <div class="toggle-switch">
               <span class="switch"></span>
             </div>
-          </li>
+          </li> -->
         </div>
       </div>
     </nav>
@@ -354,10 +354,15 @@
         <p class="joined-on contain">subscribed date -  <span>{{ customer_name.customer_membership_joinedDate }}</span></p>
         <p class="expires-on contain">expire date -  <span>{{ customer_name.customer_membership_exipredDate }}</span></p>
         <button class="change"><a href="{% url 'request_membership' %}">change membership</a></button>
-        <button class="cancel"><a href="{% url 'cancelmembership' %}">cancel membership</a></button>
+        <button class="cancel mem-cancel"><a href="#">cancel membership</a></button>
 
       </div>
-
+        <div class="cancel-membership-preview">
+          <p>Do you want to cancel your membership?</p>
+          <button class="change">Confirm</button>
+          <button class="cancel cancel-inside-preview">Cancel</button>
+        </div>
+        <div id="overlay-delete"></div>
 
       <div class="memberships">
         <div class="pricing-container">

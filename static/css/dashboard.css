@@ -44,8 +44,12 @@ body {
 
 /* ------------Sidebar------------- */
 .btn-active {
-  color: white;
+  color: white !important;
   background-color: red;
+}
+
+.btn-active a {
+  color: white;
 }
 
 .sidebar {
@@ -159,7 +163,10 @@ header .image-text .header-text {
 .sidebar li a:hover .text {
   color: var(--sidebar-color);
 }
-
+.sidebar li a:focus .icon,
+.sidebar li a:focus .text {
+  color: #fff;
+}
 .sidebar .menu-bar {
   height: calc(100% - 50px);
   display: flex;
@@ -517,6 +524,26 @@ header .image-text .header-text {
   justify-content: space-evenly;
   align-items: center;
   margin-top: 2rem;
+}
+.cancel-membership-preview {
+  display: none;
+  text-align: center;
+  width: 500px;
+  height: 200px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-35%, -50%);
+  transition: ease-in-out 0.3s;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 10;
+}
+.cancel-membership-preview p {
+  margin: 3rem 0 1rem 0;
+  font-size: 20px;
+  font-weight: 400;
 }
 .p-inside {
   text-align: center;
@@ -896,7 +923,6 @@ form button {
 #profile-pic {
   display: none;
 }
-
 
 .invisible {
   visibility: hidden;
