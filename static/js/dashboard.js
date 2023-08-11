@@ -194,16 +194,6 @@ insideCancel.forEach((insideCancelBtns) => {
 //   memCancel.style.display = "none";
 // });
 
-const memPurchaseBtn = document.querySelector(".purchase");
-const memPurchase = document.querySelector(".confirm-membership-preview");
-
-memPurchaseBtn.addEventListener("click", () => {
-  memPurchase.style.display = "block";
-  deleteOverlay.classList.add("active");
-});
-
-const memPurchase = document.querySelector(".purchase");
-
 const urlParams = new URLSearchParams(window.location.search);
 const containerName = urlParams.get('containerName');
 
