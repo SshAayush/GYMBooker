@@ -395,7 +395,7 @@
                   {% endif %}
               </div>
               {% if not current_membership %}
-                <button class="purchase btn"><a href="{% url 'addmembership' packages.id %}">Purchase Now</a></button>
+                <button class="purchase btn"><a href="#">Purchase Now</a></button>
               {% elif current_membership == packages %}
                 <button class="purchased btn" disabled><a>Purchased</a></button>
               {% else %}
@@ -404,8 +404,13 @@
             </div>
           </div>
           {% endfor %}
-          </div>
 
+          </div>
+          <div class="confirm-membership-preview">
+            <p>Do you want to purchase your membership for one month?</p>
+            <button class="change">Confirm</button>
+            <button class="cancel cancel-inside-preview">Cancel</button>
+          </div>
       </div>
       
     </div>
