@@ -242,6 +242,7 @@ def send_offerEmail(request):
 
 #This function is used for customer Query
 def joinclass(request):
+    fetchClasses = Class.objects.all()
     if request.method == 'POST':
         name = request.POST['name']
         email = request.POST['email']
@@ -255,7 +256,9 @@ def joinclass(request):
             Cquery_comment=comment
         )
         customer_query.save()
-    return render(request, 'joinClass.html')
+    return render(request, 'joinClass.html',{
+        'classes' : fetchClasses,
+    })
 
 
 def dashboard(request):
@@ -372,10 +375,10 @@ def logout(request):
     Session.objects.filter(session_key=session_id).delete()
 
     # flush the session data from memory
-    request.session.flush()
+    # request.session.flush()
 
     # remove the session cookie
-    request.session.clear_expired()
+    # request.session.clear_expired()
     return redirect('landingpage')
 
 
@@ -603,8 +606,10 @@ def search(request):
         #Query to search for all rowa/name in models and present those result
         searchClass = Class.objects.filter(
             Q(class_name__icontains = search_r) | Q(class_instructor__icontains = search_r) | 
-            Q(class_time__icontains = search_r) | Q(class_info__icontains = search_r)
+            Q(class_time__icontains = search_r)
             )
+        
+        print(f'Serach Result:{searchClass}')
 
     return render(request, "search_result.html", {
         "classResult" : searchClass,

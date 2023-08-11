@@ -11,17 +11,18 @@
   <body>
     <script src="" async defer></script>
     <h1>Search</h1>
-    {% if classResult %} {% for classR in classResult %}
+    {% comment %} {% if classResult %} {% for classR in classResult %}
     <p>{{ classR.class_name }}</p>
     <p>{{ classR.class_instructor }}</p>
     <p>{{ classR.class_time }}</p>
     <p>{{ classR.class_day.first.day }} - {{classR.class_day.last.day}}</p>
     {% endfor %} {% else %}
     <p><b>No matching result found!!</b></p>
-    {% endif %}
+    {% endif %} {% endcomment %}
 
     <!-- // card container -->
-    {% if classResult %} {% for classR in classResult %}
+    {% if classResult %} 
+    {% for classR in classResult %}
     <div class="classes">
       <div
         class="class-1 class"

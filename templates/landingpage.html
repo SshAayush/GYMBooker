@@ -205,10 +205,6 @@
       <div class="p-headings">
         <h2 class="p-head">pricing chart</h2>
         <p class="p-plan">exclusive pricing plan</p>
-        <p class="p-text">
-          Gymbooker an unknown printer took a galley of type and scrambled
-          <br />make a type specimen book.
-        </p>
       </div>
       <div class="pricing-container">
         {% for membership in memberships %}
@@ -323,11 +319,9 @@
         <div class="classes-links">
           <h2 class="link-header">our classes</h2>
           <ul>
-            <li><a href="">fitness classses</a></li>
-            <li><a href="">aerobic classes</a></li>
-            <li><a href="">power yoga</a></li>
-            <li><a href="">learn machines</a></li>
-            <li><a href="">full-body strength</a></li>
+            {% for class in classes %}
+              <li><a href="">{{ class.class_name }}</a></li>
+            {% endfor %}
           </ul>
         </div>
         <div class="working-hour">
