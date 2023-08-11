@@ -106,7 +106,7 @@
         </div>
       </div>
     </nav>
-    <div class="dash-container container" id="dashboardContainer">
+    <div class="dash-container container" id="dashboard-container">
       <div class="user-details">
         <p class="u-name">{{ customer_name.customer_fname }} {{ customer_name.customer_lname }}</p>
         <p class="u-age">{{ customer_name.customer_age }}</p>
@@ -154,7 +154,7 @@
       </div>
     </div>
 
-    <div class="activity-container container" id="activityContainer">
+    <div class="activity-container container" id="activity-container">
       <div class="activity-left">
         <h2 class="activity-title">Joined classes</h2>
         <p class="activity-text">Currently joined class &rarr;</p>
@@ -173,7 +173,7 @@
       </div>
     </div>
 
-    <div class="classes-container container" id="classContainer">
+    <div class="classes-container container" id="class-container">
       <h2 class="class-header">Add additional classes to your package</h2>
       <div class="classes">
         {% for class in classes %}
@@ -299,7 +299,7 @@
 
     <!-- schedule-container -->
 
-    <div class="schedule-container container" id = "scheduleContainer">
+    <div class="schedule-container container">
       <h2 class="header schedule-header">Gym Timing</h2>
       <div class="working-hour">
         <h2 class="hours">working hours</h2>
@@ -347,7 +347,7 @@
 
     <!-- Membership container -->
       
-    <div class="membership-container container" id="membershipContainer">
+    <div class="membership-container container">
       <!-- <h2 class="header-mem">Membership</h2> -->
 
       <div class="member-status">
@@ -404,15 +404,20 @@
             </div>
           </div>
           {% endfor %}
-          </div>
 
+          </div>
+          <div class="confirm-membership-preview">
+            <p>Do you want to purchase your membership for one month?</p>
+            <button class="change">Confirm</button>
+            <button class="cancel cancel-inside-preview">Cancel</button>
+          </div>
       </div>
       
     </div>
 
     <!-- // manage account -->
 
-              <div class="manage-container" id = "manageContainer">
+              <div class="manage-container">
                 <div class="manage-nav">
                   <h3 class="manage-header">Account settings</h3>
                   <div class="nav-btns">
