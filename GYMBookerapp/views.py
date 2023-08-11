@@ -435,7 +435,9 @@ def addmembership(request,pk):
     customer_name.customer_membership_exipredDate = threshold_date.date()
 
     customer_name.save()
-    return redirect('dashboard')
+    # return redirect('dashboard')
+    return redirect(reverse('dashboard') + f'?containerName=membershipContainer')
+
 
 def cancelmembership(request):
     customer_uname = request.session.get('username')
@@ -450,7 +452,7 @@ def cancelmembership(request):
 
     customer_name.save()
 
-    return redirect('dashboard')
+    return redirect(reverse('dashboard') + f'?containerName=membershipContainer')
 
 def update_profile(request):
     customer_uname = request.session.get('username')

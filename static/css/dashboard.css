@@ -927,3 +927,8 @@ form button {
 .invisible {
   visibility: hidden;
 }
+
+.nav-icon{
+  position: relative;
+  left: 12rem;
+}

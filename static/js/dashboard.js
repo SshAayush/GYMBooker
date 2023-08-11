@@ -41,10 +41,11 @@ classesButton.addEventListener("click", () => {
   removeContainer();
   classesContainer.style.display = "block";
 });
-activityButton.addEventListener("click", () => {
-  removeContainer();
-  activityContainer.style.display = "flex";
-});
+
+// activityButton.addEventListener("click", () => {
+//   removeContainer();
+//   activityContainer.style.display = "flex";
+// });
 
 profileButton.addEventListener("click", () => {
   removeContainer();
@@ -90,7 +91,7 @@ manageAccButton.addEventListener("click", () => {
 function removeContainer() {
   dashContainer.style.display = "none";
   classesContainer.style.display = "none";
-  activityContainer.style.display = "none";
+  // activityContainer.style.display = "none";
   profileContainer.style.display = "none";
   scheduleContainer.style.display = "none";
   membershipContainer.style.display = "none";
@@ -183,3 +184,10 @@ insideCancel.addEventListener("click", () => {
   deleteOverlay.classList.remove("active");
   memCancel.style.display = "none";
 });
+
+const memPurchase = document.querySelector(".purchase");
+
+const urlParams = new URLSearchParams(window.location.search);
+const containerName = urlParams.get('containerName');
+
+console.log(containerName)

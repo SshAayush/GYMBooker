@@ -34,7 +34,7 @@
       <div class="menu-bar">
         <div class="menu">
           <li class="search-box">
-            <i class="bx bx-search icon"></i>
+            <i class="fa-solid fa-magnifying-glass icon"></i>
             <form action="{% url 'search' %}" method="POST">
               {% csrf_token %}
               <input type="search" name="search" placeholder="search..." />
@@ -43,7 +43,7 @@
           </li>
           <ul class="menu-links">
             <li class="nav-link">
-              <a href="#dashboard-container">
+              {% comment %} <a href="#dashboard-container"> {% endcomment %}
                 <i class="fa-solid fa-house icon"></i>
                 <span id="dashboard" class="text nav-text span-btn"
                   >Dashboard</span
@@ -51,32 +51,32 @@
               </a>
             </li>
             <li class="nav-link">
-              <a href="#class-container">
+              {% comment %} <a href="#class-container"> {% endcomment %}
                 <i class="fa-solid fa-clipboard-list icon"></i>
                 <span id="classes" class="text nav-text span-btn">Classes</span>
               </a>
             </li>
-            <li class="nav-link">
+            {% comment %} <li class="nav-link">
               <a href="#activity-container">
                 <i class="fa-solid fa-list-check icon"></i>
                 <span id="activity" class="text nav-text span-btn">Activity</span
                 >
               </a>
-            </li>
+            </li> {% endcomment %}
             <li class="nav-link">
-              <a href="#schedule-container">
+              {% comment %} <a href="#schedule-container"> {% endcomment %}
                 <i class="fa-regular fa-clock icon"></i>
                 <span class="text nav-text btn" id="schedule">Schedule</span>
               </a>
             </li>
             <li class="nav-link" id="#membership">
-              <a href="#membership-container">
+              {% comment %} <a href="#membership-container"> {% endcomment %}
                 <i class="fa-solid fa-users-rectangle icon"></i>
                 <span id="membership" class="text nav-text btn">Membership</span>
               </a>
             </li>
             <li class="nav-link">
-              <a href="#manage-container">
+              {% comment %} <a href="#manage-container"> {% endcomment %}
                 <i class="fa-solid fa-gear icon"></i>
                 <span id="manageAccount" class="text nav-text btn">Manage Account</span>
               </a>
@@ -111,9 +111,10 @@
         <p class="u-name">{{ customer_name.customer_fname }} {{ customer_name.customer_lname }}</p>
         <p class="u-age">{{ customer_name.customer_age }}</p>
         <p class="u-sex">{{ customer_name.customer_gender }}</p>
-        <p class="u-dob">{{ customer_name.customer_dob }}</p>
+        {% comment %} <p class="u-dob">{{ customer_name.customer_dob }}</p> {% endcomment %}
         {% if customer_name.customer_membership %}
-          <p class="u-package">{{ customer_name.customer_membership }}</p>
+            <i class="fa-solid fa-users-rectangle nav-icon"></i>
+            <p class="u-package">{{ customer_name.customer_membership }}</p>
         {% else %}
           <p class="u-package">Not Subscribed</p>
         {% endif %}
@@ -284,8 +285,8 @@
               <p class="mobile-num">{{ customer_name.customer_phone }}</p>
             </div>
             <div class="social">
-              <p>Instagram(username)</p>
-              <p class="social-name">Ace_01</p>
+              <p>Date of Birth</p>
+              <p class="social-name">{{ customer_name.customer_dob }}</p>
             </div>
             <div class="address">
               <p>Address</p>
@@ -359,7 +360,7 @@
       </div>
         <div class="cancel-membership-preview">
           <p>Do you want to cancel your membership?</p>
-          <button class="change">Confirm</button>
+          <button class="change"><a href="{% url 'cancelmembership' %}">Confirm</a></button>
           <button class="cancel cancel-inside-preview">Cancel</button>
         </div>
         <div id="overlay-delete"></div>
@@ -396,7 +397,7 @@
               {% if not current_membership %}
                 <button class="purchase btn"><a href="{% url 'addmembership' packages.id %}">Purchase Now</a></button>
               {% elif current_membership == packages %}
-                <button class="purchased btn"><a href="">Purchased</a></button>
+                <button class="purchased btn" disabled><a>Purchased</a></button>
               {% else %}
                 <button class="purchased btn invisible"><a href=""></a></button>
               {% endif %}
