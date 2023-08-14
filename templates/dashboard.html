@@ -108,19 +108,21 @@
     </nav>
     <div class="dash-container container" id="dashboard-container">
       <div class="user-details">
-        <p class="u-name">{{ customer_name.customer_fname }} {{ customer_name.customer_lname }}</p>
-        <p class="u-age">{{ customer_name.customer_age }}</p>
-        <p class="u-sex">{{ customer_name.customer_gender }}</p>
+        
+        <p class="u-name"><i class="fa-solid fa-user nav-icon"></i>{{ customer_name.customer_fname }} {{ customer_name.customer_lname }}</p>
+        <p class="u-age"><i class="fa-regular fa-id-badge nav-icon"></i>{{ customer_name.customer_age }}</p>
+        <p class="u-sex"><i class="fa-solid fa-venus-mars nav-icon"></i>{{ customer_name.customer_gender }}</p>
         <p class="u-dob">{{ customer_name.customer_dob }}</p>
         {% if customer_name.customer_membership %}
-          <p class="u-package">{{ customer_name.customer_membership }}</p>
+          <p class="u-package"><i class="fa-solid fa-users-rectangle nav-icon"></i>{{ customer_name.customer_membership }}</p>
         {% else %}
-          <p class="u-package">Not Subscribed</p>
+          <p class="u-package"><i class="fa-solid fa-users-rectangle nav-icon"></i>Not Subscribed</p>
         {% endif %}
       </div>
 
       <div class="user-info">
         <div class="box-1 box">
+          <!-- <img src="../static/image/classes/powerlifting.jpg" alt=""> -->
           <h2 class="header">Active class</h2>
           <p class="joined">
             {% for r_class in current_class %}
@@ -133,20 +135,22 @@
           {% comment %} <p class="joined-detail">Details about joined class</p> {% endcomment %}
         </div>
         <div class="box-2 box">
+          <!-- <img src="../static/image/trainer2.png" alt=""> -->
           <h2 class="header">Profile</h2>
           <p class="joined">See your presence in the gym</p>
           <p class="joined-detail">View your profile</p>
         </div>
 
         <div class="box-3 box">
+          <!-- <img src="../static/image/bmi.png" alt=""> -->
           <h2 class="header">Schedule</h2>
           <p class="joined">
             {% for u_class in upcoming_classes %}
-              <p class="joined-detail">{{ u_class }}</p>
+            <p class="joined-detail">{{ u_class }}</p>
             {% endfor %}
             {% if upcoming_classes|length == 0 %}
               <p class="joined-detail">Wooh time to have some rest</p>
-            {% endif %}
+              {% endif %}
           </p>
           {% comment %} <p class="joined-detail">Timings in the gym</p> {% endcomment %}
         </div>
@@ -260,11 +264,13 @@
       <div class="profile-details">
         <div class="profile-img">
           <div class="profile-pic">
-            {% if customer_name.customer_image %}
+            <!-- {% if customer_name.customer_image %}
                 <img src= "/{{ customer_name.customer_image }}" alt="img">
               {% else %}
                 <i class="fa-solid fa-user"></i>
               {% endif %}
+               -->
+               <img src="../static/image/trainer1.png" alt="">
           </div>
           <div class="user-detail">
             <p class="name">{{ customer_name.customer_fname }} {{ customer_name.customer_lname  }}</p>
@@ -510,7 +516,38 @@
               <div class="search-container">
 
               </div>
-          
+              <div class="search-container">
+                {% if classResult %} {% for classR in classResult %}
+                <div class="classes">
+                  <div
+                    class="class-1 class"
+                    data-modal-target=".preview-container-{{class.id}}"
+                  >
+                    <img src="/{{ class.class_image }}" alt="" />
+                    <div class="class-content">
+                      <h2 class="class-header">{{ classR.class_name }}</h2>
+                      <p class="trainer">
+                        <i class="fa-regular fa-user">{{ classR.class_instructor }}</i>
+            
+                        <i class="fa-regular fa-clock"> {{ classR.class_time }}</i>
+            
+                        <i class="fa-regular fa-clock"
+                          >{{ classR.class_day.first.day }} - {{classR.class_day.last.day}}
+                        </i>
+                      </p>
+            
+                      <button class="btn join-btn">
+                        <a href="#">Join now</a>
+                      </button>
+            
+                      <button class="btn joined-btn">
+                        <a href="#">Leave</a>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %} {% endif %}
+              </div>
 
 
 
