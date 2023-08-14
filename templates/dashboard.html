@@ -37,7 +37,7 @@
             <i class="fa-solid fa-magnifying-glass icon"></i>
             <form action="{% url 'search' %}" method="POST">
               {% csrf_token %}
-              <input type="search" name="search" placeholder="search..." />
+              <input type="search" name="search" placeholder="search..." class="search-field"/>
             </form>
             {% comment %} <input type="search" placeholder="search..." /> {% endcomment %}
           </li>
@@ -280,7 +280,9 @@
             <p class="role">Active Plan</p>
             <button class="trainer-role" disabled="disabled">{{ customer_name.customer_membership }}</button>
           </div>
+      
         </div>
+       
 
         <div class="profile-info">
           <h3 class="info-header">Contact Information</h3>
@@ -299,7 +301,15 @@
             </div>
           </div>
         </div>
+    
       </div>
+    </div>
+          <!-- <div class="activity-right">
+        {% for j_classes in joined_classes %}
+          {% comment %} <h1 class="class-title">{{j_classes.class_name}}</h1> {% endcomment %}
+          <img src="/{{ j_classes.class_image }}" alt="class img" />
+        {% endfor %}
+      </div> -->
     </div>
 
     <!-- schedule-container -->

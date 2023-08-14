@@ -162,6 +162,7 @@ header .image-text .header-text {
 .sidebar li a:hover .icon,
 .sidebar li a:hover .text {
   color: var(--sidebar-color);
+  cursor: pointer;
 }
 .sidebar li a:focus .icon,
 .sidebar li a:focus .text {
@@ -313,10 +314,10 @@ header .image-text .header-text {
   align-items: center;
 }
 .activity-right img {
-  border: 1px solid #695cfe;
+  /* border: 1px solid #695cfe; */
   border-radius: 20px;
-  filter: grayscale(100%);
-  width: calc(100% / 2);
+  filter: grayscale(50%);
+  width: calc(50% / 2);
 }
 .classes-container {
   position: relative;
@@ -973,5 +974,5 @@ form button {
   max-width: 100vw;
   height: auto;
   overflow-y: hidden;
-  /* display: none; */
+  display: none;
 }

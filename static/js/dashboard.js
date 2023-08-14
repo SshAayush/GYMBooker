@@ -17,6 +17,7 @@ const profileContainer = document.querySelector(".profile-container");
 const scheduleContainer = document.querySelector(".schedule-container");
 const membershipContainer = document.querySelector(".membership-container");
 const manageAccContainer = document.querySelector(".manage-container");
+const searchContainer = document.querySelector(".search-container");
 
 // let activeContainer;
 // activeContainer = dashContainer.className;
@@ -194,7 +195,17 @@ insideCancel.forEach((insideCancelBtns) => {
 //   memCancel.style.display = "none";
 // });
 
-const urlParams = new URLSearchParams(window.location.search);
-const containerName = urlParams.get('containerName');
+// const urlParams = new URLSearchParams(window.location.search);
+// const containerName = urlParams.get('containerName');
 
-console.log(containerName)
+// console.log(containerName)
+
+// search--container
+
+const search = document.querySelector(".search-field");
+search.addEventListener("keydown", (k) => {
+  if ((k.key = "enter")) {
+    removeContainer();
+    searchContainer.style.display = "block";
+  }
+});
