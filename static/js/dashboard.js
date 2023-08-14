@@ -202,10 +202,10 @@ insideCancel.forEach((insideCancelBtns) => {
 
 // search--container
 
-const search = document.querySelector(".search-field");
-search.addEventListener("keydown", (k) => {
-  if ((k.key = "enter")) {
-    removeContainer();
-    searchContainer.style.display = "block";
-  }
-});
+// const search = document.querySelector(".search-field");
+// search.addEventListener("keydown", (k) => {
+//   if ((k.key = "Enter")) {
+//     removeContainer();
+//     searchContainer.style.display = "block";
+//   }
+// });
