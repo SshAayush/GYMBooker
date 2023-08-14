@@ -30,9 +30,9 @@
         <div class="nav-links">
           <ul>
             <li><a href="{% url 'landingpage' %}">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Classes</a></li>
-            <li><a href="#">Pricing</a></li>
+            <li><a href="{% url 'landingpage' %}">About</a></li>
+            <li><a href="{% url 'landingpage' %}">Classes</a></li>
+            <li><a href="{% url 'landingpage' %}">Pricing</a></li>
             <li><a href="{% url 'joinclass' %}">Contact</a></li>
           </ul>
           <div class="nav-right">
@@ -43,10 +43,10 @@
       <h2 class="contact-head">contact us</h2>
       <div class="contact-container">
         <div class="contact-text">
-          <p class="text-head">We are here for help you! To Shape Your Body.</p>
+          <p class="text-head">We are here to help you! To Shape Your Body.</p>
           <p class="text-body">
-            At Gymate, we are dedicated to helping you achieve the body of your
-            dreams. Our expert trainers and nutritionists will work with you to
+            At GymBooker, we are dedicated to helping you achieve the body of your
+            dreams. Our expert trainers will work with you to
             create a personalized fitness and nutrition plan that helps you
             reach your specific goals.
           </p>
@@ -64,13 +64,9 @@
             />
             <select name="Select Class" id="s-class">
               <option selected disabled>Choose a class</option>
-              <option value="body-building">body-building</option>
-              <option value="boxing">boxing</option>
-              <option value="cycling">cycling</option>
-              <option value="running">running</option>
-              <option value="fitness">fitness</option>
-              <option value="yoga">yoga</option>
-              <option value="workout">workout</option>
+              {% for class in classes %}
+                <option value="{{ class.class_name }}">{{ class.class_name }}</option>
+              {% endfor %}
             </select>
             <textarea
               class="text-area"
