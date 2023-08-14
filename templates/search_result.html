@@ -41,18 +41,14 @@
         margin: 0;
       }
       p {
-        color: #333;
         font-weight: 400;
-      }
-      h2 {
-        color: #333;
       }
     </style>
   </head>
   <body>
     <script src="" async defer></script>
     <h1>Search</h1>
-    <button class="back"><i class="fa-solid fa-arrow-left"></i></button>
+    <button class="back"><a href="{% url 'dashboard' %}"><i class="fa-solid fa-arrow-left"></a></i></button>
     {% comment %} {% if classResult %} {% for classR in classResult %}
     <p>{{ classR.class_name }}</p>
     <p>{{ classR.class_instructor }}</p>
@@ -70,7 +66,7 @@
         class="class-1 class"
         data-modal-target=".preview-container-{{class.id}}"
       >
-        <img src="/{{ class.class_image }}" alt="" />
+        <img src="/{{ classR.class_image }}" alt="" />
         <div class="class-content">
           <h2 class="class-header">{{ classR.class_name }}</h2>
           <p class="trainer">
@@ -83,13 +79,19 @@
             </i>
           </p>
 
-          <button class="btn join-btn">
+          {% comment %} <button class="btn join-btn">
             <a href="#">Join now</a>
           </button>
 
           <button class="btn joined-btn">
             <a href="#">Leave</a>
-          </button>
+          </button> {% endcomment %}
+
+          {% if classR not in joined_classes %}
+              <button class="btn join-btn"><a href="{% url 'addclass' classR.id %}">Join now</a></button>
+              {% else %}
+              <button class="btn joined-btn"><a href="{% url 'leaveClass' classR.id %}">Leave</a></button>
+          {% endif %}
         </div>
       </div>
     </div>

@@ -605,6 +605,12 @@ def search(request):
         search_r = request.POST["search"]
         print(search_r)
 
+        #Used to store logged user full name
+        u_username = request.session.get('username')
+        customer_name = Customer.objects.get(customer_username = u_username)
+
+        #acessing ManytoMany field
+        customer_classes = customer_name.joined_class.all()
         #Query to search for all rowa/name in models and present those result
         searchClass = Class.objects.filter(
             Q(class_name__icontains = search_r) | Q(class_instructor__icontains = search_r) | 
@@ -615,6 +621,7 @@ def search(request):
 
     return render(request, "search_result.html", {
         "classResult" : searchClass,
+        "joined_classes" : customer_classes,
         })
 
 def userreset_password(request):
