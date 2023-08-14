@@ -167,6 +167,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #Tweaks in Jazzmin admin 
 JAZZMIN_UI_TWEAKS = {
     "theme": "cyborg",
+    # "theme": "simplex",
 }
 
 JAZZMIN_SETTINGS = {
