@@ -7,10 +7,52 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/static/css/dashboard.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .back {
+        margin-left: 2rem;
+        width: 5rem;
+        height: 2rem;
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+      }
+      .back i {
+        color: red;
+        font-size: 20px;
+      }
+      body {
+        background: url("../static/image/background.jpg");
+        overflow-y: hidden;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+        text-decoration: underline 1px solid red;
+      }
+      .btn {
+        margin: 0;
+      }
+      p {
+        color: #333;
+        font-weight: 400;
+      }
+      h2 {
+        color: #333;
+      }
+    </style>
   </head>
   <body>
     <script src="" async defer></script>
     <h1>Search</h1>
+    <button class="back"><i class="fa-solid fa-arrow-left"></i></button>
     {% comment %} {% if classResult %} {% for classR in classResult %}
     <p>{{ classR.class_name }}</p>
     <p>{{ classR.class_instructor }}</p>
@@ -21,8 +63,8 @@
     {% endif %} {% endcomment %}
 
     <!-- // card container -->
-    {% if classResult %} 
-    {% for classR in classResult %}
+
+    {% if classResult %} {% for classR in classResult %}
     <div class="classes">
       <div
         class="class-1 class"

@@ -202,42 +202,10 @@ insideCancel.forEach((insideCancelBtns) => {
 
 // search--container
 
-const search = document.querySelector(".search-field");
-
-search.addEventListener("keydown", (k) => {
-  if (k.key ==="Enter") {
-    removeContainer();
-    classesContainer.style.display = "block";
-  }
-});
-
-
-// const searchForm = document.getElementById("search-form");
-// const searchResultsContainer = document.getElementById("search-results-container");
-
-// searchForm.addEventListener("submit", async (event) => {
-//   event.preventDefault();
-
-//   const formData = new FormData(searchForm);
-//   const searchValue = formData.get("search");
-
-//   try {
-//     const response = await fetch("{% url 'search' %}", {
-//       method: "POST",
-//       body: new URLSearchParams(formData),
-//     });
-
-//     if (response.ok) {
-//       const data = await response.json();
-//       const searchResultsHTML = data.search_results.map((result) => `
-//         <!-- Render each search result here -->
-//       `).join("");
-
-//       searchResultsContainer.innerHTML = searchResultsHTML;
-//     } else {
-//       console.error("Error fetching search results");
-//     }
-//   } catch (error) {
-//     console.error("An error occurred:", error);
+// const search = document.querySelector(".search-field");
+// search.addEventListener("keydown", (k) => {
+//   if ((k.key = "Enter")) {
+//     removeContainer();
+//     searchContainer.style.display = "block";
 //   }
 // });
