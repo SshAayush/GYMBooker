@@ -105,6 +105,7 @@
   flex-direction: column;
   gap: 3rem;
   align-items: center;
+  animation: transitionOnPage 0.75s;
 }
 .main {
   background-image: url("/static/image/gym.jpg");
