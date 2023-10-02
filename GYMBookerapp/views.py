@@ -387,6 +387,7 @@ def addclass(request, pk):
     if customer_uname is None:
         return redirect("signin")
     
+
     customer_name = Customer.objects.get(customer_username = customer_uname)
 
     # customer_classes = customer_name.joined_class.all()
@@ -416,6 +417,7 @@ def addmembership(request,pk):
     customer_uname = request.session.get('username')
     if customer_uname is None:
         return redirect("signin")
+    
     
     currentdate = datetime.now().date()
 
@@ -449,6 +451,7 @@ def cancelmembership(request):
     customer_name.customer_membership = None  # Set the membership to None
     customer_name.customer_membership_joinedDate = None
     customer_name.customer_membership_exipredDate = None
+    customer_name.is_confirmed = False
 
     customer_name.save()
 
@@ -655,3 +658,15 @@ def userreset_password(request):
                             "message" : "Current password didn't matched",
                         })
         return render(request, "userpassword_reset.html")
+    
+def currentDate(request):
+    customer_uname = request.session.get('username')
+    if customer_uname is None:
+        return redirect("signin")
+    
+    customer_uname = request.session.get('username')
+    customer_name = Customer.objects.get(customer_username = customer_uname)
+    
+    currentdate = datetime.now().date()
+    print(f'Date:{currentdate}')
+    customer_name.customer_membership_joinedDate = currentdate

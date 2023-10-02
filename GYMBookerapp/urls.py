@@ -32,5 +32,6 @@ urlpatterns = [
     path('delete_image/',views.delete_image,name='delete_image'),
     path('userreset_password/',views.userreset_password,name='userreset_password'),
     path('change_membershipFrom/',views.change_membershipFrom,name='change_membershipFrom'),
+    path('currentDate/',views.currentDate,name='currentDate'),
 
 ]
