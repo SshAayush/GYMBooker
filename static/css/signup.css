@@ -112,3 +112,12 @@ input {
 .f-pass a:hover {
   color: red;
 }
+.show-pass{
+ /* position: absolute; */
+ color: red;
+ position: relative;
+  left: 90%;
+  top: -3rem;
+  cursor: pointer;
+
+}

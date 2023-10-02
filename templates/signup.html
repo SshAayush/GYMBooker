@@ -9,8 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
     <script src="../static/js/validate.js" async defer></script>
-    <!-- <script src="{% static 'js/validate.js' %}"></script> -->
-
+    
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
     <style>
 
     .container{
@@ -72,9 +78,11 @@
             <input
               type="password"
               id="password"
+              class= "password"
               name="password"
               placeholder="Password"
-            />
+              />
+              <i class="fa-regular fa-eye show-pass"></i>
             <div class="error"></div>
           </div>
 
@@ -82,9 +90,11 @@
             <input
               type="password"
               id="c_password"
+              class="password"
               name="c_password"
               placeholder="Confirm Password"
-            />
+              />
+              
             <div class="error"></div>
           </div>
 

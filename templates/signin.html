@@ -8,6 +8,14 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
     <!--Temporary CSS-->
     <style>
       @import url("/static/css/signup.css");
@@ -37,7 +45,7 @@
       <div class="form-box">
         <h2 class="heading">login</h2>
         <p class="error">{{ message }}</p>
-        <form action="{% url 'signin' %}" method="post" class="form">
+        <form action="{% url 'signin' %}" method="post" class="form" id="form">
           {% csrf_token %}
           <input
             type="text"
@@ -49,10 +57,12 @@
 
           <input
             type="password"
+            class="password"
             id="password"
             name="password"
             placeholder="Password"
           />
+          <i class="fa-regular fa-eye show-pass"></i>
           <br />
           <div class="submit">
             <input
@@ -68,5 +78,6 @@
         </p>
       </div>
     </div>
+    <script src="../static/js/validate.js"></script>
   </body>
 </html>
