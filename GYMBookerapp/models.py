@@ -75,5 +75,6 @@ class Customer(models.Model):
     customer_membership_joinedDate = models.DateField(auto_now_add=False, blank = True,null = True)
     customer_membership_exipredDate = models.DateField(auto_now_add=False, blank = True,null = True)
     is_active = models.BooleanField(default = False)
+    is_confirmed = models.BooleanField(default = False)
     def __str__(self):
         return self.customer_fname + " " +self.customer_lname

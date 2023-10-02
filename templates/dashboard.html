@@ -43,7 +43,7 @@
           </li>
           <ul class="menu-links">
             <li class="nav-link">
-              {% comment %} <a href="#dashboard-container"> {% endcomment %}
+               <a href="#dashboard-container">
                 <i class="fa-solid fa-house icon"></i>
                 <span id="dashboard" class="text nav-text span-btn"
                   >Dashboard</span
@@ -51,7 +51,7 @@
               </a>
             </li>
             <li class="nav-link">
-              {% comment %} <a href="#class-container"> {% endcomment %}
+               <a href="#class-container">
                 <i class="fa-solid fa-clipboard-list icon"></i>
                 <span id="classes" class="text nav-text span-btn">Classes</span>
               </a>
@@ -64,19 +64,19 @@
               </a>
             </li> {% endcomment %}
             <li class="nav-link">
-              {% comment %} <a href="#schedule-container"> {% endcomment %}
+             <a href="#schedule-container">
                 <i class="fa-regular fa-clock icon"></i>
                 <span class="text nav-text btn" id="schedule">Schedule</span>
               </a>
             </li>
             <li class="nav-link" id="#membership">
-              {% comment %} <a href="#membership-container"> {% endcomment %}
+               <a href="#membership-container">
                 <i class="fa-solid fa-users-rectangle icon"></i>
                 <span id="membership" class="text nav-text btn">Membership</span>
               </a>
             </li>
             <li class="nav-link">
-              {% comment %} <a href="#manage-container"> {% endcomment %}
+               <a href="#manage-container">
                 <i class="fa-solid fa-gear icon"></i>
                 <span id="manageAccount" class="text nav-text btn">Manage Account</span>
               </a>
@@ -410,9 +410,11 @@
                   {% endif %}
               </div>
               {% if not current_membership %}
-                <button class="purchase btn"><a href="{% url 'addmembership' packages.id %}">Purchase Now</a></button>
-              {% elif current_membership == packages %}
-                <button class="purchased btn" disabled><a>Purchased</a></button>
+              <button class="purchase btn"><a href="{% url 'addmembership' packages.id %}">Purchase Now</a></button>
+              {% elif current_membership == packages and customer_name.is_confirmed == True %}
+              <button class="purchased btn" disabled><a>Purchased</a></button>
+              {% elif current_membership == packages and customer_name.is_confirmed == False %}
+              <button class="purchased btn" disabled><a>Pending</a></button>
               {% else %}
                 <button class="purchased btn invisible"><a href=""></a></button>
               {% endif %}
