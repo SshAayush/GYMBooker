@@ -57,6 +57,11 @@
   justify-content: space-around;
   color: #fff;
   background-color: black;
+  
+}
+
+.join a i{
+  margin-right: 0.5rem;
 }
 .btn {
   border-style: none;
