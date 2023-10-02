@@ -113,8 +113,10 @@
         <p class="u-age"><i class="fa-regular fa-id-badge nav-icon"></i>{{ customer_name.customer_age }}</p>
         <p class="u-sex"><i class="fa-solid fa-venus-mars nav-icon"></i>{{ customer_name.customer_gender }}</p>
         {% comment %} <p class="u-dob">{{ customer_name.customer_dob }}</p> {% endcomment %}
-        {% if customer_name.customer_membership %}
+        {% if customer_name.customer_membership and customer_name.is_confirmed == True %}
           <p class="u-package"><i class="fa-solid fa-users-rectangle nav-icon"></i>{{ customer_name.customer_membership }}</p>
+        {% elif customer_name.customer_membership and customer_name.is_confirmed == False %}
+          <p class="u-package"><i class="fa-solid fa-users-rectangle nav-icon"></i>Pending</p>
         {% else %}
           <p class="u-package"><i class="fa-solid fa-users-rectangle nav-icon"></i>Not Subscribed</p>
         {% endif %}
@@ -243,20 +245,20 @@
         <div class="weight nav-box">
           <div class="difference">
             <p class="unit">KG'S</p>
-            <p class="diference">-12Kg</p>
+            <p class="diference">{{ customer_name.customer_count }}kg</p>
           </div>
           <div class="start-current">
             <p class="s-weigth starting">Start - {{ customer_name.customer_weight }}Kg</p>
-            <p class="c-weigth current">Current - {{ customer_name.customer_weight }}Kg</p>
+            <p class="c-weigth current">Current - {{ customer_name.customer_currweight }}Kg</p>
           </div>
         </div>
         <div class="bmi nav-box">
           <div class="difference">
             <p class="unit">BMI%</p>
-            <p class="diference">-{{ customer_name.customer_bmi }}%</p>
+            <p class="diference">{{ customer_name.customer_bmidiff }}%</p>
           </div>
           <div class="start-current">
-            <p class="s-bmi starting">Start - {{ customer_name.customer_bmi }}%</p>
+            <p class="s-bmi starting">Start - {{ customer_name.customer_startbmi }}%</p>
             <p class="c-bmi current">Current - {{ customer_name.customer_bmi }}%</p>
           </div>
         </div>
@@ -264,13 +266,13 @@
       <div class="profile-details">
         <div class="profile-img">
           <div class="profile-pic">
-            <!-- {% if customer_name.customer_image %}
+            {% if customer_name.customer_image %}
                 <img src= "/{{ customer_name.customer_image }}" alt="img">
               {% else %}
                 <i class="fa-solid fa-user"></i>
               {% endif %}
-               -->
-               <img src="../static/image/trainer1.png" alt="">
+               
+               {% comment %} <img src="../static/image/trainer1.png" alt=""> {% endcomment %}
           </div>
           <div class="user-detail">
             <p class="name">{{ customer_name.customer_fname }} {{ customer_name.customer_lname  }}</p>
@@ -278,7 +280,13 @@
             <p class="age">{{ customer_name.customer_age }}</p>
             <p class="gender">{{ customer_name.customer_gender }}</p>
             <p class="role">Active Plan</p>
-            <button class="trainer-role" disabled="disabled">{{ customer_name.customer_membership }}</button>
+            {% if customer_name.customer_membership and customer_name.is_confirmed == True %}
+              <button class="trainer-role" disabled="disabled">{{ customer_name.customer_membership }}</button>
+            {% elif customer_name.customer_membership and customer_name.is_confirmed == False %}
+              <button class="trainer-role" disabled="disabled">Pending</button>
+            {% else %}
+              <button class="trainer-role" disabled="disabled">Not Subscribed</button>
+            {% endif %}
           </div>
       
         </div>
@@ -493,7 +501,7 @@
                           name="weight"
                           id="weight"
                           placeholder="Weight/Kg"
-                          value="{{ customer_name.customer_weight }}"
+                          value=""
                         />
                         <br>
               
@@ -502,7 +510,7 @@
                           name="height"
                           id="height"
                           placeholder="Height/Cm"
-                          value="{{ customer_name.customer_height }}"
+                          value=""
                         />
                         <br />
                         <button class="btns u-btn" type="submit">Update</button>

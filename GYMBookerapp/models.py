@@ -68,13 +68,19 @@ class Customer(models.Model):
     customer_gender = models.CharField(max_length = 6, choices = gender_choice,blank=True)
     customer_phone = models.BigIntegerField(null = True,blank=True)
     customer_address = models.CharField(max_length=500, blank=True)
-    customer_height = models.IntegerField(blank=True, null = True)
-    customer_weight = models.IntegerField(blank=True, null = True)
+    customer_height = models.IntegerField(blank=True, null = True,default=0)
+    customer_currheight = models.IntegerField(blank=True, null = True,default=0)
+    customer_weight = models.IntegerField(blank=True, null = True,default=0)
+    customer_currweight = models.IntegerField(blank=True, null = True,default=0)
     customer_bmi = models.IntegerField(blank=True, null = True)
     customer_membership = models.ForeignKey(Membership, on_delete=models.CASCADE, blank= True, null= True)
     customer_membership_joinedDate = models.DateField(auto_now_add=False, blank = True,null = True)
     customer_membership_exipredDate = models.DateField(auto_now_add=False, blank = True,null = True)
     is_active = models.BooleanField(default = False)
     is_confirmed = models.BooleanField(default = False)
+    customer_count = models.IntegerField(blank=True, null = True,default=0)
+    customer_startbmi = models.IntegerField(blank=True, null = True,default=0)
+    customer_bmidiff = models.IntegerField(blank=True, null = True,default=0)
+    
     def __str__(self):
         return self.customer_fname + " " +self.customer_lname
