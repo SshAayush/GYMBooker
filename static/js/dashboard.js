@@ -171,6 +171,7 @@ input.addEventListener("change", function () {
   // Submit the form when the input value changes
   form.submit();
 });
+
 // membership cancel
 
 const memCancelBtn = document.querySelector(".mem-cancel");
