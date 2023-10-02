@@ -57,6 +57,11 @@
   justify-content: space-around;
   color: #fff;
   background-color: black;
+  
+}
+
+.join a i{
+  margin-right: 0.5rem;
 }
 .btn {
   border-style: none;
@@ -100,6 +105,7 @@
   flex-direction: column;
   gap: 3rem;
   align-items: center;
+  animation: transitionOnPage 0.75s;
 }
 .main {
   background-image: url("/static/image/gym.jpg");
