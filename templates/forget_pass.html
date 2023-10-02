@@ -8,6 +8,13 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
     <style>
       @import url("/static/css/signup.css");
       .container {
@@ -16,17 +23,27 @@
         justify-content: center;
         animation: transitionOnPage 0.75s;
       }
+      .container i {
+        font-size: 25px;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        color: red
+        ;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
     <div class="container">
+      <i class="fa-solid fa-left-long"></i>
       <div class="form-box">
         <div class="heading">
           Enter the email to reset your account password
         </div>
         <form action="{% url 'reset_code' %}" method="POST">
           {% csrf_token %}
-          <input type="text" name="email" placeholder="Email" />
+          <input type="text" name="email" placeholder="Email"  required/>
           <div class="error">{{ message }}</div>
           <div class="submit">
             <input type="submit" value="Send Code!" class="btn-submit" />

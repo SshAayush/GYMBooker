@@ -191,3 +191,4 @@ JAZZMIN_SETTINGS = {
 }
 # connection code for SMTP server
 # add code here <DC>-> <#commant-to-install> <pinned msg>   
+

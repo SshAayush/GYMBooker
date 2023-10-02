@@ -188,6 +188,7 @@ insideCancel.forEach((insideCancelBtns) => {
     deleteOverlay.classList.remove("active");
     memCancel.style.display = "none";
     memPurchase.style.display = "none";
+    purchaseMembershipConfirm.style.display = "block";
   });
 });
 
@@ -210,3 +211,18 @@ insideCancel.forEach((insideCancelBtns) => {
 //     searchContainer.style.display = "block";
 //   }
 // });
+
+
+// purchase membership
+
+const purchaseMembershipConfirm = document.querySelector('.confirm-membership-preview');
+
+const purchaseBtn = document.querySelector(".purchase")
+
+
+
+purchaseBtn.addEventListener("click",()=>{
+  purchaseMembershipConfirm.style.display = "block";
+  deleteOverlay.classList.add("active");
+})
+
