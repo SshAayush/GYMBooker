@@ -201,8 +201,8 @@ def reset_passwordDone(request):
 
 def send_offerEmail(request):
     customer_uname = request.session.get('username')
-    if customer_uname is None:
-        return redirect("signin")
+    # if customer_uname is None:
+    #     return redirect("signin")
     
     # threshold_time = timezone.now() - timedelta(hours=1)
     # inactive_users = Customer.objects.filter(
@@ -494,9 +494,6 @@ def update_profile(request):
     
     customer_dob = datetime.strptime(customer_name.customer_dob, "%Y-%m-%d")
     todayDate = datetime.now().date()
-    # print(todayDate.year)
-    # print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-    # print(customer_dob.year)
 
     age = todayDate.year - customer_dob.year  
     #.year is added beacuse we need to convert the customer_dob to a datetime.date object 
@@ -523,11 +520,22 @@ def update_physical_info (request):
             print("Height or Weight cannot be empty")
         
         else:
-            customer_name.customer_height = height
-            customer_name.customer_weight = weight
-            #calculate BMI
-            bmi = int(customer_name.customer_weight) / (int(customer_name.customer_height)/100)**2
-            customer_name.customer_bmi = round(bmi, 2)
+            if customer_name.customer_count == 0:
+                customer_name.customer_currheight = height
+                customer_name.customer_currweight = weight
+                customer_name.customer_height = height
+                customer_name.customer_weight = weight
+            else:
+                customer_name.customer_currheight = height
+                customer_name.customer_currweight = weight
+                #calculate BMI
+                bmi = int(customer_name.customer_weight) / (int(customer_name.customer_height)/100)**2
+                customer_name.customer_startbmi = round(bmi, 2)
+                cbmi = int(customer_name.customer_currweight) / (int(customer_name.customer_currheight)/100)**2
+                customer_name.customer_bmi = round(cbmi, 2)
+                customer_name.customer_bmidiff = int(customer_name.customer_startbmi)- int(customer_name.customer_bmi)
+                customer_name.customer_count = int(customer_name.customer_currweight) - int(customer_name.customer_weight)
+
             customer_name.save()
             # customer_name.save()
 
@@ -658,15 +666,3 @@ def userreset_password(request):
                             "message" : "Current password didn't matched",
                         })
         return render(request, "userpassword_reset.html")
-    
-def currentDate(request):
-    customer_uname = request.session.get('username')
-    if customer_uname is None:
-        return redirect("signin")
-    
-    customer_uname = request.session.get('username')
-    customer_name = Customer.objects.get(customer_username = customer_uname)
-    
-    currentdate = datetime.now().date()
-    print(f'Date:{currentdate}')
-    customer_name.customer_membership_joinedDate = currentdate
