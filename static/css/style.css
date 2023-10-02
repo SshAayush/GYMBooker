@@ -7,3 +7,13 @@
 }
 
 /* root elements */
+  @keyframes transitionOnPage{
+    from{
+      opacity: 0;
+      transform: rotateX('-10');
+    }
+    to{
+      opacity: 1;
+      transform: rotateX('0');
+    }
+  }
