@@ -14,6 +14,8 @@ calculateBtn.addEventListener("click", () => {
 
   const BMI = Math.trunc((inpWeight / Math.pow(inpHeight, 2)) * 10000);
 
-  answer.innerText = BMI;
+const message = BMI < 18.5 ? "(UnderWeight)" : BMI < 25 ? "(Normal)" : BMI < 30 ? "(overWeight)" : "(obese)"
+
+  answer.innerText = BMI + " " + message;
   answer.style.display = "inline";
 });
