@@ -21,6 +21,7 @@ from django.contrib.auth.hashers import check_password, make_password
 # USed to destroy the session
 from django.contrib.sessions.models import Session
 from django.http import HttpResponse
+import uuid, requests, json
 
 # Create your views here.
 
@@ -201,12 +202,7 @@ def reset_passwordDone(request):
 
 def send_offerEmail(request):
     customer_uname = request.session.get('username')
-    # if customer_uname is None:
-    #     return redirect("signin")
     
-    # threshold_time = timezone.now() - timedelta(hours=1)
-    # inactive_users = Customer.objects.filter(
-    #     customer_login_history__lt=threshold_time)
     threshold_date = timezone.now() - timedelta(hours=1)
     print(threshold_date)
     inactive_users = Customer.objects.filter(customer_login_history__lt=threshold_date)
@@ -413,32 +409,119 @@ def leaveClass(request, pk):
 
     return redirect('dashboard')
 
-def addmembership(request,pk):
+def checkout(request):
+    if request.method == "POST":
+        subTotal = request.POST["subTotal"]
+        uuid = request.POST["uuid"]
+        return_url = request.POST["return_url"]
+        
+        shipping_inc = float(subTotal) + 10
+        
+        print("shipping inc",shipping_inc)
+        
+        subPaisa = (float(shipping_inc)) * 100
+        
+        user = request.user
+        
+        print(subPaisa)
+        
+        print("uuid",uuid)
+        print("subTotal",subPaisa)
+        print("return_url http://127.0.0.1:8000",return_url)
+        print("user",user.username)
+    
+    url = "https://a.khalti.com/api/v2/epayment/initiate/"
+
+    payload = json.dumps({
+        "return_url": "http://127.0.0.1:8000" + return_url,
+        "website_url": "http://127.0.0.1:8000",
+        "amount": subPaisa,
+        "purchase_order_id": uuid,
+        "purchase_order_name": "test",
+        "customer_info": {
+        "name": user.username,
+        "email": user.email,
+        "phone": user.userprofile.Phone_Number
+        }
+    })
+    headers = {
+        'Authorization': 'key 07b52c0f30dc425ea9c53fd77e798e9d',
+        'Content-Type': 'application/json',
+    }
+
+    response = requests.request("POST", url, headers=headers, data=payload)
+
+
+    new_res = json.loads(response.text)
+    print(new_res)
+
+    # Save the transaction code in the db to validate transaction
+    transaction_id = new_res['pidx']
+    return redirect(new_res['payment_url'])
+
+
+    # return redirect('dashboard')
+    # return redirect(reverse('dashboard') + f'?containerName=membershipContainer')
+
+def addmembership(request, pk):
     customer_uname = request.session.get('username')
     if customer_uname is None:
         return redirect("signin")
     
-    
     currentdate = datetime.now().date()
-
     customer_uname = request.session.get('username')
-    customer_name = Customer.objects.get(customer_username = customer_uname)
+    customer_name = Customer.objects.get(customer_username=customer_uname)
 
-    membership = Membership.objects.get(id=pk)  # Retrieve a customer object by its primary key
+    membership = Membership.objects.get(id=pk)
     print(f'-----{membership}----')
-    # customer_name.customer_membership.add(membership)
     customer_name.customer_membership = membership
 
     print(f'Date:{currentdate}')
     customer_name.customer_membership_joinedDate = currentdate
 
     threshold_date = timezone.now() + timedelta(days=30)
-    # threshold_date = timezone.now() + timedelta(days=1)
-    customer_name.customer_membership_exipredDate = threshold_date.date()
+    customer_name.customer_membership_expiredDate = threshold_date.date()
 
     customer_name.save()
-    # return redirect('dashboard')
-    return redirect(reverse('dashboard') + f'?containerName=membershipContainer')
+    
+    subTotal = membership.membership_price
+    uid = str(uuid.uuid4()) # Convert UUID object to string
+    
+    shipping_inc = float(subTotal) + 10
+    subPaisa = (float(shipping_inc)) * 100
+    
+    user = request.user
+    
+    print(subPaisa)
+    print("uuid", uid)
+    print("subTotal", subPaisa)
+    print("return_url http://127.0.0.1:8000/dashboard")
+    print("user", "Aashish")
+    
+    url = "https://a.khalti.com/api/v2/epayment/initiate/"
+
+    payload = json.dumps({
+        "return_url": "http://127.0.0.1:8000/dashboard",
+        "website_url": "http://127.0.0.1",
+        "amount": subPaisa,
+        "purchase_order_id": uid,
+        "purchase_order_name": "test",
+        "customer_info": {
+            "name": "Aashish",
+            "email": "aashsish@gmail.com",
+            "phone": "9800000004"
+        }
+    })
+    headers = {
+        'Authorization': 'key live_secret_key_68791341fdd94846a146f0457ff7b455',
+        'Content-Type': 'application/json',
+    }
+
+    response = requests.request("POST", url, headers=headers, data=payload)
+
+    new_res = json.loads(response.text)
+    print(new_res)
+    return redirect(new_res['payment_url'])
 
 
 def cancelmembership(request):

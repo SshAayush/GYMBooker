@@ -20,3 +20,7 @@ html{
       transform: rotateX('0');
     }
   }
+
+.product > img.img-fluid {
+  height: 400px !important;
+}

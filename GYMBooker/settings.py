@@ -80,12 +80,12 @@ WSGI_APPLICATION = 'GYMBooker.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': BASE_DIR / 'db.sqlite3',
+     }
+ }
 
 # code to connect mySql
 # DATABASES = {
@@ -99,19 +99,6 @@ WSGI_APPLICATION = 'GYMBooker.wsgi.application'
 #         'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
 #     }
 # }
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gymbooker',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
-    }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -191,9 +178,3 @@ JAZZMIN_SETTINGS = {
 }
 # connection code for SMTP server
 # add code here <DC>-> <#commant-to-install> <pinned msg>   
-
-EMAIL_HOST = 'smtp-relay.brevo.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'xayush.tc@gmail.com'
-EMAIL_HOST_PASSWORD = 'xsmtpsib-73c45bef67e32bc69eebedfe72f50b1e67566f79fcd0a4b64873388b4188ba25-wDSsmB3nkfRd80K6'

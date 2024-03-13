@@ -431,11 +431,12 @@
           {% endfor %}
 
           </div>
-          <div class="confirm-membership-preview">
+          {% comment %} <div class="confirm-membership-preview">
             <p>Do you want to purchase your membership for one month?</p>
             <button class="change">Confirm</button>
+            <button class="purchase btn"><a href="{% url 'addmembership' packages.id %}">Purchase Now</a></button>
             <button class="cancel cancel-inside-preview">Cancel</button>
-          </div>
+          </div> {% endcomment %}
           <div id="overlay"></div>
       </div>
       

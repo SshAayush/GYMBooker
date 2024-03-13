@@ -188,7 +188,7 @@ insideCancel.forEach((insideCancelBtns) => {
     deleteOverlay.classList.remove("active");
     memCancel.style.display = "none";
     memPurchase.style.display = "none";
-    purchaseMembershipConfirm.style.display = "block";
+    // purchaseMembershipConfirm.style.display = "block";
   });
 });
 
@@ -221,8 +221,8 @@ const purchaseBtn = document.querySelector(".purchase")
 
 
 
-purchaseBtn.addEventListener("click",()=>{
-  purchaseMembershipConfirm.style.display = "block";
-  deleteOverlay.classList.add("active");
-})
+// purchaseBtn.addEventListener("click",()=>{
+//   purchaseMembershipConfirm.style.display = "block";
+//   deleteOverlay.classList.add("active");
+// })
 
